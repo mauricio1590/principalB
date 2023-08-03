@@ -613,6 +613,7 @@ Public Class Remisiones
         lviEncontrado.Text = txtItem.Text
         lviEncontrado.SubItems.Add(txtDescItem.Text)
         lviEncontrado.SubItems.Add(txtCantidad.Text)
+        lviEncontrado.SubItems.Add(txtBultos.Text)
 
 
         lstItems.Items.Add(lviEncontrado)
