@@ -32,19 +32,19 @@ Public Class Remisiones
     Private Sub txtTipoDocumento_TextChanged(sender As Object, e As EventArgs) Handles txtTipoDocumento.TextChanged
         If txtTipoDocumento.Text = "" Then Exit Sub
         lstTipoDocumentos.Visible = True
-        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no FROM documento WHERE no LIKE '%" & txtTipoDocumento.Text & "%' ORDER BY no LIMIT 30", , Principal.cadenadeconexion)
-        If Not arlCoincidencias.Count = 0 Then lstTipoDocumentos.Visible = True
-        lstTipoDocumentos.Items.Clear()
-        lstTipoDocumentos.BeginUpdate()
-        For Each Encontrado As ArrayList In arlCoincidencias
-            Dim lviEncontrado As New ListViewItem
-            lviEncontrado.Tag = Encontrado(0)
-            lviEncontrado.Text = Encontrado(1)
+                                                     Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no FROM documento WHERE no LIKE '%" & txtTipoDocumento.Text & "%' ORDER BY no LIMIT 30", , Principal.cadenadeconexion)
+                                                     If Not arlCoincidencias.Count = 0 Then lstTipoDocumentos.Visible = True
+                                                     lstTipoDocumentos.Items.Clear()
+                                                     lstTipoDocumentos.BeginUpdate()
+                                                     For Each Encontrado As ArrayList In arlCoincidencias
+                                                         Dim lviEncontrado As New ListViewItem
+                                                         lviEncontrado.Tag = Encontrado(0)
+                                                         lviEncontrado.Text = Encontrado(1)
 
-            lstTipoDocumentos.Items.Add(lviEncontrado)
-        Next
-        lstTipoDocumentos.EndUpdate()
-    End Sub
+                                                         lstTipoDocumentos.Items.Add(lviEncontrado)
+                                                     Next
+                                                     lstTipoDocumentos.EndUpdate()
+                                                 End Sub
 
     Private Sub txtTipoDocumento_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTipoDocumento.KeyDown
         Dim intMovimiento As Integer = 0
@@ -383,17 +383,17 @@ Public Class Remisiones
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        Dim STR As String = txtBultos.Text
-        Dim Dfrs As Double = STR
+        Dim dato As Double = Double.Parse(txtCantidad.Text.ToString.Replace(".", ","))
         If validarCamposremision() Then
 
-            Dim strCadena As String = "INSERT INTO remisiones (iddocumento,consecutivodocumento,idformularioingreso,idcliente,idusuario,subpartida,item,descripcion,idembalaje,cantidad," & vbCrLf &
-                                            "bultos,pesobruto,pesoneto,valorunitario,valortotal,idpaisorigen,idpaiscompra,idpaisdestino,idpaisprocedencia,fechaingreso,estado,idalmacenamiento,placas,tasadecambio) values(" & vbCrLf &
+            Dim strCadena As String = "INSERT INTO remisiones (iddocumento,consecutivodocumento,idformularioingreso,idcliente,idusuario,subpartida,idembalaje," & vbCrLf &
+                                            "idpaisorigen,idpaiscompra,idpaisdestino,idpaisprocedencia,fechaingreso,estado,idalmacenamiento,placas,tasadecambio) values(" & vbCrLf &
                                              "" & intTipoDocumento & ",'" & txtConsecutivo.Text & "','" & txtidformularioIngreso.Text & "'," & intIdDeLaPersona & "," & Principal.intIdUsuario & ",'" & txtSubPartida.Text & "'" & vbCrLf &
-                                             ",'" & txtItem.Text & "','" & txtDescItem.Text & "'," & intIdEmbalaje & ",'" & Double.Parse(txtCantidad.Text) & "','" & Double.Parse(txtBultos.Text) & "','" & Double.Parse(txtPesoBruto.Text) & "','" & Double.Parse(txtPesoNeto.Text) & "'," & vbCrLf &
-                                             "'" & Double.Parse(txtUnitario.Text) & "','" & Double.Parse(txtTotal.Text) & "'," & intIdPaisOrigen & "," & intidPaisCompra & "," & intidPaisDestino & ",'" & txtProcedencia.Text & "','" & Format(dtFecha.Value, "yyyy-MM-dd") & "'," & vbCrLf &
+                                             "," & intIdEmbalaje & "," & intIdPaisOrigen & "," & intidPaisCompra & "," & intidPaisDestino & ",'" & txtProcedencia.Text & "','" & Format(dtFecha.Value, "yyyy-MM-dd") & "'," & vbCrLf &
                                               "'" & lblEstado.Text & "'," & intidTipoAlmacenamiento & ",'" & txtPlacas.Text & "','" & lblTasa.Text & "')"
-            If fun.registreDatos(strCadena) Then
+            Dim strCadenaitem As String = "INSERT INTO item(iddocumento,consecutivodocumento,item,descripcion,cantidad,bultos,pesobruto,pesoneto,valorunitario,valortotal)values('" & intTipoDocumento & "','" & txtConsecutivo.Text & "'," & vbCrLf &
+                                          "'" & txtItem.Text & "','" & txtDescItem.Text & "','" & txtCantidad.Text & "','" & txtBultos.Text & "','" & txtPesoBruto.Text & "','" & txtPesoNeto.Text & "','" & txtUnitario.Text & "','" & txtTotal.Text & "')"
+            If fun.registreDatos(strCadena) AndAlso fun.registreDatos(strCadenaitem) Then
                 MessageBox.Show("Registro Correcto", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
                 limpiar()
             Else
@@ -401,7 +401,7 @@ Public Class Remisiones
             End If
         End If
 
-        Dim dato As Double = Double.Parse(STR.Replace(".", ","))
+
 
     End Sub
     Function validarCamposremision() As Boolean
@@ -574,7 +574,7 @@ Public Class Remisiones
 
     Private Sub txtItem_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtItem.KeyPress
         If Asc(e.KeyChar) = 13 Then
-            txtEmbalaje.Focus()
+            txtCantidad.Focus()
         End If
     End Sub
 
@@ -614,8 +614,10 @@ Public Class Remisiones
         lviEncontrado.SubItems.Add(txtDescItem.Text)
         lviEncontrado.SubItems.Add(txtCantidad.Text)
         lviEncontrado.SubItems.Add(txtBultos.Text)
-
-
+        lviEncontrado.SubItems.Add(txtPesoBruto.Text)
+        lviEncontrado.SubItems.Add(txtPesoNeto.Text)
+        lviEncontrado.SubItems.Add(txtTotal.Text)
+        lviEncontrado.SubItems.Add(txtUnitario.Text)
         lstItems.Items.Add(lviEncontrado)
     End Sub
     Private Sub txtTotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTotal.KeyPress
