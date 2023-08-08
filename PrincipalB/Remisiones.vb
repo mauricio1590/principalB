@@ -177,7 +177,7 @@ Public Class Remisiones
             intIdEmbalaje = lstEmbalajes.SelectedItems(0).Tag
             txtEmbalaje.Text = lstEmbalajes.SelectedItems(0).Text
             lstEmbalajes.Visible = False
-            txtCantidad.Focus()
+            txtPaisOrigen.Focus()
         End If
     End Sub
 
@@ -381,9 +381,28 @@ Public Class Remisiones
             txtPlacas.Focus()
         End If
     End Sub
+    Sub registreItem()
+        For i As Integer = 0 To lstItems.Items.Count - 1
+            Dim item As String = lstItems.Items(i).Text
+            Dim desc As String = lstItems.Items(i).SubItems(1).Text
+            Dim cantidad As Double = lstItems.Items(i).SubItems(2).Text
+            Dim bultos As Double = lstItems.Items(i).SubItems(3).Text
+            Dim pesobruto As Double = lstItems.Items(i).SubItems(4).Text
+            Dim pesoneto As Double = lstItems.Items(i).SubItems(5).Text
+            Dim unitatio As Double = lstItems.Items(i).SubItems(6).Text
+            Dim total As Double = lstItems.Items(i).SubItems(7).Text
+            Dim strCadenaitem As String = "INSERT INTO item(iddocumento,consecutivodocumento,item,descripcion,cantidad,bultos,pesobruto,pesoneto,valorunitario,valortotal)values('" & intTipoDocumento & "','" & txtConsecutivo.Text & "'," & vbCrLf &
+                                 "'" & item & "','" & desc & "','" & cantidad & "','" & bultos & "','" & pesobruto & "','" & pesoneto & "','" & unitatio & "','" & total & "')"
 
+            Try
+                fun.registreDatos(strCadenaitem)
+            Catch ex As Exception
+                MessageBox.Show("Error en el Registro", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+            End Try
+        Next
+    End Sub
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        Dim dato As Double = Double.Parse(txtCantidad.Text.ToString.Replace(".", ","))
+        '  Dim dato As Double = Double.Parse(txtCantidad.Text.ToString.Replace(".", ","))
         If validarCamposremision() Then
 
             Dim strCadena As String = "INSERT INTO remisiones (iddocumento,consecutivodocumento,idformularioingreso,idcliente,idusuario,subpartida,idembalaje," & vbCrLf &
@@ -391,9 +410,10 @@ Public Class Remisiones
                                              "" & intTipoDocumento & ",'" & txtConsecutivo.Text & "','" & txtidformularioIngreso.Text & "'," & intIdDeLaPersona & "," & Principal.intIdUsuario & ",'" & txtSubPartida.Text & "'" & vbCrLf &
                                              "," & intIdEmbalaje & "," & intIdPaisOrigen & "," & intidPaisCompra & "," & intidPaisDestino & ",'" & txtProcedencia.Text & "','" & Format(dtFecha.Value, "yyyy-MM-dd") & "'," & vbCrLf &
                                               "'" & lblEstado.Text & "'," & intidTipoAlmacenamiento & ",'" & txtPlacas.Text & "','" & lblTasa.Text & "')"
-            Dim strCadenaitem As String = "INSERT INTO item(iddocumento,consecutivodocumento,item,descripcion,cantidad,bultos,pesobruto,pesoneto,valorunitario,valortotal)values('" & intTipoDocumento & "','" & txtConsecutivo.Text & "'," & vbCrLf &
-                                          "'" & txtItem.Text & "','" & txtDescItem.Text & "','" & txtCantidad.Text & "','" & txtBultos.Text & "','" & txtPesoBruto.Text & "','" & txtPesoNeto.Text & "','" & txtUnitario.Text & "','" & txtTotal.Text & "')"
-            If fun.registreDatos(strCadena) AndAlso fun.registreDatos(strCadenaitem) Then
+            registreItem()
+            '    Dim strCadenaitem As String = "INSERT INTO item(iddocumento,consecutivodocumento,item,descripcion,cantidad,bultos,pesobruto,pesoneto,valorunitario,valortotal)values('" & intTipoDocumento & "','" & txtConsecutivo.Text & "'," & vbCrLf &
+            '                                 "'" & txtItem.Text & "','" & txtDescItem.Text & "','" & txtCantidad.Text & "','" & txtBultos.Text & "','" & txtPesoBruto.Text & "','" & txtPesoNeto.Text & "','" & txtUnitario.Text & "','" & txtTotal.Text & "')"
+            If fun.registreDatos(strCadena) Then
                 MessageBox.Show("Registro Correcto", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
                 limpiar()
             Else
@@ -404,6 +424,62 @@ Public Class Remisiones
 
 
     End Sub
+    Sub limpiarLista()
+        lstItems.Items.Clear()
+    End Sub
+
+    Function validarCamposItem() As Boolean
+        Dim booValide As Boolean = True
+        If Not txtDescItem.Text.ToString.Equals("") Then
+            If Not txtItem.Text.ToString.Equals("") Then
+                If Not txtCantidad.Text.ToString.Equals("") Then
+                    If Not txtBultos.Text.ToString.Equals("") Then
+                        If Not txtPesoBruto.Text.ToString.Equals("") Then
+                            If Not txtPesoNeto.Text.ToString.Equals("") Then
+                                If Not txtUnitario.Text.ToString.Equals("") Then
+                                    If Not txtTotal.Text.ToString.Equals("") Then
+                                    Else
+                                        booValide = False
+                                        MessageBox.Show("Escriba Valor Total", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                        txtTotal.Focus()
+                                    End If
+                                Else
+                                    booValide = False
+                                    MessageBox.Show("Escriba el Valor Unitario", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                    txtUnitario.Focus()
+                                End If
+                            Else
+                                booValide = False
+                                MessageBox.Show("Escriba el Peso Neto", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                txtPesoNeto.Focus()
+                            End If
+                        Else
+                            booValide = False
+                            MessageBox.Show("Escriba el Peso Bruto", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            txtPesoBruto.Focus()
+                        End If
+                    Else
+                        booValide = False
+                        MessageBox.Show("Escriba la total Bultos", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        txtBultos.Focus()
+                    End If
+                Else
+                    booValide = False
+                    MessageBox.Show("Escriba la Cantidad", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    txtCantidad.Focus()
+                End If
+            Else
+                booValide = False
+                MessageBox.Show("Escriba el Nombre del Item", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                txtItem.Focus()
+            End If
+        Else
+            booValide = False
+            MessageBox.Show("Escriba el Descriocion del Item", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtDescItem.Focus()
+        End If
+        Return booValide
+    End Function
     Function validarCamposremision() As Boolean
 
         Dim booValide As Boolean = True
@@ -411,91 +487,46 @@ Public Class Remisiones
             If Not txtidformularioIngreso.Text.ToString.Equals("") Then
                 If Not txtSubPartida.Text.ToString.Equals("") Then
                     If Not intIdDeLaPersona = 0 Then
-                        If Not txtDescItem.Text.ToString.Equals("") Then
-                            If Not txtItem.Text.ToString.Equals("") Then
-                                If Not intIdEmbalaje = 0 Then
-                                    If Not txtCantidad.Text.ToString.Equals("") Then
-                                        If Not txtBultos.Text.ToString.Equals("") Then
-                                            If Not txtPesoBruto.Text.ToString.Equals("") Then
-                                                If Not txtPesoNeto.Text.ToString.Equals("") Then
-                                                    If Not txtUnitario.Text.ToString.Equals("") Then
-                                                        If Not txtTotal.Text.ToString.Equals("") Then
-                                                            If Not intIdPaisOrigen = 0 Then
-                                                                If Not intidPaisCompra = 0 Then
-                                                                    If Not intidPaisDestino = 0 Then
-                                                                        If Not intidTipoAlmacenamiento = 0 Then
-                                                                            If Not txtPlacas.Text.ToString.Equals("") Then
-                                                                            Else
-                                                                                booValide = False
-                                                                                MessageBox.Show("Escriba el Numero de Placas", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                                                                txtPlacas.Focus()
-                                                                            End If
-                                                                        Else
-                                                                            booValide = False
-                                                                            MessageBox.Show("Seleccione Tipo Almacenamiento", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                                                            txtAlmacenamiento.Focus()
-                                                                        End If
+                        If Not intIdEmbalaje = 0 Then
+
+                            If Not intIdPaisOrigen = 0 Then
+                                                        If Not intidPaisCompra = 0 Then
+                                                            If Not intidPaisDestino = 0 Then
+                                                                If Not intidTipoAlmacenamiento = 0 Then
+                                                                    If Not txtPlacas.Text.ToString.Equals("") Then
                                                                     Else
                                                                         booValide = False
-                                                                        MessageBox.Show("Seleccione el Pais de Destino", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                                                        txtDestino.Focus()
+                                                                        MessageBox.Show("Escriba el Numero de Placas", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                                                        txtPlacas.Focus()
                                                                     End If
                                                                 Else
                                                                     booValide = False
-                                                                    MessageBox.Show("Seleccione el Pais de Procedencia", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                                                    txtPaisCompra.Focus()
+                                                                    MessageBox.Show("Seleccione Tipo Almacenamiento", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                                                    txtAlmacenamiento.Focus()
                                                                 End If
                                                             Else
                                                                 booValide = False
-                                                                MessageBox.Show("Seleccione el Pais de Origen", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                                                txtPaisOrigen.Focus()
+                                                                MessageBox.Show("Seleccione el Pais de Destino", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                                                txtDestino.Focus()
                                                             End If
                                                         Else
                                                             booValide = False
-                                                            MessageBox.Show("Escriba Valor Total", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                                            txtTotal.Focus()
+                                                            MessageBox.Show("Seleccione el Pais de Procedencia", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                                            txtPaisCompra.Focus()
                                                         End If
                                                     Else
                                                         booValide = False
-                                                        MessageBox.Show("Escriba el Valor Unitario", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                                        txtUnitario.Focus()
+                                                        MessageBox.Show("Seleccione el Pais de Origen", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                                        txtPaisOrigen.Focus()
                                                     End If
+
                                                 Else
-                                                    booValide = False
-                                                    MessageBox.Show("Escriba el Peso Neto", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                                    txtPesoNeto.Focus()
-                                                End If
-                                            Else
-                                                booValide = False
-                                                MessageBox.Show("Escriba el Peso Bruto", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                                txtPesoBruto.Focus()
-                                            End If
-                                        Else
-                                            booValide = False
-                                            MessageBox.Show("Escriba la total Bultos", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                            txtBultos.Focus()
-                                        End If
-                                    Else
-                                        booValide = False
-                                        MessageBox.Show("Escriba la Cantidad", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                        txtCantidad.Focus()
-                                    End If
-                                Else
-                                    booValide = False
+                            booValide = False
                                     MessageBox.Show("Seleccione un tipo de Embalaje", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
                                     txtEmbalaje.Focus()
                                 End If
+
                             Else
-                                booValide = False
-                                MessageBox.Show("Escriba Nombre del Item", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                txtItem.Focus()
-                            End If
-                        Else
-                            booValide = False
-                            MessageBox.Show("Escriba una descipcion", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            txtDescItem.Focus()
-                        End If
-                    Else
                         MessageBox.Show("Seleccione Cliente", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         txtCLiente.Focus()
                     End If
@@ -546,6 +577,7 @@ Public Class Remisiones
         intidTipoAlmacenamiento = 0
         txtPlacas.Text = ""
         btnModificar.Enabled = False
+        limpiarLista()
         btnGuardar.Enabled = True
     End Sub
 
@@ -604,9 +636,29 @@ Public Class Remisiones
 
     Private Sub txtUnitario_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUnitario.KeyPress
         If Asc(e.KeyChar) = 13 Then
-            alimentarTabla()
+
+            If validarCamposItem() Then
+                alimentarTabla()
+                limpiaritem()
+                txtDescItem.Focus()
+            End If
+
+
         End If
     End Sub
+
+    Sub limpiaritem()
+        txtItem.Text = ""
+        txtDescItem.Text = ""
+
+        txtCantidad.Text = ""
+        txtBultos.Text = ""
+        txtPesoBruto.Text = ""
+        txtPesoNeto.Text = ""
+        txtUnitario.Text = ""
+        txtTotal.Text = ""
+    End Sub
+
     Public Sub alimentarTabla()
         Dim lviEncontrado As New ListViewItem
         lviEncontrado.Tag = lstItems.Items.Count() + 1

@@ -373,7 +373,7 @@ Partial Class Remisiones
         Me.txtEmbalaje.Location = New System.Drawing.Point(138, 346)
         Me.txtEmbalaje.Name = "txtEmbalaje"
         Me.txtEmbalaje.Size = New System.Drawing.Size(241, 20)
-        Me.txtEmbalaje.TabIndex = 8
+        Me.txtEmbalaje.TabIndex = 14
         '
         'Label10
         '
@@ -390,14 +390,14 @@ Partial Class Remisiones
         Me.txtCantidad.Location = New System.Drawing.Point(138, 212)
         Me.txtCantidad.Name = "txtCantidad"
         Me.txtCantidad.Size = New System.Drawing.Size(74, 20)
-        Me.txtCantidad.TabIndex = 9
+        Me.txtCantidad.TabIndex = 8
         '
         'txtBultos
         '
         Me.txtBultos.Location = New System.Drawing.Point(285, 212)
         Me.txtBultos.Name = "txtBultos"
         Me.txtBultos.Size = New System.Drawing.Size(74, 20)
-        Me.txtBultos.TabIndex = 10
+        Me.txtBultos.TabIndex = 9
         '
         'Label11
         '
@@ -414,7 +414,7 @@ Partial Class Remisiones
         Me.txtPesoBruto.Location = New System.Drawing.Point(468, 212)
         Me.txtPesoBruto.Name = "txtPesoBruto"
         Me.txtPesoBruto.Size = New System.Drawing.Size(74, 20)
-        Me.txtPesoBruto.TabIndex = 11
+        Me.txtPesoBruto.TabIndex = 10
         '
         'Label12
         '
@@ -431,7 +431,7 @@ Partial Class Remisiones
         Me.txtPesoNeto.Location = New System.Drawing.Point(651, 212)
         Me.txtPesoNeto.Name = "txtPesoNeto"
         Me.txtPesoNeto.Size = New System.Drawing.Size(74, 20)
-        Me.txtPesoNeto.TabIndex = 12
+        Me.txtPesoNeto.TabIndex = 11
         '
         'Label13
         '
@@ -448,7 +448,7 @@ Partial Class Remisiones
         Me.txtTotal.Location = New System.Drawing.Point(849, 212)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(74, 20)
-        Me.txtTotal.TabIndex = 14
+        Me.txtTotal.TabIndex = 12
         '
         'Label14
         '
@@ -553,9 +553,9 @@ Partial Class Remisiones
         '
         'txtDestino
         '
-        Me.txtDestino.Location = New System.Drawing.Point(156, 493)
+        Me.txtDestino.Location = New System.Drawing.Point(138, 407)
         Me.txtDestino.Name = "txtDestino"
-        Me.txtDestino.Size = New System.Drawing.Size(223, 20)
+        Me.txtDestino.Size = New System.Drawing.Size(241, 20)
         Me.txtDestino.TabIndex = 17
         '
         'lstDestino
@@ -565,9 +565,9 @@ Partial Class Remisiones
         Me.lstDestino.FullRowSelect = True
         Me.lstDestino.GridLines = True
         Me.lstDestino.HideSelection = False
-        Me.lstDestino.Location = New System.Drawing.Point(156, 516)
+        Me.lstDestino.Location = New System.Drawing.Point(138, 424)
         Me.lstDestino.Name = "lstDestino"
-        Me.lstDestino.Size = New System.Drawing.Size(223, 92)
+        Me.lstDestino.Size = New System.Drawing.Size(241, 92)
         Me.lstDestino.TabIndex = 69
         Me.lstDestino.UseCompatibleStateImageBehavior = False
         Me.lstDestino.View = System.Windows.Forms.View.Details
@@ -582,7 +582,7 @@ Partial Class Remisiones
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label18.Location = New System.Drawing.Point(36, 496)
+        Me.Label18.Location = New System.Drawing.Point(21, 409)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(82, 17)
         Me.Label18.TabIndex = 68
