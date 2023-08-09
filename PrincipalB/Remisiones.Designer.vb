@@ -102,6 +102,8 @@ Partial Class Remisiones
         Me.ColumnHeader14 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader15 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader16 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.lstProcedencia = New System.Windows.Forms.ListView()
+        Me.ColumnHeader17 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -373,7 +375,7 @@ Partial Class Remisiones
         Me.txtEmbalaje.Location = New System.Drawing.Point(138, 346)
         Me.txtEmbalaje.Name = "txtEmbalaje"
         Me.txtEmbalaje.Size = New System.Drawing.Size(241, 20)
-        Me.txtEmbalaje.TabIndex = 8
+        Me.txtEmbalaje.TabIndex = 14
         '
         'Label10
         '
@@ -390,14 +392,14 @@ Partial Class Remisiones
         Me.txtCantidad.Location = New System.Drawing.Point(138, 212)
         Me.txtCantidad.Name = "txtCantidad"
         Me.txtCantidad.Size = New System.Drawing.Size(74, 20)
-        Me.txtCantidad.TabIndex = 9
+        Me.txtCantidad.TabIndex = 8
         '
         'txtBultos
         '
         Me.txtBultos.Location = New System.Drawing.Point(285, 212)
         Me.txtBultos.Name = "txtBultos"
         Me.txtBultos.Size = New System.Drawing.Size(74, 20)
-        Me.txtBultos.TabIndex = 10
+        Me.txtBultos.TabIndex = 9
         '
         'Label11
         '
@@ -414,7 +416,7 @@ Partial Class Remisiones
         Me.txtPesoBruto.Location = New System.Drawing.Point(468, 212)
         Me.txtPesoBruto.Name = "txtPesoBruto"
         Me.txtPesoBruto.Size = New System.Drawing.Size(74, 20)
-        Me.txtPesoBruto.TabIndex = 11
+        Me.txtPesoBruto.TabIndex = 10
         '
         'Label12
         '
@@ -431,7 +433,7 @@ Partial Class Remisiones
         Me.txtPesoNeto.Location = New System.Drawing.Point(651, 212)
         Me.txtPesoNeto.Name = "txtPesoNeto"
         Me.txtPesoNeto.Size = New System.Drawing.Size(74, 20)
-        Me.txtPesoNeto.TabIndex = 12
+        Me.txtPesoNeto.TabIndex = 11
         '
         'Label13
         '
@@ -448,7 +450,7 @@ Partial Class Remisiones
         Me.txtTotal.Location = New System.Drawing.Point(849, 212)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(74, 20)
-        Me.txtTotal.TabIndex = 14
+        Me.txtTotal.TabIndex = 12
         '
         'Label14
         '
@@ -491,7 +493,7 @@ Partial Class Remisiones
         Me.lstOrigen.FullRowSelect = True
         Me.lstOrigen.GridLines = True
         Me.lstOrigen.HideSelection = False
-        Me.lstOrigen.Location = New System.Drawing.Point(508, 369)
+        Me.lstOrigen.Location = New System.Drawing.Point(508, 372)
         Me.lstOrigen.Name = "lstOrigen"
         Me.lstOrigen.Size = New System.Drawing.Size(241, 92)
         Me.lstOrigen.TabIndex = 63
@@ -553,9 +555,9 @@ Partial Class Remisiones
         '
         'txtDestino
         '
-        Me.txtDestino.Location = New System.Drawing.Point(156, 493)
+        Me.txtDestino.Location = New System.Drawing.Point(138, 407)
         Me.txtDestino.Name = "txtDestino"
-        Me.txtDestino.Size = New System.Drawing.Size(223, 20)
+        Me.txtDestino.Size = New System.Drawing.Size(241, 20)
         Me.txtDestino.TabIndex = 17
         '
         'lstDestino
@@ -565,9 +567,9 @@ Partial Class Remisiones
         Me.lstDestino.FullRowSelect = True
         Me.lstDestino.GridLines = True
         Me.lstDestino.HideSelection = False
-        Me.lstDestino.Location = New System.Drawing.Point(156, 516)
+        Me.lstDestino.Location = New System.Drawing.Point(138, 424)
         Me.lstDestino.Name = "lstDestino"
-        Me.lstDestino.Size = New System.Drawing.Size(223, 92)
+        Me.lstDestino.Size = New System.Drawing.Size(241, 92)
         Me.lstDestino.TabIndex = 69
         Me.lstDestino.UseCompatibleStateImageBehavior = False
         Me.lstDestino.View = System.Windows.Forms.View.Details
@@ -582,7 +584,7 @@ Partial Class Remisiones
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label18.Location = New System.Drawing.Point(36, 496)
+        Me.Label18.Location = New System.Drawing.Point(21, 409)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(82, 17)
         Me.Label18.TabIndex = 68
@@ -593,7 +595,7 @@ Partial Class Remisiones
         Me.txtProcedencia.Location = New System.Drawing.Point(508, 410)
         Me.txtProcedencia.MaxLength = 500
         Me.txtProcedencia.Name = "txtProcedencia"
-        Me.txtProcedencia.Size = New System.Drawing.Size(236, 20)
+        Me.txtProcedencia.Size = New System.Drawing.Size(241, 20)
         Me.txtProcedencia.TabIndex = 18
         '
         'Label19
@@ -792,11 +794,33 @@ Partial Class Remisiones
         '
         Me.ColumnHeader16.Text = "V total"
         '
+        'lstProcedencia
+        '
+        Me.lstProcedencia.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader17})
+        Me.lstProcedencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstProcedencia.FullRowSelect = True
+        Me.lstProcedencia.GridLines = True
+        Me.lstProcedencia.HideSelection = False
+        Me.lstProcedencia.Location = New System.Drawing.Point(508, 436)
+        Me.lstProcedencia.Name = "lstProcedencia"
+        Me.lstProcedencia.Size = New System.Drawing.Size(241, 92)
+        Me.lstProcedencia.TabIndex = 86
+        Me.lstProcedencia.UseCompatibleStateImageBehavior = False
+        Me.lstProcedencia.View = System.Windows.Forms.View.Details
+        Me.lstProcedencia.Visible = False
+        '
+        'ColumnHeader17
+        '
+        Me.ColumnHeader17.Text = "Pais"
+        Me.ColumnHeader17.Width = 252
+        '
         'Remisiones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1170, 750)
+        Me.Controls.Add(Me.lstEmbalajes)
+        Me.Controls.Add(Me.lstProcedencia)
         Me.Controls.Add(Me.lstItems)
         Me.Controls.Add(Me.lblTasa)
         Me.Controls.Add(Me.Label25)
@@ -813,7 +837,6 @@ Partial Class Remisiones
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.txtProcedencia)
         Me.Controls.Add(Me.Label19)
-        Me.Controls.Add(Me.txtDestino)
         Me.Controls.Add(Me.lstDestino)
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.txtPaisCompra)
@@ -835,7 +858,6 @@ Partial Class Remisiones
         Me.Controls.Add(Me.txtCantidad)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.txtEmbalaje)
-        Me.Controls.Add(Me.lstEmbalajes)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.txtItem)
         Me.Controls.Add(Me.Label8)
@@ -855,6 +877,7 @@ Partial Class Remisiones
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.lstTipoDocumentos)
         Me.Controls.Add(Me.lstNombres)
+        Me.Controls.Add(Me.txtDestino)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Remisiones"
@@ -947,4 +970,6 @@ Partial Class Remisiones
     Friend WithEvents ColumnHeader14 As ColumnHeader
     Friend WithEvents ColumnHeader15 As ColumnHeader
     Friend WithEvents ColumnHeader16 As ColumnHeader
+    Friend WithEvents lstProcedencia As ListView
+    Friend WithEvents ColumnHeader17 As ColumnHeader
 End Class
