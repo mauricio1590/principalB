@@ -11,6 +11,7 @@ Public Class Remisiones
     Dim intidTipoAlmacenamiento As Integer = 0
     Dim intIdAlmacenamiento As Integer = 0
     Dim intidPaisCompra As Integer = 0
+    Dim intIdPaisProcedencia As Integer = 0
     Dim intIdRemisionAModificar As Integer = 0
     Dim pdf As New Report()
 
@@ -32,8 +33,8 @@ Public Class Remisiones
     Private Sub txtTipoDocumento_TextChanged(sender As Object, e As EventArgs) Handles txtTipoDocumento.TextChanged
         If txtTipoDocumento.Text = "" Then Exit Sub
         lstTipoDocumentos.Visible = True
-                                                     Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no FROM documento WHERE no LIKE '%" & txtTipoDocumento.Text & "%' ORDER BY no LIMIT 30", , Principal.cadenadeconexion)
-                                                     If Not arlCoincidencias.Count = 0 Then lstTipoDocumentos.Visible = True
+        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no FROM documento WHERE no LIKE '%" & txtTipoDocumento.Text & "%' ORDER BY no LIMIT 30", , Principal.cadenadeconexion)
+        If Not arlCoincidencias.Count = 0 Then lstTipoDocumentos.Visible = True
                                                      lstTipoDocumentos.Items.Clear()
                                                      lstTipoDocumentos.BeginUpdate()
                                                      For Each Encontrado As ArrayList In arlCoincidencias
@@ -408,7 +409,7 @@ Public Class Remisiones
             Dim strCadena As String = "INSERT INTO remisiones (iddocumento,consecutivodocumento,idformularioingreso,idcliente,idusuario,subpartida,idembalaje," & vbCrLf &
                                             "idpaisorigen,idpaiscompra,idpaisdestino,idpaisprocedencia,fechaingreso,estado,idalmacenamiento,placas,tasadecambio) values(" & vbCrLf &
                                              "" & intTipoDocumento & ",'" & txtConsecutivo.Text & "','" & txtidformularioIngreso.Text & "'," & intIdDeLaPersona & "," & Principal.intIdUsuario & ",'" & txtSubPartida.Text & "'" & vbCrLf &
-                                             "," & intIdEmbalaje & "," & intIdPaisOrigen & "," & intidPaisCompra & "," & intidPaisDestino & ",'" & txtProcedencia.Text & "','" & Format(dtFecha.Value, "yyyy-MM-dd") & "'," & vbCrLf &
+                                             "," & intIdEmbalaje & "," & intIdPaisOrigen & "," & intidPaisCompra & "," & intidPaisDestino & ",'" & intIdPaisProcedencia & "','" & Format(dtFecha.Value, "yyyy-MM-dd") & "'," & vbCrLf &
                                               "'" & lblEstado.Text & "'," & intidTipoAlmacenamiento & ",'" & txtPlacas.Text & "','" & lblTasa.Text & "')"
             registreItem()
             '    Dim strCadenaitem As String = "INSERT INTO item(iddocumento,consecutivodocumento,item,descripcion,cantidad,bultos,pesobruto,pesoneto,valorunitario,valortotal)values('" & intTipoDocumento & "','" & txtConsecutivo.Text & "'," & vbCrLf &
@@ -730,7 +731,14 @@ Public Class Remisiones
 
     Private Sub txtProcedencia_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtProcedencia.KeyPress
         If Asc(e.KeyChar) = 13 Then
+            If lstProcedencia.SelectedItems.Count = 0 Then Exit Sub
+            intIdPaisProcedencia = lstProcedencia.SelectedItems(0).Tag
+
+            txtProcedencia.Text = lstProcedencia.SelectedItems(0).Text
+            lstProcedencia.Visible = False
             txtAlmacenamiento.Focus()
+
+
         End If
     End Sub
 
@@ -867,5 +875,51 @@ Public Class Remisiones
             limpiar()
             MessageBox.Show("El registro se actualizo correctamente", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
         End If
+    End Sub
+
+    Private Sub lstProcedencia_MouseClick(sender As Object, e As MouseEventArgs) Handles lstProcedencia.MouseClick
+        If lstProcedencia.SelectedItems.Count = 0 Then Exit Sub
+        intIdPaisProcedencia = lstProcedencia.SelectedItems(0).Tag
+        txtProcedencia.Text = lstProcedencia.SelectedItems(0).Text
+        lstProcedencia.Visible = False
+        txtAlmacenamiento.Focus()
+    End Sub
+
+    Private Sub txtProcedencia_TextChanged(sender As Object, e As EventArgs) Handles txtProcedencia.TextChanged
+        If txtProcedencia.Text = "" Then Exit Sub
+        lstProcedencia.Visible = True
+        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,nombre FROM paises WHERE nombre LIKE '%" & txtProcedencia.Text & "%' ORDER BY nombre LIMIT 30", , Principal.cadenadeconexion)
+        If Not arlCoincidencias.Count = 0 Then lstProcedencia.Visible = True
+        lstProcedencia.Items.Clear()
+        lstProcedencia.BeginUpdate()
+        For Each Encontrado As ArrayList In arlCoincidencias
+            Dim lviEncontrado As New ListViewItem
+            lviEncontrado.Tag = Encontrado(0)
+            lviEncontrado.Text = Encontrado(1)
+
+            lstProcedencia.Items.Add(lviEncontrado)
+        Next
+        lstProcedencia.EndUpdate()
+    End Sub
+
+    Private Sub txtProcedencia_KeyDown(sender As Object, e As KeyEventArgs) Handles txtProcedencia.KeyDown
+        Dim intMovimiento As Integer = 0
+        If e.KeyCode = Keys.Down Then intMovimiento = 1
+        If e.KeyCode = Keys.Up Then intMovimiento = -1
+        lstProcedencia.BringToFront()
+        If intMovimiento = 0 Then
+            If e.KeyCode = Keys.End Then
+                If lstProcedencia.Visible Then
+                    SeñaleItemListView(lstProcedencia, lstProcedencia.Items.Count - 1, False)
+                    Exit Sub
+                    End If
+                End If
+            Exit Sub
+        End If
+        If lstProcedencia.Visible Then
+            SeñaleItemListView(lstProcedencia, intMovimiento)
+            Exit Sub
+        End If
+        txtProcedencia.Select(txtProcedencia.Text.Length + 1, 0)
     End Sub
 End Class

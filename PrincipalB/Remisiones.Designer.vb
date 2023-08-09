@@ -102,6 +102,8 @@ Partial Class Remisiones
         Me.ColumnHeader14 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader15 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader16 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.lstProcedencia = New System.Windows.Forms.ListView()
+        Me.ColumnHeader17 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -491,7 +493,7 @@ Partial Class Remisiones
         Me.lstOrigen.FullRowSelect = True
         Me.lstOrigen.GridLines = True
         Me.lstOrigen.HideSelection = False
-        Me.lstOrigen.Location = New System.Drawing.Point(508, 369)
+        Me.lstOrigen.Location = New System.Drawing.Point(508, 372)
         Me.lstOrigen.Name = "lstOrigen"
         Me.lstOrigen.Size = New System.Drawing.Size(241, 92)
         Me.lstOrigen.TabIndex = 63
@@ -593,7 +595,7 @@ Partial Class Remisiones
         Me.txtProcedencia.Location = New System.Drawing.Point(508, 410)
         Me.txtProcedencia.MaxLength = 500
         Me.txtProcedencia.Name = "txtProcedencia"
-        Me.txtProcedencia.Size = New System.Drawing.Size(236, 20)
+        Me.txtProcedencia.Size = New System.Drawing.Size(241, 20)
         Me.txtProcedencia.TabIndex = 18
         '
         'Label19
@@ -792,11 +794,33 @@ Partial Class Remisiones
         '
         Me.ColumnHeader16.Text = "V total"
         '
+        'lstProcedencia
+        '
+        Me.lstProcedencia.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader17})
+        Me.lstProcedencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstProcedencia.FullRowSelect = True
+        Me.lstProcedencia.GridLines = True
+        Me.lstProcedencia.HideSelection = False
+        Me.lstProcedencia.Location = New System.Drawing.Point(508, 436)
+        Me.lstProcedencia.Name = "lstProcedencia"
+        Me.lstProcedencia.Size = New System.Drawing.Size(241, 92)
+        Me.lstProcedencia.TabIndex = 86
+        Me.lstProcedencia.UseCompatibleStateImageBehavior = False
+        Me.lstProcedencia.View = System.Windows.Forms.View.Details
+        Me.lstProcedencia.Visible = False
+        '
+        'ColumnHeader17
+        '
+        Me.ColumnHeader17.Text = "Pais"
+        Me.ColumnHeader17.Width = 252
+        '
         'Remisiones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1170, 750)
+        Me.Controls.Add(Me.lstEmbalajes)
+        Me.Controls.Add(Me.lstProcedencia)
         Me.Controls.Add(Me.lstItems)
         Me.Controls.Add(Me.lblTasa)
         Me.Controls.Add(Me.Label25)
@@ -813,7 +837,6 @@ Partial Class Remisiones
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.txtProcedencia)
         Me.Controls.Add(Me.Label19)
-        Me.Controls.Add(Me.txtDestino)
         Me.Controls.Add(Me.lstDestino)
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.txtPaisCompra)
@@ -835,7 +858,6 @@ Partial Class Remisiones
         Me.Controls.Add(Me.txtCantidad)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.txtEmbalaje)
-        Me.Controls.Add(Me.lstEmbalajes)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.txtItem)
         Me.Controls.Add(Me.Label8)
@@ -855,6 +877,7 @@ Partial Class Remisiones
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.lstTipoDocumentos)
         Me.Controls.Add(Me.lstNombres)
+        Me.Controls.Add(Me.txtDestino)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Remisiones"
@@ -947,4 +970,6 @@ Partial Class Remisiones
     Friend WithEvents ColumnHeader14 As ColumnHeader
     Friend WithEvents ColumnHeader15 As ColumnHeader
     Friend WithEvents ColumnHeader16 As ColumnHeader
+    Friend WithEvents lstProcedencia As ListView
+    Friend WithEvents ColumnHeader17 As ColumnHeader
 End Class
