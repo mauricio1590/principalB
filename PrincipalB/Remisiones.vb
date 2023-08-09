@@ -675,6 +675,7 @@ Public Class Remisiones
     End Sub
     Private Sub txtTotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTotal.KeyPress
         If Asc(e.KeyChar) = 13 Then
+            txtUnitario.Text = (txtTotal.Text / txtCantidad.Text)
             txtUnitario.Focus()
         End If
 
