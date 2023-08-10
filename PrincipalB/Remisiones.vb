@@ -13,6 +13,7 @@ Public Class Remisiones
     Dim intidPaisCompra As Integer = 0
     Dim intIdPaisProcedencia As Integer = 0
     Dim intIdRemisionAModificar As Integer = 0
+
     Dim pdf As New Report()
 
     Private Sub lstTipoDocumentos_MouseClick(sender As Object, e As MouseEventArgs) Handles lstTipoDocumentos.MouseClick
@@ -639,7 +640,7 @@ Public Class Remisiones
         If Asc(e.KeyChar) = 13 Then
 
             If validarCamposItem() Then
-                alimentarTabla()
+                alimentarTabla(txtItem.Text, txtDescItem.Text, txtCantidad.Text, txtBultos.Text, txtPesoBruto.Text, txtPesoNeto.Text, txtTotal.Text, txtUnitario.Text)
                 limpiaritem()
                 txtDescItem.Focus()
             End If
@@ -651,7 +652,6 @@ Public Class Remisiones
     Sub limpiaritem()
         txtItem.Text = ""
         txtDescItem.Text = ""
-
         txtCantidad.Text = ""
         txtBultos.Text = ""
         txtPesoBruto.Text = ""
@@ -660,21 +660,24 @@ Public Class Remisiones
         txtTotal.Text = ""
     End Sub
 
-    Public Sub alimentarTabla()
+    Public Sub alimentarTabla(_item As String, _desc As String, _cant As String, _bultos As String, _bruto As String, _neto As String, _total As String, _unitario As String)
         Dim lviEncontrado As New ListViewItem
         lviEncontrado.Tag = lstItems.Items.Count() + 1
-        lviEncontrado.Text = txtItem.Text
-        lviEncontrado.SubItems.Add(txtDescItem.Text)
-        lviEncontrado.SubItems.Add(txtCantidad.Text)
-        lviEncontrado.SubItems.Add(txtBultos.Text)
-        lviEncontrado.SubItems.Add(txtPesoBruto.Text)
-        lviEncontrado.SubItems.Add(txtPesoNeto.Text)
-        lviEncontrado.SubItems.Add(txtTotal.Text)
-        lviEncontrado.SubItems.Add(txtUnitario.Text)
+        lviEncontrado.Text = _item
+        lviEncontrado.SubItems.Add(_desc)
+        lviEncontrado.SubItems.Add(_cant)
+        lviEncontrado.SubItems.Add(_bultos)
+        lviEncontrado.SubItems.Add(_bruto)
+        lviEncontrado.SubItems.Add(_neto)
+        lviEncontrado.SubItems.Add(_total)
+        lviEncontrado.SubItems.Add(_unitario)
         lstItems.Items.Add(lviEncontrado)
     End Sub
     Private Sub txtTotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTotal.KeyPress
         If Asc(e.KeyChar) = 13 Then
+            Dim unitario As Double = 0
+            unitario = txtTotal.Text / txtCantidad.Text
+            txtUnitario.Text = String.Format("{0:n}", Double.Parse(unitario))
             txtUnitario.Focus()
         End If
 
@@ -759,9 +762,8 @@ Public Class Remisiones
 
             Case 1
                 strCadena = "SELECT re.iddocumento,do.no,re.consecutivodocumento,re.idformularioingreso,re.subpartida,re.idcliente,cl.no, " & vbCrLf &
-                             "re.descripcion,re.item,re.idembalaje,em.no,re.cantidad,re.bultos,re.pesobruto,re.pesoneto,re.valorunitario,re.valortotal, " & vbCrLf &
-                             "re.idpaisorigen,pa.nombre,re.idpaiscompra,pa2.nombre,re.idpaisdestino,pa3.nombre,re.idpaisprocedencia,re.fechaingreso,re.estado,re.idalmacenamiento,al.no,re.placas,re.id,re.tasadecambio " & vbCrLf &
-                             "FROM remisiones re,documento Do,cliente cl,embalaje em,paises pa,paises pa2,paises pa3,tipoalmacenamiento al " & vbCrLf &
+                             "em.id,em.no,re.idpaisorigen,pa.nombre,re.idpaiscompra,pa2.nombre,re.idpaisdestino,pa3.nombre,re.idpaisprocedencia,pa4.nombre,re.fechaingreso,re.estado,re.idalmacenamiento,al.no,re.placas,re.id,re.tasadecambio " & vbCrLf &
+                             "FROM remisiones re,documento Do,cliente cl,embalaje em,paises pa,paises pa2,paises pa3,paises pa4,tipoalmacenamiento al" & vbCrLf &
                              "WHERE re.iddocumento =do.id " & vbCrLf &
                              "AND re.iddocumento='" & tipoDocumento & "'" & vbCrLf &
                              "AND re.consecutivodocumento='" & strIndexBusqueda & "'" & vbCrLf &
@@ -770,6 +772,7 @@ Public Class Remisiones
                              "AND re.idpaisorigen = pa.id" & vbCrLf &
                               "AND re.idpaiscompra = pa2.id" & vbCrLf &
                                "AND re.idpaisdestino = pa3.id" & vbCrLf &
+                               "AND re.idpaisprocedencia = pa4.id" & vbCrLf &
                              "AND re.idalmacenamiento=al.id"
 
         End Select
@@ -784,37 +787,41 @@ Public Class Remisiones
                 txtSubPartida.Text = remision(4)
                 intIdDeLaPersona = remision(5)
                 txtCLiente.Text = remision(6) : lstNombres.Visible = False
-                txtDescItem.Text = remision(7)
-                txtItem.Text = remision(8)
-                intIdEmbalaje = remision(9)
-                txtEmbalaje.Text = remision(10) : lstEmbalajes.Visible = False
-                txtCantidad.Text = remision(11)
-                txtBultos.Text = remision(12)
-                txtPesoBruto.Text = remision(13)
-                txtPesoNeto.Text = remision(14)
-                txtUnitario.Text = remision(15)
-                txtTotal.Text = remision(16)
-                intIdPaisOrigen = remision(17)
-                txtPaisOrigen.Text = remision(18) : lstOrigen.Visible = False
-                intidPaisCompra = remision(19)
-                txtPaisCompra.Text = remision(20) : lstPaisCompra.Visible = False
-                intidPaisDestino = remision(21)
-                txtDestino.Text = remision(22) : lstDestino.Visible = False
-                txtProcedencia.Text = remision(23)
-                Dim fe As Date = remision(24)
+                intIdEmbalaje = remision(7)
+                txtEmbalaje.Text = remision(8) : lstEmbalajes.Visible = False
+                intIdPaisOrigen = remision(9)
+                txtPaisOrigen.Text = remision(10) : lstOrigen.Visible = False
+                intidPaisCompra = remision(11)
+                txtPaisCompra.Text = remision(12) : lstPaisCompra.Visible = False
+                intidPaisDestino = remision(13)
+                txtDestino.Text = remision(14) : lstDestino.Visible = False
+                intIdPaisProcedencia = remision(15)
+                txtProcedencia.Text = remision(16) : lstProcedencia.Visible = False
+                Dim fe As Date = remision(17)
                 dtFecha.Text = Format(fe, "dd-MM-yyyy")
-                lblEstado.Text = remision(25)
-                intidTipoAlmacenamiento = remision(26)
-                txtAlmacenamiento.Text = remision(27) : lstAlmacenamiento.Visible = False
-                txtPlacas.Text = remision(28)
-                intIdRemisionAModificar = remision(29)
-                lblTasa.Text = remision(30)
+                lblEstado.Text = remision(18)
+                intidTipoAlmacenamiento = remision(19)
+                txtAlmacenamiento.Text = remision(20) : lstAlmacenamiento.Visible = False
+                txtPlacas.Text = remision(21)
+                intIdRemisionAModificar = remision(22)
+                lblTasa.Text = remision(23)
 
             Next
+            alimenteItem(intTipoDocumento, txtConsecutivo.Text)
         Else
             MessageBox.Show("EL Numero de Documento no Existe", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
         Return booEncontrado
+    End Function
+    Function alimenteItem(idTipoDocumento As String, intConsecutivo As String)
+        Dim arlCoincidencias As ArrayList = gestor1.DatosDeConsulta("SELECT * FROM item WHERE iddocumento='" & idTipoDocumento & "' AND consecutivodocumento='" & intConsecutivo & "'",, Principal.cadenadeconexion)
+        If Not arlCoincidencias.Count = 0 Then
+            For Each item As ArrayList In arlCoincidencias
+                alimentarTabla(item(3), item(4), item(5), item(6), item(7), item(8), item(10), item(9))
+            Next
+        Else
+            MessageBox.Show("No existen Items", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Function
 
     Private Sub GenerarPdfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPdfToolStripMenuItem.Click
@@ -922,4 +929,26 @@ Public Class Remisiones
         End If
         txtProcedencia.Select(txtProcedencia.Text.Length + 1, 0)
     End Sub
+
+    Private Sub lstItems_MouseClick(sender As Object, e As MouseEventArgs) Handles lstItems.MouseClick
+
+        For Each item In lstItems.SelectedItems
+
+            txtItem.Text = lstItems.SelectedItems(0).Text
+            txtDescItem.Text = lstItems.SelectedItems(0).SubItems(1).Text
+            txtCantidad.Text = lstItems.SelectedItems(0).SubItems(2).Text
+            txtBultos.Text = lstItems.SelectedItems(0).SubItems(3).Text
+            txtPesoBruto.Text = lstItems.SelectedItems(0).SubItems(4).Text
+            txtPesoNeto.Text = lstItems.SelectedItems(0).SubItems(5).Text
+            txtUnitario.Text = lstItems.SelectedItems(0).SubItems(6).Text
+            txtTotal.Text = lstItems.SelectedItems(0).SubItems(7).Text
+
+
+        Next
+        lstItems.SelectedItems(0).Remove()
+
+
+    End Sub
+
+
 End Class
