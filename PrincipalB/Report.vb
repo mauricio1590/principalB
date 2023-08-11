@@ -188,9 +188,9 @@ Public Class Report
 
         'FILA 2 ITEMS
 
-        Dim items As List(Of Item)
+        Dim items As List(Of ItemVO)
 
-        For Each item As Item In items
+        For Each item As ItemVO In items
 
             'SUBPARTIDA - SIEMPRE ES LA MISMA PARA TODOS
             cell = New PdfPCell(New Phrase(Datos.Subpartida1, fuenteTexto))
@@ -205,7 +205,7 @@ Public Class Report
             tabla.AddCell(cell)
 
             'DESCRIPCION
-            cell = New PdfPCell(New Phrase(item.Descripcion, fuenteTexto))
+            cell = New PdfPCell(New Phrase(item.DescripcionItem, fuenteTexto))
             cell.VerticalAlignment = Element.ALIGN_MIDDLE
             cell.HorizontalAlignment = Element.ALIGN_CENTER
             tabla.AddCell(cell)
