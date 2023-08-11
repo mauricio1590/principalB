@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="EntradaVO.vb" />
     <Compile Include="Item.vb" />
+    <Compile Include="ItemVO.vb" />
     <Compile Include="Metodos.vb" />
     <Compile Include="Principal.vb">
       <SubType>Form</SubType>

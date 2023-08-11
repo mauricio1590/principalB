@@ -10,7 +10,7 @@ Public Class Principal
     Public usuario As String = "root"
     Public password As String = "bandband"
     Public database As String = "frontier"
-    Public cadenadeconexion As String = "Server=" & servidor & ";Uid=root;Pwd=bandband;Database=" & database & ""
+    Public cadenadeconexion As String = "Server=" & servidor & ";Uid=root;Pwd=90271516;Database=" & database & ""
 
 
 

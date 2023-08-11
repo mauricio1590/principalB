@@ -1,269 +1,192 @@
 ﻿Public Class EntradaVO
-    Private _cliente As String
-    Private _nitCliente As String
-    Private _dirCliente As String
-    Private _fechaGeneracion As String
-    Private _noRemision As String
-    Private _subpartida As String
-    Private _item As String
-    Private _descripcionItem As String
-    Private _tipoEmbalaje As String
-    Private _cantidad As String
-    Private _bultos As String
-    Private _pesoBruto As String
-    Private _pesoNeto As String
-    Private _valorUnitario As String
-    Private _valorTotal As String
-    Private _placas As Array
-    Private _subpartidas As List(Of String)
-    Private _totalCantidad As String
-    Private _totalBultos As String
-    Private _totalPesoBruto As String
-    Private _totalPesoNeto As String
-    Private _totalValorUnitario As String
-    Private _totalTotal As String
-    Private _tasaDeCambio As String
+    Private cliente As String
+    Private nitCliente As String
+    Private dirCliente As String
+    Private fechaGeneracion As String
+    Private noRemision As String
+    Private subpartida As String
+    Private tipoEmbalaje As String
+    Private items As List(Of ItemVO)
+    Private placas As List(Of String)
+    Private subpartidas As List(Of String)
+    Private totalCantidad As String
+    Private totalBultos As String
+    Private totalPesoBruto As String
+    Private totalPesoNeto As String
+    Private totalValorUnitario As String
+    Private totalTotal As String
+    Private tasaDeCambio As String
 
-    Public Sub New(cliente As String, nitCliente As String, dirCliente As String, fechaGeneracion As String, noRemision As String, subpartida As String, item As String, descripcionItem As String, tipoEmbalaje As String, cantidad As String, bultos As String, pesoBruto As String, pesoNeto As String, valorUnitario As String, valorTotal As String, placas As Array, subpartidas As List(Of String), totalCantidad As String, totalBultos As String, totalPesoBruto As String, totalPesoNeto As String, totalValorUnitario As String, totalTotal As String, tasaDeCambio As String)
-        _cliente = cliente
-        _nitCliente = nitCliente
-        _dirCliente = dirCliente
-        _fechaGeneracion = fechaGeneracion
-        _noRemision = noRemision
-        _subpartida = subpartida
-        _item = item
-        _descripcionItem = descripcionItem
-        _tipoEmbalaje = tipoEmbalaje
-        _cantidad = cantidad
-        _bultos = bultos
-        _pesoBruto = pesoBruto
-        _pesoNeto = pesoNeto
-        _valorUnitario = valorUnitario
-        _valorTotal = valorTotal
-        _placas = placas
-        _subpartidas = subpartidas
-        _totalCantidad = totalCantidad
-        _totalBultos = totalBultos
-        _totalPesoBruto = totalPesoBruto
-        _totalPesoNeto = totalPesoNeto
-        _totalValorUnitario = totalValorUnitario
-        _totalTotal = totalTotal
-        _tasaDeCambio = tasaDeCambio
+    Public Sub New(cliente As String, nitCliente As String, dirCliente As String, fechaGeneracion As String, noRemision As String, subpartida As String, tipoEmbalaje As String, items As List(Of ItemVO), placas As List(Of String), subpartidas As List(Of String), totalCantidad As String, totalBultos As String, totalPesoBruto As String, totalPesoNeto As String, totalValorUnitario As String, totalTotal As String, tasaDeCambio As String)
+        Me.cliente = cliente
+        Me.nitCliente = nitCliente
+        Me.dirCliente = dirCliente
+        Me.fechaGeneracion = fechaGeneracion
+        Me.noRemision = noRemision
+        Me.subpartida = subpartida
+        Me.tipoEmbalaje = tipoEmbalaje
+        Me.items = items
+        Me.placas = placas
+        Me.subpartidas = subpartidas
+        Me.totalCantidad = totalCantidad
+        Me.totalBultos = totalBultos
+        Me.totalPesoBruto = totalPesoBruto
+        Me.totalPesoNeto = totalPesoNeto
+        Me.totalValorUnitario = totalValorUnitario
+        Me.totalTotal = totalTotal
+        Me.tasaDeCambio = tasaDeCambio
     End Sub
 
-    Public Property Cliente As String
+    Public Property Cliente1 As String
         Get
-            Return _cliente
+            Return cliente
         End Get
         Set(value As String)
-            _cliente = value
+            cliente = value
         End Set
     End Property
 
-    Public Property NitCliente As String
+    Public Property NitCliente1 As String
         Get
-            Return _nitCliente
+            Return nitCliente
         End Get
         Set(value As String)
-            _nitCliente = value
+            nitCliente = value
         End Set
     End Property
 
-    Public Property DirCliente As String
+    Public Property DirCliente1 As String
         Get
-            Return _dirCliente
+            Return dirCliente
         End Get
         Set(value As String)
-            _dirCliente = value
+            dirCliente = value
         End Set
     End Property
 
-    Public Property FechaGeneracion As String
+    Public Property FechaGeneracion1 As String
         Get
-            Return _fechaGeneracion
+            Return fechaGeneracion
         End Get
         Set(value As String)
-            _fechaGeneracion = value
+            fechaGeneracion = value
         End Set
     End Property
 
-    Public Property NoRemision As String
+    Public Property NoRemision1 As String
         Get
-            Return _noRemision
+            Return noRemision
         End Get
         Set(value As String)
-            _noRemision = value
+            noRemision = value
         End Set
     End Property
 
-    Public Property Subpartida As String
+    Public Property Subpartida1 As String
         Get
-            Return _subpartida
+            Return subpartida
         End Get
         Set(value As String)
-            _subpartida = value
+            subpartida = value
         End Set
     End Property
 
-    Public Property Item As String
+    Public Property TipoEmbalaje1 As String
         Get
-            Return _item
+            Return tipoEmbalaje
         End Get
         Set(value As String)
-            _item = value
+            tipoEmbalaje = value
         End Set
     End Property
 
-    Public Property DescripcionItem As String
+    Public Property Items1 As List(Of ItemVO)
         Get
-            Return _descripcionItem
+            Return items
         End Get
-        Set(value As String)
-            _descripcionItem = value
+        Set(value As List(Of ItemVO))
+            items = value
         End Set
     End Property
 
-    Public Property TipoEmbalaje As String
+    Public Property Placas1 As List(Of String)
         Get
-            Return _tipoEmbalaje
-        End Get
-        Set(value As String)
-            _tipoEmbalaje = value
-        End Set
-    End Property
-
-    Public Property Cantidad As String
-        Get
-            Return _cantidad
-        End Get
-        Set(value As String)
-            _cantidad = value
-        End Set
-    End Property
-
-    Public Property Bultos As String
-        Get
-            Return _bultos
-        End Get
-        Set(value As String)
-            _bultos = value
-        End Set
-    End Property
-
-    Public Property PesoBruto As String
-        Get
-            Return _pesoBruto
-        End Get
-        Set(value As String)
-            _pesoBruto = value
-        End Set
-    End Property
-
-    Public Property PesoNeto As String
-        Get
-            Return _pesoNeto
-        End Get
-        Set(value As String)
-            _pesoNeto = value
-        End Set
-    End Property
-
-    Public Property ValorUnitario As String
-        Get
-            Return _valorUnitario
-        End Get
-        Set(value As String)
-            _valorUnitario = value
-        End Set
-    End Property
-
-    Public Property ValorTotal As String
-        Get
-            Return _valorTotal
-        End Get
-        Set(value As String)
-            _valorTotal = value
-        End Set
-    End Property
-
-    Public Property Placas As Array
-        Get
-            Return _placas
-        End Get
-        Set(value As Array)
-            _placas = value
-        End Set
-    End Property
-
-    Public Property Subpartidas As List(Of String)
-        Get
-            Return _subpartidas
+            Return placas
         End Get
         Set(value As List(Of String))
-            _subpartidas = value
+            placas = value
         End Set
     End Property
 
-    Public Property TotalCantidad As String
+    Public Property Subpartidas1 As List(Of String)
         Get
-            Return _totalCantidad
+            Return subpartidas
         End Get
-        Set(value As String)
-            _totalCantidad = value
+        Set(value As List(Of String))
+            subpartidas = value
         End Set
     End Property
 
-    Public Property TotalBultos As String
+    Public Property TotalCantidad1 As String
         Get
-            Return _totalBultos
+            Return totalCantidad
         End Get
         Set(value As String)
-            _totalBultos = value
+            totalCantidad = value
         End Set
     End Property
 
-    Public Property TotalPesoBruto As String
+    Public Property TotalBultos1 As String
         Get
-            Return _totalPesoBruto
+            Return totalBultos
         End Get
         Set(value As String)
-            _totalPesoBruto = value
+            totalBultos = value
         End Set
     End Property
 
-    Public Property TotalPesoNeto As String
+    Public Property TotalPesoBruto1 As String
         Get
-            Return _totalPesoNeto
+            Return totalPesoBruto
         End Get
         Set(value As String)
-            _totalPesoNeto = value
+            totalPesoBruto = value
         End Set
     End Property
 
-    Public Property TotalValorUnitario As String
+    Public Property TotalPesoNeto1 As String
         Get
-            Return _totalValorUnitario
+            Return totalPesoNeto
         End Get
         Set(value As String)
-            _totalValorUnitario = value
+            totalPesoNeto = value
         End Set
     End Property
 
-    Public Property TotalTotal As String
+    Public Property TotalValorUnitario1 As String
         Get
-            Return _totalTotal
+            Return totalValorUnitario
         End Get
         Set(value As String)
-            _totalTotal = value
+            totalValorUnitario = value
         End Set
     End Property
 
-    Public Property TasaDeCambio As String
+    Public Property TotalTotal1 As String
         Get
-            Return _tasaDeCambio
+            Return totalTotal
         End Get
         Set(value As String)
-            _tasaDeCambio = value
+            totalTotal = value
+        End Set
+    End Property
+
+    Public Property TasaDeCambio1 As String
+        Get
+            Return tasaDeCambio
+        End Get
+        Set(value As String)
+            tasaDeCambio = value
         End Set
     End Property
 End Class
