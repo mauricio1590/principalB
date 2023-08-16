@@ -1,6 +1,7 @@
 ﻿Public Class Tasadecambio
     Dim fun As New Funciones
     Dim strtag As String = 0
+    Dim controlMenu As Integer = 0
     Private Sub Tasadecambio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         btnModificar.Enabled = False
         fun.mostrarTasas(lstTarifas)
@@ -76,5 +77,48 @@
             Else : btnModificar.PerformClick()
             End If
         End If
+    End Sub
+
+    Private Sub tm_MenuMostrar_Tick(sender As Object, e As EventArgs) Handles tm_MenuMostrar.Tick
+        If controlMenu < 180 Then
+            pnl_herramientas.Location = New System.Drawing.Point(pnl_herramientas.Location.X - 10, pnl_herramientas.Location.Y)
+            controlMenu += 10
+        Else
+            Me.tm_MenuMostrar.Enabled = False
+        End If
+    End Sub
+
+    Private Sub tm_MenuOcultar_Tick(sender As Object, e As EventArgs) Handles tm_MenuOcultar.Tick
+        If controlMenu > 0 Then
+            pnl_herramientas.Location = New System.Drawing.Point(pnl_herramientas.Location.X + 10, pnl_herramientas.Location.Y)
+            controlMenu -= 10
+        Else
+            Me.tm_MenuMostrar.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnGuardar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnGuardar.MouseMove
+        tm_MenuMostrar.Enabled = True
+        tm_MenuOcultar.Enabled = False
+    End Sub
+
+    Private Sub btnModificar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnModificar.MouseMove
+        tm_MenuMostrar.Enabled = True
+        tm_MenuOcultar.Enabled = False
+    End Sub
+
+    Private Sub btnLimpiar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnLimpiar.MouseMove
+        tm_MenuMostrar.Enabled = True
+        tm_MenuOcultar.Enabled = False
+    End Sub
+
+    Private Sub btnEliminar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnEliminar.MouseMove
+        tm_MenuMostrar.Enabled = True
+        tm_MenuOcultar.Enabled = False
+    End Sub
+
+    Private Sub Tasadecambio_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
+        tm_MenuOcultar.Enabled = True
+        tm_MenuMostrar.Enabled = False
     End Sub
 End Class
