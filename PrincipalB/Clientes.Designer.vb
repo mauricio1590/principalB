@@ -48,18 +48,18 @@ Partial Class Clientes
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.lbl_NomCliente = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.pnl_herramientas = New System.Windows.Forms.Panel()
         Me.tm_MenuMostrar = New System.Windows.Forms.Timer(Me.components)
         Me.tm_MenuOcultar = New System.Windows.Forms.Timer(Me.components)
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.lbl_NomCliente = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnl_herramientas.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -136,17 +136,18 @@ Partial Class Clientes
         '
         'txtNit
         '
-        Me.txtNit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtNit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNit.Location = New System.Drawing.Point(235, 77)
         Me.txtNit.Name = "txtNit"
-        Me.txtNit.Size = New System.Drawing.Size(223, 20)
+        Me.txtNit.Size = New System.Drawing.Size(223, 26)
         Me.txtNit.TabIndex = 1
+        Me.txtNit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(231, 100)
+        Me.Label3.Location = New System.Drawing.Point(231, 120)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(176, 21)
         Me.Label3.TabIndex = 2
@@ -154,17 +155,18 @@ Partial Class Clientes
         '
         'txtNombre
         '
-        Me.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtNombre.Location = New System.Drawing.Point(235, 128)
+        Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNombre.Location = New System.Drawing.Point(235, 148)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(471, 20)
-        Me.txtNombre.TabIndex = 2
+        Me.txtNombre.Size = New System.Drawing.Size(471, 26)
+        Me.txtNombre.TabIndex = 3
+        Me.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(56, 223)
+        Me.Label4.Location = New System.Drawing.Point(54, 258)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(78, 21)
         Me.Label4.TabIndex = 2
@@ -172,11 +174,12 @@ Partial Class Clientes
         '
         'txtDireccion
         '
-        Me.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtDireccion.Location = New System.Drawing.Point(140, 223)
+        Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDireccion.Location = New System.Drawing.Point(138, 257)
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(568, 20)
-        Me.txtDireccion.TabIndex = 4
+        Me.txtDireccion.Size = New System.Drawing.Size(568, 26)
+        Me.txtDireccion.TabIndex = 5
+        Me.txtDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label5
         '
@@ -190,17 +193,18 @@ Partial Class Clientes
         '
         'txtTelefono
         '
-        Me.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefono.Location = New System.Drawing.Point(483, 77)
         Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(223, 20)
-        Me.txtTelefono.TabIndex = 3
+        Me.txtTelefono.Size = New System.Drawing.Size(223, 26)
+        Me.txtTelefono.TabIndex = 2
+        Me.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(231, 151)
+        Me.Label6.Location = New System.Drawing.Point(231, 188)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(61, 21)
         Me.Label6.TabIndex = 2
@@ -208,10 +212,12 @@ Partial Class Clientes
         '
         'txtCorreo
         '
-        Me.txtCorreo.Location = New System.Drawing.Point(235, 175)
+        Me.txtCorreo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCorreo.Location = New System.Drawing.Point(235, 212)
         Me.txtCorreo.Name = "txtCorreo"
-        Me.txtCorreo.Size = New System.Drawing.Size(471, 20)
-        Me.txtCorreo.TabIndex = 5
+        Me.txtCorreo.Size = New System.Drawing.Size(471, 26)
+        Me.txtCorreo.TabIndex = 4
+        Me.txtCorreo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'btnGuardar
         '
@@ -272,7 +278,7 @@ Partial Class Clientes
         Me.lstNombres.FullRowSelect = True
         Me.lstNombres.GridLines = True
         Me.lstNombres.HideSelection = False
-        Me.lstNombres.Location = New System.Drawing.Point(235, 147)
+        Me.lstNombres.Location = New System.Drawing.Point(235, 172)
         Me.lstNombres.Name = "lstNombres"
         Me.lstNombres.Size = New System.Drawing.Size(471, 79)
         Me.lstNombres.TabIndex = 31
@@ -310,8 +316,28 @@ Partial Class Clientes
         Me.Panel2.Controls.Add(Me.txtDireccion)
         Me.Panel2.Location = New System.Drawing.Point(69, 77)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(758, 279)
+        Me.Panel2.Size = New System.Drawing.Size(758, 301)
         Me.Panel2.TabIndex = 32
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
+        Me.Panel3.Controls.Add(Me.lbl_NomCliente)
+        Me.Panel3.Location = New System.Drawing.Point(-1, -1)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(758, 39)
+        Me.Panel3.TabIndex = 47
+        '
+        'lbl_NomCliente
+        '
+        Me.lbl_NomCliente.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.lbl_NomCliente.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_NomCliente.ForeColor = System.Drawing.Color.White
+        Me.lbl_NomCliente.Location = New System.Drawing.Point(0, 9)
+        Me.lbl_NomCliente.Name = "lbl_NomCliente"
+        Me.lbl_NomCliente.Size = New System.Drawing.Size(758, 21)
+        Me.lbl_NomCliente.TabIndex = 3
+        Me.lbl_NomCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'PictureBox1
         '
@@ -343,26 +369,6 @@ Partial Class Clientes
         '
         Me.tm_MenuOcultar.Interval = 1
         '
-        'Panel3
-        '
-        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
-        Me.Panel3.Controls.Add(Me.lbl_NomCliente)
-        Me.Panel3.Location = New System.Drawing.Point(-1, -1)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(758, 39)
-        Me.Panel3.TabIndex = 47
-        '
-        'lbl_NomCliente
-        '
-        Me.lbl_NomCliente.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lbl_NomCliente.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_NomCliente.ForeColor = System.Drawing.Color.White
-        Me.lbl_NomCliente.Location = New System.Drawing.Point(0, 9)
-        Me.lbl_NomCliente.Name = "lbl_NomCliente"
-        Me.lbl_NomCliente.Size = New System.Drawing.Size(758, 21)
-        Me.lbl_NomCliente.TabIndex = 3
-        Me.lbl_NomCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'Clientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -383,9 +389,9 @@ Partial Class Clientes
         Me.MenuStrip1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnl_herramientas.ResumeLayout(False)
-        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

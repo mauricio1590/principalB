@@ -41,9 +41,9 @@ Partial Class Tasadecambio
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.pnl_herramientas = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.tm_MenuMostrar = New System.Windows.Forms.Timer(Me.components)
         Me.tm_MenuOcultar = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
@@ -85,7 +85,7 @@ Partial Class Tasadecambio
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.Label1.Location = New System.Drawing.Point(265, 4)
+        Me.Label1.Location = New System.Drawing.Point(359, 4)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(107, 17)
         Me.Label1.TabIndex = 0
@@ -108,7 +108,6 @@ Partial Class Tasadecambio
         '
         'txtValor
         '
-        Me.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtValor.Font = New System.Drawing.Font("Times New Roman", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtValor.Location = New System.Drawing.Point(103, 86)
         Me.txtValor.Name = "txtValor"
@@ -222,6 +221,7 @@ Partial Class Tasadecambio
         '
         'Panel2
         '
+        Me.Panel2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.Label3)
         Me.Panel2.Controls.Add(Me.Panel3)
@@ -229,10 +229,21 @@ Partial Class Tasadecambio
         Me.Panel2.Controls.Add(Me.Label2)
         Me.Panel2.Controls.Add(Me.txtValor)
         Me.Panel2.Controls.Add(Me.lstTarifas)
-        Me.Panel2.Location = New System.Drawing.Point(231, 195)
+        Me.Panel2.Location = New System.Drawing.Point(167, 80)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(505, 408)
         Me.Panel2.TabIndex = 17
+        '
+        'Label3
+        '
+        Me.Label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Label3.Font = New System.Drawing.Font("Times New Roman", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(63, 86)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(34, 35)
+        Me.Label3.TabIndex = 49
+        Me.Label3.Text = "$"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel3
         '
@@ -251,17 +262,6 @@ Partial Class Tasadecambio
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 47
         Me.PictureBox1.TabStop = False
-        '
-        'Label3
-        '
-        Me.Label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Label3.Font = New System.Drawing.Font("Times New Roman", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(63, 86)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(34, 35)
-        Me.Label3.TabIndex = 49
-        Me.Label3.Text = "$"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'tm_MenuMostrar
         '

@@ -2,6 +2,8 @@
     Dim fun As New Funciones
     Dim strtag As String = 0
     Dim controlMenu As Integer = 0
+    Dim strUnidad As String = "D"
+    Dim rutaImagen As String
     Private Sub Tasadecambio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         btnModificar.Enabled = False
         fun.mostrarTasas(lstTarifas)
@@ -100,25 +102,66 @@
     Private Sub btnGuardar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnGuardar.MouseMove
         tm_MenuMostrar.Enabled = True
         tm_MenuOcultar.Enabled = False
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_guardar-3_.png"
+        btnGuardar.Image = Image.FromFile(rutaImagen)
     End Sub
 
     Private Sub btnModificar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnModificar.MouseMove
         tm_MenuMostrar.Enabled = True
         tm_MenuOcultar.Enabled = False
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_editar-3_.png"
+        btnModificar.Image = Image.FromFile(rutaImagen)
     End Sub
 
     Private Sub btnLimpiar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnLimpiar.MouseMove
         tm_MenuMostrar.Enabled = True
         tm_MenuOcultar.Enabled = False
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_limpiar-3_.png"
+        btnLimpiar.Image = Image.FromFile(rutaImagen)
     End Sub
 
     Private Sub btnEliminar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnEliminar.MouseMove
         tm_MenuMostrar.Enabled = True
         tm_MenuOcultar.Enabled = False
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_eliminar-3_.png"
+        btnEliminar.Image = Image.FromFile(rutaImagen)
     End Sub
 
     Private Sub Tasadecambio_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
         tm_MenuOcultar.Enabled = True
         tm_MenuMostrar.Enabled = False
+    End Sub
+
+    Private Sub btnGuardar_MouseLeave(sender As Object, e As EventArgs) Handles btnGuardar.MouseLeave
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_guardar-3.png"
+        btnGuardar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnModificar_MouseLeave(sender As Object, e As EventArgs) Handles btnModificar.MouseLeave
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_editar-3.png"
+        btnModificar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnLimpiar_MouseLeave(sender As Object, e As EventArgs) Handles btnLimpiar.MouseLeave
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_limpiar-3.png"
+        btnLimpiar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnEliminar_MouseLeave(sender As Object, e As EventArgs) Handles btnEliminar.MouseLeave
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_eliminar-3.png"
+        btnEliminar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub txtValor_TextChanged(sender As Object, e As EventArgs) Handles txtValor.TextChanged
+
+    End Sub
+
+    Private Sub txtValor_LostFocus(sender As Object, e As EventArgs) Handles txtValor.LostFocus
+
+    End Sub
+
+    Private Sub txtValor_Leave(sender As Object, e As EventArgs) Handles txtValor.Leave
+        'Dim imp As Integer = Me.txtValor.Text.ToString
+        'txtValor.Text = Format(imp, "#,##0.00")
     End Sub
 End Class
