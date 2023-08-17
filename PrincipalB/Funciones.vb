@@ -76,7 +76,15 @@ Public Class Funciones
         Next
         lstTarifas.EndUpdate()
     End Sub
+    Function elimineItemdeBase(idItem As Integer)
+        Try
+            registreDatos("DELETE FROM item WHERE id=" & idItem & "")
 
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Function
     Public Sub mostrarEmbalaje(lstTarifas As ListView)
 
         Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no,ab FROM embalaje order by id limit 30", , Principal.cadenadeconexion)
@@ -113,7 +121,27 @@ Public Class Funciones
         Return boosaber
 
     End Function
+    Public Function ExtraerConsecutvo(intIdDocumento As Integer, intConsecutivo As Integer) As String
+        Dim intId As Integer = 0
+        Try
+            conexion.ConnectionString = Principal.cadenadeconexion
+            conexion.Open()
+            Dim cadena As String
+            cadena = "SELECT id  FROM remisiones WHERE iddocumento='" & intIdDocumento & "' AND consecutivodocumento=" & intConsecutivo & ""
+            Dim cmd As New MySqlCommand(cadena, conexion)
+            Using leerdato As MySqlDataReader = cmd.ExecuteReader()
+                While leerdato.Read()
+                    intId = leerdato("id")
+                End While
+            End Using
 
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Return intId
+    End Function
     Public Function ExtraerConsecutvo(idTipoDocumento As Integer) As String
         Dim strConsecutivo As String = "1"
         Try
@@ -136,6 +164,7 @@ Public Class Funciones
         Return strConsecutivo
 
     End Function
+
 
     Public Function extraerNitById(idTercero As String, campo As String) As String
         Dim strNit As String = "1"
