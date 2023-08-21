@@ -126,6 +126,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Report.vb" />
+    <Compile Include="salidas.Designer.vb">
+      <DependentUpon>salidas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="salidas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tasadecambio.Designer.vb">
       <DependentUpon>Tasadecambio.vb</DependentUpon>
     </Compile>
@@ -166,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Remisiones.resx">
       <DependentUpon>Remisiones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="salidas.resx">
+      <DependentUpon>salidas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tasadecambio.resx">
       <DependentUpon>Tasadecambio.vb</DependentUpon>

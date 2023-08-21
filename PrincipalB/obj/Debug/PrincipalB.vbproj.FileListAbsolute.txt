@@ -24,3 +24,4 @@ D:\SISTEMA GYM COD\PrincipalB\PrincipalB\bin\Debug\BouncyCastle.Crypto.dll
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\bin\Debug\iTextSharp.LGPLv2.Core.dll
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\bin\Debug\BouncyCastle.Crypto.xml
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\bin\Debug\iTextSharp.LGPLv2.Core.xml
+D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.salidas.resources
