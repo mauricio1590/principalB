@@ -24,10 +24,11 @@ Partial Class salidas
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(salidas))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.OpcionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.OpcionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lstItems = New System.Windows.Forms.ListView()
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -38,7 +39,8 @@ Partial Class salidas
         Me.ColumnHeader15 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader16 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.lblRemisiones = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -51,6 +53,19 @@ Partial Class salidas
         Me.MenuStrip1.Size = New System.Drawing.Size(1170, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'OpcionesToolStripMenuItem
+        '
+        Me.OpcionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem})
+        Me.OpcionesToolStripMenuItem.Name = "OpcionesToolStripMenuItem"
+        Me.OpcionesToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
+        Me.OpcionesToolStripMenuItem.Text = "Opciones"
+        '
+        'FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem
+        '
+        Me.FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem.Name = "FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem"
+        Me.FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem.Size = New System.Drawing.Size(303, 22)
+        Me.FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem.Text = "Filtrar por numero de formulario de ingreso"
         '
         'btnCerrar
         '
@@ -90,13 +105,6 @@ Partial Class salidas
         Me.Panel1.Size = New System.Drawing.Size(1170, 30)
         Me.Panel1.TabIndex = 34
         '
-        'OpcionesToolStripMenuItem
-        '
-        Me.OpcionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem})
-        Me.OpcionesToolStripMenuItem.Name = "OpcionesToolStripMenuItem"
-        Me.OpcionesToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
-        Me.OpcionesToolStripMenuItem.Text = "Opciones"
-        '
         'lstItems
         '
         Me.lstItems.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader9, Me.ColumnHeader10, Me.ColumnHeader11, Me.ColumnHeader12, Me.ColumnHeader13, Me.ColumnHeader14, Me.ColumnHeader15, Me.ColumnHeader16})
@@ -104,7 +112,7 @@ Partial Class salidas
         Me.lstItems.FullRowSelect = True
         Me.lstItems.GridLines = True
         Me.lstItems.HideSelection = False
-        Me.lstItems.Location = New System.Drawing.Point(38, 80)
+        Me.lstItems.Location = New System.Drawing.Point(40, 155)
         Me.lstItems.Name = "lstItems"
         Me.lstItems.Size = New System.Drawing.Size(1108, 137)
         Me.lstItems.TabIndex = 86
@@ -157,23 +165,41 @@ Partial Class salidas
         Me.Label2.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
         Me.Label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label2.Location = New System.Drawing.Point(505, 57)
+        Me.Label2.Location = New System.Drawing.Point(497, 125)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(148, 17)
         Me.Label2.TabIndex = 14
         Me.Label2.Text = "Items en esta remision"
         '
-        'FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem
+        'Button1
         '
-        Me.FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem.Name = "FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem"
-        Me.FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem.Size = New System.Drawing.Size(303, 22)
-        Me.FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem.Text = "Filtrar por numero de formulario de ingreso"
+        Me.Button1.Location = New System.Drawing.Point(40, 87)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 87
+        Me.Button1.Text = "Nueva"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'lblRemisiones
+        '
+        Me.lblRemisiones.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.lblRemisiones.AutoSize = True
+        Me.lblRemisiones.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblRemisiones.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.lblRemisiones.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblRemisiones.Location = New System.Drawing.Point(306, 89)
+        Me.lblRemisiones.Name = "lblRemisiones"
+        Me.lblRemisiones.Size = New System.Drawing.Size(148, 17)
+        Me.lblRemisiones.TabIndex = 88
+        Me.lblRemisiones.Text = "Items en esta remision"
         '
         'salidas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1170, 750)
+        Me.Controls.Add(Me.lblRemisiones)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lstItems)
         Me.Controls.Add(Me.Panel1)
@@ -207,4 +233,6 @@ Partial Class salidas
     Friend WithEvents ColumnHeader15 As ColumnHeader
     Friend WithEvents ColumnHeader16 As ColumnHeader
     Friend WithEvents Label2 As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents lblRemisiones As Label
 End Class
