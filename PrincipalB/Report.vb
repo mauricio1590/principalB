@@ -188,9 +188,9 @@ Public Class Report
 
         'FILA 2 ITEMS
 
-        Dim items As List(Of ItemVO)
+        'Dim items As List(Of ItemVO)
 
-        For Each item As ItemVO In items
+        For Each item As ItemVO In Datos.Items1
 
             'SUBPARTIDA - SIEMPRE ES LA MISMA PARA TODOS
             cell = New PdfPCell(New Phrase(Datos.Subpartida1, fuenteTexto))
