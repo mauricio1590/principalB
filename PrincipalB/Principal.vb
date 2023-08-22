@@ -8,9 +8,9 @@ Public Class Principal
     Public intIdUsuario As Integer = 0
     Public servidor As String = "localhost"
     Public usuario As String = "root"
-    Public password As String = "bandband"
+    Public password As String = "90271516"
     Public database As String = "frontier"
-    Public cadenadeconexion As String = "Server=" & servidor & ";Uid=root;Pwd=bandband;Database=" & database & ""
+    Public cadenadeconexion As String = "Server=" & servidor & ";Uid=root;Pwd=" & password & ";Database=" & database & ""
 
 
 
@@ -25,7 +25,8 @@ Public Class Principal
         logo = strUnidad & ":\FRONTIER\Imagenes\logo.jpg"
         fun.ponerFoto(logo, picLogo)
         fun.ponerFoto(logo, picLogo2)
-
+        Me.Location = Screen.PrimaryScreen.WorkingArea.Location
+        Me.Size = Screen.PrimaryScreen.WorkingArea.Size
     End Sub
 
 

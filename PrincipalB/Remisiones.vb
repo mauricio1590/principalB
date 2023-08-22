@@ -862,18 +862,28 @@ Public Class Remisiones
 
     Private Sub GenerarPdfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPdfToolStripMenuItem.Click
         Dim repor As New Report
-        Dim placas As Array = Split(txtPlacas.Text.ToString, "-")
-
+        Dim placas As List(Of String) = Split(txtPlacas.Text.ToString, "-").ToList
+        Dim items As List(Of ItemVO) 'LLENAR LISTA DE ITEMS GUARDANDO OBJETOS TIPO ItemVO EN ESTA LISTA
         Dim lstSubpartida As New List(Of String)
         lstSubpartida.Add(txtSubPartida.Text)
-        Dim enradaVO As New EntradaVO(txtCLiente.Text, fun.extraerNitById(intIdDeLaPersona, "nit"), fun.extraerNitById(intIdDeLaPersona, "direccion"), dtFecha.Value, txtTipoDocumento.Text & "-" & txtConsecutivo.Text, txtSubPartida.Text, txtItem.Text, txtDescItem.Text, fun.extraerAB(intIdEmbalaje, "embalaje"),
-                                        txtCantidad.Text, txtBultos.Text, txtPesoBruto.Text, txtPesoNeto.Text, txtUnitario.Text, txtTotal.Text, placas, lstSubpartida, txtTotal.Text, txtBultos.Text, txtPesoBruto.Text, txtPesoNeto.Text,
-                                        txtUnitario.Text, txtTotal.Text, fun.extraerTasa)
+        Dim enradaVO As New EntradaVO(txtCLiente.Text,
+                                      fun.extraerNitById(intIdDeLaPersona, "nit"),
+                                      fun.extraerNitById(intIdDeLaPersona, "direccion"),
+                                      dtFecha.Value, txtTipoDocumento.Text & "-" & txtConsecutivo.Text,
+                                      txtSubPartida.Text,
+                                      fun.extraerAB(intIdEmbalaje, "embalaje"),
+                                      items,
+                                      placas,
+                                      lstSubpartida,
+                                      txtCantidad.Text,
+                                      txtBultos.Text,
+                                      txtPesoBruto.Text,
+                                      txtPesoNeto.Text,
+                                      txtUnitario.Text,
+                                      txtTotal.Text,
+                                      fun.extraerTasa)
         Dim img As Image = Image.FromFile(Principal.logo)
         pdf.crearPDF(img, enradaVO)
-
-
-
     End Sub
     Function existeItemenArray(iditem As Integer) As Boolean
         Dim booSaber As Boolean = False

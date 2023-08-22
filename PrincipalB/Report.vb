@@ -6,6 +6,7 @@ Imports System.Runtime.InteropServices
 'Imports WebSupergoo.ABCpdf11.Elements
 Imports Element = iTextSharp.text.Element
 Imports Org.BouncyCastle.Utilities
+
 'Imports System.Net.Mime.MediaTypeNames
 
 Public Class Report
@@ -97,23 +98,23 @@ Public Class Report
         'DATOS DEL CLIENTE
         tabla = New PdfPTable(New Single() {30.0F, 15.0F, 30.0F, 10.0F, 15.0F})
         tabla.WidthPercentage = 100.0F
-        cell = New PdfPCell(New Phrase("CLIENTE: " & Datos.Cliente, fuente))
+        cell = New PdfPCell(New Phrase("CLIENTE: " & Datos.Cliente1, fuente))
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         tabla.AddCell(cell)
-        cell = New PdfPCell(New Phrase("NIT: " & Datos.NitCliente, fuente))
+        cell = New PdfPCell(New Phrase("NIT: " & Datos.NitCliente1, fuente))
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         tabla.AddCell(cell)
-        cell = New PdfPCell(New Phrase("DIRECCIÓN: " & Datos.DirCliente, fuente))
+        cell = New PdfPCell(New Phrase("DIRECCIÓN: " & Datos.DirCliente1, fuente))
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         tabla.AddCell(cell)
-        cell = New PdfPCell(New Phrase("FECHA: " & Datos.FechaGeneracion, fuente))
+        cell = New PdfPCell(New Phrase("FECHA: " & Datos.FechaGeneracion1, fuente))
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         tabla.AddCell(cell)
-        cell = New PdfPCell(New Phrase("REMISION " & Datos.NoRemision, fuente))
+        cell = New PdfPCell(New Phrase("REMISION " & Datos.NoRemision1, fuente))
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         tabla.AddCell(cell)
@@ -185,60 +186,76 @@ Public Class Report
         cell.BackgroundColor = New BaseColor(191, 191, 191)
         tabla.AddCell(cell)
 
-        'FILA 2
+        'FILA 2 ITEMS
 
-        cell = New PdfPCell(New Phrase(Datos.Subpartida, fuenteTexto))
-        cell.VerticalAlignment = Element.ALIGN_MIDDLE
-        cell.HorizontalAlignment = Element.ALIGN_CENTER
-        tabla.AddCell(cell)
+        Dim items As List(Of ItemVO)
 
-        cell = New PdfPCell(New Phrase(Datos.Item, fuenteTexto))
-        cell.VerticalAlignment = Element.ALIGN_MIDDLE
-        cell.HorizontalAlignment = Element.ALIGN_CENTER
-        tabla.AddCell(cell)
+        For Each item As ItemVO In items
 
-        cell = New PdfPCell(New Phrase(Datos.DescripcionItem, fuenteTexto))
-        cell.VerticalAlignment = Element.ALIGN_MIDDLE
-        cell.HorizontalAlignment = Element.ALIGN_CENTER
-        tabla.AddCell(cell)
+            'SUBPARTIDA - SIEMPRE ES LA MISMA PARA TODOS
+            cell = New PdfPCell(New Phrase(Datos.Subpartida1, fuenteTexto))
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE
+            cell.HorizontalAlignment = Element.ALIGN_CENTER
+            tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.TipoEmbalaje, fuenteTexto))
-        cell.VerticalAlignment = Element.ALIGN_MIDDLE
-        cell.HorizontalAlignment = Element.ALIGN_CENTER
-        tabla.AddCell(cell)
+            'ITEM
+            cell = New PdfPCell(New Phrase(item.Item, fuenteTexto))
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE
+            cell.HorizontalAlignment = Element.ALIGN_CENTER
+            tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.Cantidad, fuenteTexto))
-        cell.VerticalAlignment = Element.ALIGN_MIDDLE
-        cell.HorizontalAlignment = Element.ALIGN_CENTER
-        tabla.AddCell(cell)
+            'DESCRIPCION
+            cell = New PdfPCell(New Phrase(item.DescripcionItem, fuenteTexto))
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE
+            cell.HorizontalAlignment = Element.ALIGN_CENTER
+            tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.Bultos, fuenteTexto))
-        cell.VerticalAlignment = Element.ALIGN_MIDDLE
-        cell.HorizontalAlignment = Element.ALIGN_CENTER
-        tabla.AddCell(cell)
+            'TIPO EMBALAJE - SIEMPRE ES EL MISMO PARA TODOS
+            cell = New PdfPCell(New Phrase(Datos.TipoEmbalaje1, fuenteTexto))
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE
+            cell.HorizontalAlignment = Element.ALIGN_CENTER
+            tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.PesoBruto, fuenteTexto))
-        cell.VerticalAlignment = Element.ALIGN_MIDDLE
-        cell.HorizontalAlignment = Element.ALIGN_CENTER
-        tabla.AddCell(cell)
+            'CANTIDAD
+            cell = New PdfPCell(New Phrase(item.Cantidad, fuenteTexto))
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE
+            cell.HorizontalAlignment = Element.ALIGN_CENTER
+            tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.PesoNeto, fuenteTexto))
-        cell.VerticalAlignment = Element.ALIGN_MIDDLE
-        cell.HorizontalAlignment = Element.ALIGN_CENTER
-        tabla.AddCell(cell)
+            'BULTOS
+            cell = New PdfPCell(New Phrase(item.Bultos, fuenteTexto))
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE
+            cell.HorizontalAlignment = Element.ALIGN_CENTER
+            tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.ValorUnitario, fuenteTexto))
-        cell.VerticalAlignment = Element.ALIGN_MIDDLE
-        cell.HorizontalAlignment = Element.ALIGN_CENTER
-        tabla.AddCell(cell)
+            'PESO BRUTO
+            cell = New PdfPCell(New Phrase(item.PesoBruto, fuenteTexto))
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE
+            cell.HorizontalAlignment = Element.ALIGN_CENTER
+            tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.ValorTotal, fuenteTexto))
-        cell.VerticalAlignment = Element.ALIGN_MIDDLE
-        cell.HorizontalAlignment = Element.ALIGN_CENTER
-        tabla.AddCell(cell)
+            'PESO NETO
+            cell = New PdfPCell(New Phrase(item.PesoNeto, fuenteTexto))
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE
+            cell.HorizontalAlignment = Element.ALIGN_CENTER
+            tabla.AddCell(cell)
+
+            'VALOR UNITARIO
+            cell = New PdfPCell(New Phrase(item.ValorUnitario, fuenteTexto))
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE
+            cell.HorizontalAlignment = Element.ALIGN_CENTER
+            tabla.AddCell(cell)
+
+            'VALOR TOTAL
+            cell = New PdfPCell(New Phrase(item.ValorTotal, fuenteTexto))
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE
+            cell.HorizontalAlignment = Element.ALIGN_CENTER
+            tabla.AddCell(cell)
+
+        Next
 
         'FILA 3 DATOS DE LAS SUBPARTIDAS
-        For Each item As String In Datos.Subpartidas
+        For Each item As String In Datos.Subpartidas1
             cell = New PdfPCell(New Phrase("", fuenteTexto))
             cell.VerticalAlignment = Element.ALIGN_MIDDLE
             cell.HorizontalAlignment = Element.ALIGN_CENTER
@@ -299,6 +316,7 @@ Public Class Report
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         cell.BackgroundColor = New BaseColor(191, 191, 191)
+        cell.Padding = 10
         tabla.AddCell(cell)
 
         cell = New PdfPCell(New Phrase("TOTAL:", fuente))
@@ -307,37 +325,37 @@ Public Class Report
         cell.BackgroundColor = New BaseColor(191, 191, 191)
         tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.TotalCantidad, fuente))
+        cell = New PdfPCell(New Phrase(Datos.TotalCantidad1, fuente))
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         cell.BackgroundColor = New BaseColor(191, 191, 191)
         tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.TotalBultos, fuente))
+        cell = New PdfPCell(New Phrase(Datos.TotalBultos1, fuente))
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         cell.BackgroundColor = New BaseColor(191, 191, 191)
         tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.TotalPesoBruto, fuente))
+        cell = New PdfPCell(New Phrase(Datos.TotalPesoBruto1, fuente))
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         cell.BackgroundColor = New BaseColor(191, 191, 191)
         tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.TotalPesoNeto, fuente))
+        cell = New PdfPCell(New Phrase(Datos.TotalPesoNeto1, fuente))
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         cell.BackgroundColor = New BaseColor(191, 191, 191)
         tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.TotalValorUnitario, fuente))
+        cell = New PdfPCell(New Phrase(Datos.TotalValorUnitario1, fuente))
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         cell.BackgroundColor = New BaseColor(191, 191, 191)
         tabla.AddCell(cell)
 
-        cell = New PdfPCell(New Phrase(Datos.TotalTotal, fuente))
+        cell = New PdfPCell(New Phrase(Datos.TotalTotal1, fuente))
         cell.VerticalAlignment = Element.ALIGN_MIDDLE
         cell.HorizontalAlignment = Element.ALIGN_CENTER
         cell.BackgroundColor = New BaseColor(191, 191, 191)
@@ -349,7 +367,7 @@ Public Class Report
         docPDF.Add(New Phrase(" "))
 
         'TASA DE CAMBIO
-        docPDF.Add(New Phrase("TASA DE CAMBIO: " & Datos.TasaDeCambio, fuente2))
+        docPDF.Add(New Phrase("TASA DE CAMBIO: " & Datos.TasaDeCambio1, fuente2))
 
         'TABLA PLACAS
         tabla = New PdfPTable(New Single() {10.0F})
@@ -362,15 +380,14 @@ Public Class Report
         cell.BackgroundColor = New BaseColor(191, 191, 191)
         tabla.AddCell(cell)
 
-        For Each item As String In Datos.Placas
-            If item(0) = "0" Then
-
-            End If
-            cell = New PdfPCell(New Phrase(item, fuenteTexto))
-            cell.VerticalAlignment = Element.ALIGN_MIDDLE
-            cell.HorizontalAlignment = Element.ALIGN_CENTER
-            tabla.AddCell(cell)
-        Next
+        If (Datos.Placas1.Count <> 0 And Datos.Placas1 IsNot Nothing) Then
+            For Each item As String In Datos.Placas1
+                cell = New PdfPCell(New Phrase(item, fuenteTexto))
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE
+                cell.HorizontalAlignment = Element.ALIGN_CENTER
+                tabla.AddCell(cell)
+            Next
+        End If
 
         docPDF.Add(tabla)
         docPDF.Close()

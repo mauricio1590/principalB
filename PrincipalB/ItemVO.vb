@@ -1,16 +1,16 @@
-﻿Public Class Item
+﻿Public Class ItemVO
     Private _item As String
-    Private _descripcion As String
-    Private _cantidad As Double
-    Private _bultos As Double
-    Private _pesoBruto As Double
-    Private _pesoNeto As Double
-    Private _valorUnitario As Double
-    Private _valorTotal As Double
+    Private _descripcionItem As String
+    Private _cantidad As String
+    Private _bultos As String
+    Private _pesoBruto As String
+    Private _pesoNeto As String
+    Private _valorUnitario As String
+    Private _valorTotal As String
 
-    Public Sub New(item As String, descripcion As String, cantidad As Double, bultos As Double, pesoBruto As Double, pesoNeto As Double, valorUnitario As Double, valorTotal As Double)
+    Public Sub New(item As String, descripcionItem As String, cantidad As String, bultos As String, pesoBruto As String, pesoNeto As String, valorUnitario As String, valorTotal As String)
         _item = item
-        _descripcion = descripcion
+        _descripcionItem = descripcionItem
         _cantidad = cantidad
         _bultos = bultos
         _pesoBruto = pesoBruto
@@ -28,65 +28,65 @@
         End Set
     End Property
 
-    Public Property Descripcion As String
+    Public Property DescripcionItem As String
         Get
-            Return _descripcion
+            Return _descripcionItem
         End Get
         Set(value As String)
-            _descripcion = value
+            _descripcionItem = value
         End Set
     End Property
 
-    Public Property Cantidad As Double
+    Public Property Cantidad As String
         Get
             Return _cantidad
         End Get
-        Set(value As Double)
+        Set(value As String)
             _cantidad = value
         End Set
     End Property
 
-    Public Property Bultos As Double
+    Public Property Bultos As String
         Get
             Return _bultos
         End Get
-        Set(value As Double)
+        Set(value As String)
             _bultos = value
         End Set
     End Property
 
-    Public Property PesoBruto As Double
+    Public Property PesoBruto As String
         Get
             Return _pesoBruto
         End Get
-        Set(value As Double)
+        Set(value As String)
             _pesoBruto = value
         End Set
     End Property
 
-    Public Property PesoNeto As Double
+    Public Property PesoNeto As String
         Get
             Return _pesoNeto
         End Get
-        Set(value As Double)
+        Set(value As String)
             _pesoNeto = value
         End Set
     End Property
 
-    Public Property ValorUnitario As Double
+    Public Property ValorUnitario As String
         Get
             Return _valorUnitario
         End Get
-        Set(value As Double)
+        Set(value As String)
             _valorUnitario = value
         End Set
     End Property
 
-    Public Property ValorTotal As Double
+    Public Property ValorTotal As String
         Get
             Return _valorTotal
         End Get
-        Set(value As Double)
+        Set(value As String)
             _valorTotal = value
         End Set
     End Property
