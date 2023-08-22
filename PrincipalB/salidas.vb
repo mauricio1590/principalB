@@ -23,6 +23,7 @@
         If Not arlCoincidencias.Count = 0 Then
             For Each item As ArrayList In arlCoincidencias
                 alimentarTabla(item(0), item(4), item(5), item(6), item(7), item(8), item(9), item(11), item(10))
+                lblRemisiones.Text = lblRemisiones.Text & "-"
             Next
         Else
             MessageBox.Show("No existen Items", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -31,6 +32,12 @@
     End Function
 
     Private Sub FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem.Click
+        Dim idformualario As String = InputBox("Escriba el Formulario de Ingreso", "Mensaje del Sitema")
+        If idformualario.Equals("") Then : MessageBox.Show("Invalido", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : End If
+        alimenteItem(idformualario)
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim idformualario As String = InputBox("Escriba el Formulario de Ingreso", "Mensaje del Sitema")
         If idformualario.Equals("") Then : MessageBox.Show("Invalido", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : End If
         alimenteItem(idformualario)
