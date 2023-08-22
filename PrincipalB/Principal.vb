@@ -126,4 +126,8 @@ Public Class Principal
     Private Sub PanelContenedor_Paint(sender As Object, e As PaintEventArgs) Handles PanelContenedor.Paint
 
     End Sub
+
+    Private Sub btnSalida_Click(sender As Object, e As EventArgs) Handles btnSalida.Click
+        AbrirFormPanel(New salidas)
+    End Sub
 End Class
