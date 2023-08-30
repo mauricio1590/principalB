@@ -1081,4 +1081,18 @@ Public Class Remisiones
         End If
         txtDescItem.Select(txtDescItem.Text.Length + 1, 0)
     End Sub
+
+    Private Sub GenerarAutorizacionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarAutorizacionToolStripMenuItem.Click
+        Dim img As Image = Image.FromFile(Principal.logo)
+        Dim firma As Image = Image.FromFile("D:\FRONTIER\Imagenes\Firma_Autorizacion.png")
+        Dim footer As Image = Image.FromFile("D:\FRONTIER\Imagenes\Footer_Autorizacion.png")
+        Dim Autorizar As New AutorizacionVO("Fecha",
+                                            "Cliente",
+                                            "Operador",
+                                            "Placa",
+                                            "N formulario ingreso",
+                                            "N remisión",
+                                            "Peso", "Descripción")
+        pdf.CrearAutorizacion(img, firma, footer, Autorizar)
+    End Sub
 End Class

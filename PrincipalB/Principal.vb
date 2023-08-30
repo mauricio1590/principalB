@@ -1,7 +1,9 @@
 ﻿Imports System.Runtime.InteropServices
+Imports iTextSharp.text
+Imports iTextSharp.text.html.simpleparser
 Imports MySql.Data.MySqlClient
 Public Class Principal
-
+    Dim pdf As New Report()
     Dim fun As New Funciones
     Public logo As String = ""
     Dim strUnidad As String = "D"
@@ -129,5 +131,9 @@ Public Class Principal
 
     Private Sub btnSalida_Click(sender As Object, e As EventArgs) Handles btnSalida.Click
         AbrirFormPanel(New salidas)
+    End Sub
+
+    Private Sub btnReporte_Click(sender As Object, e As EventArgs) Handles btnReporte.Click
+
     End Sub
 End Class
