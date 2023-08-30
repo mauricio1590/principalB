@@ -930,6 +930,7 @@ Public Class Remisiones
                 i = i + 1
             End If
         Next
+        Return 1
     End Function
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         If validarCamposremision() Then

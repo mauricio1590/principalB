@@ -35,12 +35,20 @@ Partial Class salidas
         Me.ColumnHeader11 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader12 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader13 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader14 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader15 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader16 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.lblRemisiones = New System.Windows.Forms.Label()
+        Me.txtFormularioSalida = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lstItemConfirmado = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.btnModificar = New System.Windows.Forms.Button()
+        Me.btnRegistrar = New System.Windows.Forms.Button()
+        Me.ColumnHeader14 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -107,12 +115,12 @@ Partial Class salidas
         '
         'lstItems
         '
-        Me.lstItems.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader9, Me.ColumnHeader10, Me.ColumnHeader11, Me.ColumnHeader12, Me.ColumnHeader13, Me.ColumnHeader14, Me.ColumnHeader15, Me.ColumnHeader16})
+        Me.lstItems.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader9, Me.ColumnHeader10, Me.ColumnHeader11, Me.ColumnHeader12, Me.ColumnHeader13})
         Me.lstItems.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstItems.FullRowSelect = True
         Me.lstItems.GridLines = True
         Me.lstItems.HideSelection = False
-        Me.lstItems.Location = New System.Drawing.Point(40, 155)
+        Me.lstItems.Location = New System.Drawing.Point(41, 155)
         Me.lstItems.Name = "lstItems"
         Me.lstItems.Size = New System.Drawing.Size(1108, 137)
         Me.lstItems.TabIndex = 86
@@ -141,22 +149,8 @@ Partial Class salidas
         '
         'ColumnHeader13
         '
-        Me.ColumnHeader13.Text = "Pb"
-        Me.ColumnHeader13.Width = 85
-        '
-        'ColumnHeader14
-        '
-        Me.ColumnHeader14.Text = "Pn"
-        Me.ColumnHeader14.Width = 69
-        '
-        'ColumnHeader15
-        '
-        Me.ColumnHeader15.Text = "V Unitario"
-        Me.ColumnHeader15.Width = 86
-        '
-        'ColumnHeader16
-        '
-        Me.ColumnHeader16.Text = "V total"
+        Me.ColumnHeader13.Text = "Cantidad Saliente"
+        Me.ColumnHeader13.Width = 187
         '
         'Label2
         '
@@ -193,11 +187,109 @@ Partial Class salidas
         Me.lblRemisiones.TabIndex = 88
         Me.lblRemisiones.Text = "Items en esta remision"
         '
+        'txtFormularioSalida
+        '
+        Me.txtFormularioSalida.Location = New System.Drawing.Point(797, 90)
+        Me.txtFormularioSalida.Name = "txtFormularioSalida"
+        Me.txtFormularioSalida.Size = New System.Drawing.Size(306, 20)
+        Me.txtFormularioSalida.TabIndex = 93
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.Label4.Location = New System.Drawing.Point(641, 90)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(144, 17)
+        Me.Label4.TabIndex = 94
+        Me.Label4.Text = "# Formulario de Salida:"
+        '
+        'lstItemConfirmado
+        '
+        Me.lstItemConfirmado.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader14})
+        Me.lstItemConfirmado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstItemConfirmado.FullRowSelect = True
+        Me.lstItemConfirmado.GridLines = True
+        Me.lstItemConfirmado.HideSelection = False
+        Me.lstItemConfirmado.Location = New System.Drawing.Point(40, 388)
+        Me.lstItemConfirmado.Name = "lstItemConfirmado"
+        Me.lstItemConfirmado.Size = New System.Drawing.Size(1108, 137)
+        Me.lstItemConfirmado.TabIndex = 95
+        Me.lstItemConfirmado.UseCompatibleStateImageBehavior = False
+        Me.lstItemConfirmado.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Item"
+        Me.ColumnHeader1.Width = 221
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Descripcion"
+        Me.ColumnHeader2.Width = 413
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Cant"
+        Me.ColumnHeader3.Width = 61
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label3.Location = New System.Drawing.Point(497, 356)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(123, 17)
+        Me.Label3.TabIndex = 96
+        Me.Label3.Text = "Cantidad en Salida"
+        '
+        'btnAceptar
+        '
+        Me.btnAceptar.Location = New System.Drawing.Point(41, 330)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
+        Me.btnAceptar.TabIndex = 97
+        Me.btnAceptar.Text = "Aceptar"
+        Me.btnAceptar.UseVisualStyleBackColor = True
+        '
+        'btnModificar
+        '
+        Me.btnModificar.Location = New System.Drawing.Point(144, 330)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(75, 23)
+        Me.btnModificar.TabIndex = 98
+        Me.btnModificar.Text = "Editar"
+        Me.btnModificar.UseVisualStyleBackColor = True
+        '
+        'btnRegistrar
+        '
+        Me.btnRegistrar.Location = New System.Drawing.Point(41, 569)
+        Me.btnRegistrar.Name = "btnRegistrar"
+        Me.btnRegistrar.Size = New System.Drawing.Size(75, 23)
+        Me.btnRegistrar.TabIndex = 99
+        Me.btnRegistrar.Text = "Registrar"
+        Me.btnRegistrar.UseVisualStyleBackColor = True
+        '
+        'ColumnHeader14
+        '
+        Me.ColumnHeader14.Text = "Cantidad Saliente"
+        Me.ColumnHeader14.Width = 134
+        '
         'salidas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1170, 750)
+        Me.Controls.Add(Me.btnRegistrar)
+        Me.Controls.Add(Me.btnModificar)
+        Me.Controls.Add(Me.btnAceptar)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.lstItemConfirmado)
+        Me.Controls.Add(Me.txtFormularioSalida)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.lblRemisiones)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)
@@ -229,10 +321,18 @@ Partial Class salidas
     Friend WithEvents ColumnHeader11 As ColumnHeader
     Friend WithEvents ColumnHeader12 As ColumnHeader
     Friend WithEvents ColumnHeader13 As ColumnHeader
-    Friend WithEvents ColumnHeader14 As ColumnHeader
-    Friend WithEvents ColumnHeader15 As ColumnHeader
-    Friend WithEvents ColumnHeader16 As ColumnHeader
     Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents lblRemisiones As Label
+    Friend WithEvents txtFormularioSalida As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents lstItemConfirmado As ListView
+    Friend WithEvents ColumnHeader1 As ColumnHeader
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents ColumnHeader3 As ColumnHeader
+    Friend WithEvents Label3 As Label
+    Friend WithEvents btnAceptar As Button
+    Friend WithEvents btnModificar As Button
+    Friend WithEvents btnRegistrar As Button
+    Friend WithEvents ColumnHeader14 As ColumnHeader
 End Class

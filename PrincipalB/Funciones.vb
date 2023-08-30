@@ -11,6 +11,101 @@ Public Class Funciones
         End If
     End Sub
 
+    Public Sub cambiarEstadoRemision(estado As String, idremision As Integer)
+        Dim strCadena As String = "UPDATE remisiones set estado='" & estado & "',fechasalida=current_date where id='" & idremision & "'"
+        Try
+            registreDatos(strCadena)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Public Function CantidadsalienteItem(iditem As Integer) As Integer
+        Dim total As Integer = 0
+        Try
+            conexion.ConnectionString = Principal.cadenadeconexion
+            conexion.Open()
+            Dim cadena As String
+            cadena = "SELECT  cantidad FROM salidas WHERE iditem='" & iditem & "'"
+            Dim cmd As New MySqlCommand(cadena, conexion)
+            Using leerdato As MySqlDataReader = cmd.ExecuteReader()
+                While leerdato.Read()
+                    total = leerdato("cantidad")
+                End While
+            End Using
+
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Return total
+    End Function
+
+    Public Function estadoRemision(idformularioIngreso As String) As Boolean
+        Dim estado As Boolean = False
+        Try
+            conexion.ConnectionString = Principal.cadenadeconexion
+            conexion.Open()
+            Dim cadena As String
+            cadena = "SELECT  estado FROM remisiones WHERE idformularioingreso='" & idformularioIngreso & "'"
+            Dim cmd As New MySqlCommand(cadena, conexion)
+            Using leerdato As MySqlDataReader = cmd.ExecuteReader()
+                While leerdato.Read()
+                    If leerdato("estado") = "terminado" Then
+                        estado = True
+                    End If
+                End While
+            End Using
+
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Return estado
+    End Function
+    Public Function extraerIdremision(iditem As Integer) As Integer
+        Dim idremision As Integer = 0
+        Try
+            conexion.ConnectionString = Principal.cadenadeconexion
+            conexion.Open()
+            Dim cadena As String
+            cadena = "SELECT  idremision FROM item WHERE id='" & iditem & "'"
+            Dim cmd As New MySqlCommand(cadena, conexion)
+            Using leerdato As MySqlDataReader = cmd.ExecuteReader()
+                While leerdato.Read()
+                    idremision = leerdato("idremision")
+                End While
+            End Using
+
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Return idremision
+    End Function
+    Public Function extraerFormularioIngreso(idremision As Integer) As String
+        Dim strFormulario As String = "0"
+        Try
+            conexion.ConnectionString = Principal.cadenadeconexion
+            conexion.Open()
+            Dim cadena As String
+            cadena = "SELECT  idformularioingreso FROM remisiones WHERE id='" & idremision & "'"
+            Dim cmd As New MySqlCommand(cadena, conexion)
+            Using leerdato As MySqlDataReader = cmd.ExecuteReader()
+                While leerdato.Read()
+                    strFormulario = leerdato("idformularioingreso")
+                End While
+            End Using
+
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Return strFormulario
+    End Function
     Public Function registreDatos(consulta As String) As Boolean
         Dim booRegistrado As Boolean = False
         Try
@@ -30,7 +125,7 @@ Public Class Funciones
         Return booRegistrado
     End Function
     Public Sub mostrarTasas(lstTarifas As ListView)
-        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,valor,left(fecha,10) as fecha FROM tasadecambio order by id desc limit 30", , Principal.cadenadeconexion)
+        Dim arlCoincidencias = gestor1.DatosDeConsulta("Select id, valor, Left(fecha, 10) As fecha FROM tasadecambio order by id desc limit 30", , Principal.cadenadeconexion)
         If Not arlCoincidencias.Count = 0 Then lstTarifas.Visible = True
         lstTarifas.Items.Clear()
         lstTarifas.BeginUpdate()
@@ -47,7 +142,7 @@ Public Class Funciones
     End Sub
 
     Public Sub mostrarTipoDocumento(lstTarifas As ListView)
-        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no,ab FROM documento order by id limit 30", , Principal.cadenadeconexion)
+        Dim arlCoincidencias = gestor1.DatosDeConsulta("Select id, no, ab FROM documento order by id limit 30", , Principal.cadenadeconexion)
         If Not arlCoincidencias.Count = 0 Then lstTarifas.Visible = True
         lstTarifas.Items.Clear()
         lstTarifas.BeginUpdate()
@@ -63,7 +158,7 @@ Public Class Funciones
     End Sub
     Public Sub mostrarTipoAlmacenamiento(lstTarifas As ListView)
 
-        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no,ab FROM tipoalmacenamiento order by id limit 30", , Principal.cadenadeconexion)
+        Dim arlCoincidencias = gestor1.DatosDeConsulta("Select id, no, ab FROM tipoalmacenamiento order by id limit 30", , Principal.cadenadeconexion)
         If Not arlCoincidencias.Count = 0 Then lstTarifas.Visible = True
         lstTarifas.Items.Clear()
         lstTarifas.BeginUpdate()
@@ -87,7 +182,7 @@ Public Class Funciones
     End Function
     Public Sub mostrarEmbalaje(lstTarifas As ListView)
 
-        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no,ab FROM embalaje order by id limit 30", , Principal.cadenadeconexion)
+        Dim arlCoincidencias = gestor1.DatosDeConsulta("Select id, no, ab FROM embalaje order by id limit 30", , Principal.cadenadeconexion)
         If Not arlCoincidencias.Count = 0 Then lstTarifas.Visible = True
         lstTarifas.Items.Clear()
         lstTarifas.BeginUpdate()
@@ -107,7 +202,7 @@ Public Class Funciones
             conexion.Open()
             Dim cadena As String
             cadena = "SELECT id FROM " & tabla & " WHERE nit='" & nit & "'"
-            Dim cmd As New MySqlCommand(cadena, conexion)
+                    Dim cmd As New MySqlCommand(cadena, conexion)
             Using leerdato As MySqlDataReader = cmd.ExecuteReader()
                 While leerdato.Read()
                     boosaber = True
