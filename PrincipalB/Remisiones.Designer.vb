@@ -104,6 +104,7 @@ Partial Class Remisiones
         Me.ColumnHeader16 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.lstProcedencia = New System.Windows.Forms.ListView()
         Me.ColumnHeader17 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.GenerarAutorizacionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -119,7 +120,7 @@ Partial Class Remisiones
         '
         'OpcionesToolStripMenuItem
         '
-        Me.OpcionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BuscarPorConsecutivoDeDocumentoToolStripMenuItem, Me.GenerarPdfToolStripMenuItem})
+        Me.OpcionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BuscarPorConsecutivoDeDocumentoToolStripMenuItem, Me.GenerarPdfToolStripMenuItem, Me.GenerarAutorizacionToolStripMenuItem})
         Me.OpcionesToolStripMenuItem.Name = "OpcionesToolStripMenuItem"
         Me.OpcionesToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
         Me.OpcionesToolStripMenuItem.Text = "Opciones "
@@ -814,6 +815,12 @@ Partial Class Remisiones
         Me.ColumnHeader17.Text = "Pais"
         Me.ColumnHeader17.Width = 252
         '
+        'GenerarAutorizacionToolStripMenuItem
+        '
+        Me.GenerarAutorizacionToolStripMenuItem.Name = "GenerarAutorizacionToolStripMenuItem"
+        Me.GenerarAutorizacionToolStripMenuItem.Size = New System.Drawing.Size(281, 22)
+        Me.GenerarAutorizacionToolStripMenuItem.Text = "Generar Autorizacion"
+        '
         'Remisiones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -972,4 +979,5 @@ Partial Class Remisiones
     Friend WithEvents ColumnHeader16 As ColumnHeader
     Friend WithEvents lstProcedencia As ListView
     Friend WithEvents ColumnHeader17 As ColumnHeader
+    Friend WithEvents GenerarAutorizacionToolStripMenuItem As ToolStripMenuItem
 End Class

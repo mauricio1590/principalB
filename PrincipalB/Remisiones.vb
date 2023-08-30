@@ -13,6 +13,8 @@ Public Class Remisiones
     Dim intidPaisCompra As Integer = 0
     Dim intIdPaisProcedencia As Integer = 0
     Dim intIdRemisionAModificar As Integer = 0
+    Dim intIdItemModificado As Integer = 0
+    Dim arraItems As New ArrayList
 
     Dim pdf As New Report()
 
@@ -393,13 +395,44 @@ Public Class Remisiones
             Dim pesoneto As Double = lstItems.Items(i).SubItems(5).Text
             Dim unitatio As Double = lstItems.Items(i).SubItems(6).Text
             Dim total As Double = lstItems.Items(i).SubItems(7).Text
-            Dim strCadenaitem As String = "INSERT INTO item(iddocumento,consecutivodocumento,item,descripcion,cantidad,bultos,pesobruto,pesoneto,valorunitario,valortotal)values('" & intTipoDocumento & "','" & txtConsecutivo.Text & "'," & vbCrLf &
+            Dim strCadenaitem As String = "INSERT INTO item(idremision,iddocumento,consecutivodocumento,item,descripcion,cantidad,bultos,pesobruto,pesoneto,valorunitario,valortotal)values('" & fun.ExtraerConsecutvo(intTipoDocumento, txtConsecutivo.Text) & "','" & intTipoDocumento & "','" & txtConsecutivo.Text & "'," & vbCrLf &
                                  "'" & item & "','" & desc & "','" & cantidad & "','" & bultos & "','" & pesobruto & "','" & pesoneto & "','" & unitatio & "','" & total & "')"
 
             Try
                 fun.registreDatos(strCadenaitem)
             Catch ex As Exception
                 MessageBox.Show("Error en el Registro", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+            End Try
+        Next
+    End Sub
+    Sub ActualiceItem()
+        For i As Integer = 0 To lstItems.Items.Count - 1
+            Dim iditem As Integer = lstItems.Items(i).Tag
+            Dim item As String = lstItems.Items(i).Text
+            Dim desc As String = lstItems.Items(i).SubItems(1).Text
+            Dim cantidad As Double = lstItems.Items(i).SubItems(2).Text
+            Dim bultos As Double = lstItems.Items(i).SubItems(3).Text
+            Dim pesobruto As Double = lstItems.Items(i).SubItems(4).Text
+            Dim pesoneto As Double = lstItems.Items(i).SubItems(5).Text
+            Dim unitatio As Double = lstItems.Items(i).SubItems(6).Text
+            Dim total As Double = lstItems.Items(i).SubItems(7).Text
+            Dim strcadenaitem As String = ""
+            If existeItemenArray(iditem) Then
+
+                strcadenaitem = "UPDATE item set item='" & item & "', descripcion='" & desc & "',cantidad='" & cantidad & "',bultos='" & bultos & "',pesobruto='" & pesobruto & "',pesoneto='" & pesoneto & "',
+                                       valorunitario='" & unitatio & "',valortotal='" & total & "'  WHERE id=" & iditem & ""
+                '    Dim strCadenaitem As String = "INSERT INTO item(idremision,iddocumento,consecutivodocumento,item,descripcion,cantidad,bultos,pesobruto,pesoneto,valorunitario,valortotal)values('" & fun.ExtraerConsecutvo(intTipoDocumento, txtConsecutivo.Text) & "','" & intTipoDocumento & "','" & txtConsecutivo.Text & "'," & vbCrLf &
+                '      "'" & item & "','" & desc & "','" & cantidad & "','" & bultos & "','" & pesobruto & "','" & pesoneto & "','" & unitatio & "','" & total & "')"
+            Else
+                strcadenaitem = "INSERT INTO item(idremision,iddocumento,consecutivodocumento,item,descripcion,cantidad,bultos,pesobruto,pesoneto,valorunitario,valortotal)values('" & fun.ExtraerConsecutvo(intTipoDocumento, txtConsecutivo.Text) & "','" & intTipoDocumento & "','" & txtConsecutivo.Text & "'," & vbCrLf &
+                               "'" & item & "','" & desc & "','" & cantidad & "','" & bultos & "','" & pesobruto & "','" & pesoneto & "','" & unitatio & "','" & total & "')"
+            End If
+
+
+            Try
+                fun.registreDatos(strcadenaitem)
+            Catch ex As Exception
+                MessageBox.Show("Error en la Actualizacion", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             End Try
         Next
     End Sub
@@ -412,10 +445,11 @@ Public Class Remisiones
                                              "" & intTipoDocumento & ",'" & txtConsecutivo.Text & "','" & txtidformularioIngreso.Text & "'," & intIdDeLaPersona & "," & Principal.intIdUsuario & ",'" & txtSubPartida.Text & "'" & vbCrLf &
                                              "," & intIdEmbalaje & "," & intIdPaisOrigen & "," & intidPaisCompra & "," & intidPaisDestino & ",'" & intIdPaisProcedencia & "','" & Format(dtFecha.Value, "yyyy-MM-dd") & "'," & vbCrLf &
                                               "'" & lblEstado.Text & "'," & intidTipoAlmacenamiento & ",'" & txtPlacas.Text & "','" & lblTasa.Text & "')"
-            registreItem()
+
             '    Dim strCadenaitem As String = "INSERT INTO item(iddocumento,consecutivodocumento,item,descripcion,cantidad,bultos,pesobruto,pesoneto,valorunitario,valortotal)values('" & intTipoDocumento & "','" & txtConsecutivo.Text & "'," & vbCrLf &
             '                                 "'" & txtItem.Text & "','" & txtDescItem.Text & "','" & txtCantidad.Text & "','" & txtBultos.Text & "','" & txtPesoBruto.Text & "','" & txtPesoNeto.Text & "','" & txtUnitario.Text & "','" & txtTotal.Text & "')"
             If fun.registreDatos(strCadena) Then
+                registreItem()
                 MessageBox.Show("Registro Correcto", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
                 limpiar()
             Else
@@ -638,9 +672,8 @@ Public Class Remisiones
 
     Private Sub txtUnitario_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUnitario.KeyPress
         If Asc(e.KeyChar) = 13 Then
-
             If validarCamposItem() Then
-                alimentarTabla(txtItem.Text, txtDescItem.Text, txtCantidad.Text, txtBultos.Text, txtPesoBruto.Text, txtPesoNeto.Text, txtTotal.Text, txtUnitario.Text)
+                alimentarTabla(intIdItemModificado, txtItem.Text, txtDescItem.Text, txtCantidad.Text, txtBultos.Text, txtPesoBruto.Text, txtPesoNeto.Text, txtTotal.Text, txtUnitario.Text)
                 limpiaritem()
                 txtDescItem.Focus()
             End If
@@ -658,11 +691,12 @@ Public Class Remisiones
         txtPesoNeto.Text = ""
         txtUnitario.Text = ""
         txtTotal.Text = ""
+        intIdItemModificado = 0
     End Sub
 
-    Public Sub alimentarTabla(_item As String, _desc As String, _cant As String, _bultos As String, _bruto As String, _neto As String, _total As String, _unitario As String)
+    Public Sub alimentarTabla(_idtabla As Integer, _item As String, _desc As String, _cant As String, _bultos As String, _bruto As String, _neto As String, _total As String, _unitario As String)
         Dim lviEncontrado As New ListViewItem
-        lviEncontrado.Tag = lstItems.Items.Count() + 1
+        lviEncontrado.Tag = _idtabla
         lviEncontrado.Text = _item
         lviEncontrado.SubItems.Add(_desc)
         lviEncontrado.SubItems.Add(_cant)
@@ -814,14 +848,16 @@ Public Class Remisiones
         Return booEncontrado
     End Function
     Function alimenteItem(idTipoDocumento As String, intConsecutivo As String)
-        Dim arlCoincidencias As ArrayList = gestor1.DatosDeConsulta("SELECT * FROM item WHERE iddocumento='" & idTipoDocumento & "' AND consecutivodocumento='" & intConsecutivo & "'",, Principal.cadenadeconexion)
+        Dim arlCoincidencias As ArrayList = gestor1.DatosDeConsulta("SELECT *,1 FROM item WHERE iddocumento='" & idTipoDocumento & "' AND consecutivodocumento='" & intConsecutivo & "'",, Principal.cadenadeconexion)
         If Not arlCoincidencias.Count = 0 Then
+            arraItems = arlCoincidencias
             For Each item As ArrayList In arlCoincidencias
-                alimentarTabla(item(3), item(4), item(5), item(6), item(7), item(8), item(10), item(9))
+                alimentarTabla(item(0), item(4), item(5), item(6), item(7), item(8), item(9), item(11), item(10))
             Next
         Else
             MessageBox.Show("No existen Items", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
+        existeItemenArray(4)
     End Function
 
     Private Sub GenerarPdfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPdfToolStripMenuItem.Click
@@ -849,7 +885,26 @@ Public Class Remisiones
         Dim img As Image = Image.FromFile(Principal.logo)
         pdf.crearPDF(img, enradaVO)
     End Sub
+    Function existeItemenArray(iditem As Integer) As Boolean
+        Dim booSaber As Boolean = False
+        For Each item As ArrayList In arraItems
+            If item(0) = iditem Then
+                booSaber = True
+            End If
+        Next
+        Return booSaber
+    End Function
 
+    Function eliminardeArray(iditem As Integer)
+        Dim i As Integer = 0
+
+        For Each item As ArrayList In arraItems
+            If item(0) = iditem Then
+                arraItems.RemoveAt(i)
+                i = i + 1
+            End If
+        Next
+    End Function
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         If validarCamposremision() Then
             Dim Builderconex As New MySqlConnectionStringBuilder()
@@ -861,21 +916,59 @@ Public Class Remisiones
             conexion.Open()
             Dim cmd As New MySqlCommand()
             cmd = conexion.CreateCommand()
-            cmd.CommandText = "UPDATE remisiones set iddocumento=?,consecutivodocumento=?,idformularioingreso=?,idcliente=?,subpartida=?,item=?,descripcion=?,idembalaje=?,cantidad=?,bultos=?,pesobruto=?,pesoneto=?,valorunitario=?,valortotal=?,idpaisorigen=?,idpaiscompra=?,idpaisdestino=?,idpaisprocedencia=?, fechaingreso=?,idalmacenamiento=?,placas=? WHERE id=" & intIdRemisionAModificar
+            cmd.CommandText = "UPDATE remisiones set iddocumento=?,consecutivodocumento=?,idformularioingreso=?,idcliente=?,subpartida=?,idembalaje=?,idpaisorigen=?,idpaiscompra=?,idpaisdestino=?,idpaisprocedencia=?, fechaingreso=?,idalmacenamiento=?,placas=? WHERE id=" & intIdRemisionAModificar
             cmd.Parameters.AddWithValue("iddocumento", intTipoDocumento)
             cmd.Parameters.AddWithValue("conseutivodocumento", txtConsecutivo.Text)
             cmd.Parameters.AddWithValue("idformularioingreso", txtidformularioIngreso.Text)
             cmd.Parameters.AddWithValue("idcliente", intIdDeLaPersona)
             cmd.Parameters.AddWithValue("subpartida", txtSubPartida.Text)
-            cmd.Parameters.AddWithValue("item", txtItem.Text.ToString())
-            cmd.Parameters.AddWithValue("descripcion", txtDescItem.Text.ToString())
             cmd.Parameters.AddWithValue("idembalaje", intIdEmbalaje)
-            cmd.Parameters.AddWithValue("cantidad", Double.Parse(txtCantidad.Text))
-            cmd.Parameters.AddWithValue("bultos", Double.Parse(txtBultos.Text))
-            cmd.Parameters.AddWithValue("pesobruto", Double.Parse(txtPesoBruto.Text))
-            cmd.Parameters.AddWithValue("pesoneto", Double.Parse(txtPesoNeto.Text))
-            cmd.Parameters.AddWithValue("valorunitario", Double.Parse(txtUnitario.Text))
-            cmd.Parameters.AddWithValue("valortotal", Double.Parse(txtTotal.Text.ToString))
+            cmd.Parameters.AddWithValue("idpaisorigen", intIdPaisOrigen)
+            cmd.Parameters.AddWithValue("idpaiscompra", intidPaisCompra)
+            cmd.Parameters.AddWithValue("idpaisdestino", intidPaisDestino)
+            cmd.Parameters.AddWithValue("idpaisprocedencia", intIdPaisProcedencia)
+            Dim fechan As Date
+            fechan = dtFecha.Value.Date
+            cmd.Parameters.AddWithValue("fechaingreso", fechan)
+            cmd.Parameters.AddWithValue("idalmacenamiento", intidTipoAlmacenamiento)
+            cmd.Parameters.AddWithValue("placas", txtPlacas.Text)
+            cmd.ExecuteNonQuery()
+            ActualiceItem()
+            cmd.Dispose()
+            conexion.Close()
+            conexion.Dispose()
+            limpiar()
+            MessageBox.Show("El registro se actualizo correctamente", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+        End If
+    End Sub
+    Function modifiqueItem()
+        Dim Builderconex As New MySqlConnectionStringBuilder()
+        Builderconex.Server = Principal.servidor
+        Builderconex.UserID = Principal.usuario
+        Builderconex.Password = Principal.password
+        Builderconex.Database = Principal.database
+        For i As Integer = 0 To lstItems.Items.Count - 1
+            Dim item As String = lstItems.Items(i).Text
+            Dim desc As String = lstItems.Items(i).SubItems(1).Text
+            Dim cantidad As Double = lstItems.Items(i).SubItems(2).Text
+            Dim bultos As Double = lstItems.Items(i).SubItems(3).Text
+            Dim pesobruto As Double = lstItems.Items(i).SubItems(4).Text
+            Dim pesoneto As Double = lstItems.Items(i).SubItems(5).Text
+            Dim unitatio As Double = lstItems.Items(i).SubItems(6).Text
+            Dim total As Double = lstItems.Items(i).SubItems(7).Text
+
+
+            Dim conexion As New MySqlConnection(Builderconex.ToString())
+            conexion.Open()
+            Dim cmd As New MySqlCommand()
+            cmd = conexion.CreateCommand()
+            cmd.CommandText = "UPDATE item set iddocumento=?,consecutivodocumento=?,idformularioingreso=?,idcliente=?,subpartida=?,idembalaje=?,idpaisorigen=?,idpaiscompra=?,idpaisdestino=?,idpaisprocedencia=?, fechaingreso=?,idalmacenamiento=?,placas=? WHERE id=" & intIdRemisionAModificar
+            cmd.Parameters.AddWithValue("iddocumento", intTipoDocumento)
+            cmd.Parameters.AddWithValue("conseutivodocumento", txtConsecutivo.Text)
+            cmd.Parameters.AddWithValue("idformularioingreso", txtidformularioIngreso.Text)
+            cmd.Parameters.AddWithValue("idcliente", intIdDeLaPersona)
+            cmd.Parameters.AddWithValue("subpartida", txtSubPartida.Text)
+            cmd.Parameters.AddWithValue("idembalaje", intIdEmbalaje)
             cmd.Parameters.AddWithValue("idpaisorigen", intIdPaisOrigen)
             cmd.Parameters.AddWithValue("idpaiscompra", intidPaisCompra)
             cmd.Parameters.AddWithValue("idpaisdestino", intidPaisDestino)
@@ -891,8 +984,8 @@ Public Class Remisiones
             conexion.Dispose()
             limpiar()
             MessageBox.Show("El registro se actualizo correctamente", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
-        End If
-    End Sub
+        Next
+    End Function
 
     Private Sub lstProcedencia_MouseClick(sender As Object, e As MouseEventArgs) Handles lstProcedencia.MouseClick
         If lstProcedencia.SelectedItems.Count = 0 Then Exit Sub
@@ -943,7 +1036,7 @@ Public Class Remisiones
     Private Sub lstItems_MouseClick(sender As Object, e As MouseEventArgs) Handles lstItems.MouseClick
 
         For Each item In lstItems.SelectedItems
-
+            intIdItemModificado = lstItems.SelectedItems(0).Tag
             txtItem.Text = lstItems.SelectedItems(0).Text
             txtDescItem.Text = lstItems.SelectedItems(0).SubItems(1).Text
             txtCantidad.Text = lstItems.SelectedItems(0).SubItems(2).Text
@@ -960,5 +1053,46 @@ Public Class Remisiones
 
     End Sub
 
+    Private Sub txtDescItem_KeyDown(sender As Object, e As KeyEventArgs) Handles txtDescItem.KeyDown
+        Dim intMovimiento As Integer = 0
+        If e.KeyCode = Keys.Down Then intMovimiento = 1
+        If e.KeyCode = Keys.Up Then intMovimiento = -1
+        If e.KeyCode = Keys.Delete Then
+            If lstItems.SelectedItems.Count > 0 Then
+                fun.elimineItemdeBase(lstItems.SelectedItems(0).Tag)
+                lstItems.SelectedItems(0).Remove()
 
+
+            End If
+        End If
+        lstItems.BringToFront()
+        If intMovimiento = 0 Then
+            If e.KeyCode = Keys.End Then
+                If lstItems.Visible Then
+                    SeñaleItemListView(lstItems, lstItems.Items.Count - 1, False)
+                    Exit Sub
+                End If
+            End If
+            Exit Sub
+        End If
+        If lstItems.Visible Then
+            SeñaleItemListView(lstItems, intMovimiento)
+            Exit Sub
+        End If
+        txtDescItem.Select(txtDescItem.Text.Length + 1, 0)
+    End Sub
+
+    Private Sub GenerarAutorizacionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarAutorizacionToolStripMenuItem.Click
+        Dim img As Image = Image.FromFile(Principal.logo)
+        Dim firma As Image = Image.FromFile("D:\FRONTIER\Imagenes\Firma_Autorizacion.png")
+        Dim footer As Image = Image.FromFile("D:\FRONTIER\Imagenes\Footer_Autorizacion.png")
+        Dim Autorizar As New AutorizacionVO("Fecha",
+                                            "Cliente",
+                                            "Operador",
+                                            "Placa",
+                                            "N formulario ingreso",
+                                            "N remisión",
+                                            "Peso", "Descripción")
+        pdf.CrearAutorizacion(img, firma, footer, Autorizar)
+    End Sub
 End Class
