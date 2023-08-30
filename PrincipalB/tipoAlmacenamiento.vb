@@ -1,6 +1,8 @@
 ﻿Public Class tipoAlmacenamiento
     Dim fun As New Funciones
     Dim strtag As String = 0
+    Dim rutaImagen As String
+    Dim controlMenu As Integer = 0
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
         If Not txtNombre.Text.Equals("") AndAlso Not txtab.Text.Equals("") Then
             Dim cad As String = "INSERT INTO tipoalmacenamiento (no,ab)VALUES('" & txtNombre.Text & "','" & txtab.Text & "')"
@@ -85,5 +87,85 @@
             Else : btnModificar.PerformClick()
             End If
         End If
+    End Sub
+
+    Private Sub btnGuardar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnGuardar.MouseMove
+        tm_MenuOcultar.Enabled = False
+        tm_MenuMostrar.Enabled = True
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_guardar-3_.png"
+        btnGuardar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnGuardar_MouseLeave(sender As Object, e As EventArgs) Handles btnGuardar.MouseLeave
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_guardar-3.png"
+        btnGuardar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnEliminar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnEliminar.MouseMove
+        tm_MenuOcultar.Enabled = False
+        tm_MenuMostrar.Enabled = True
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_eliminar-3_.png"
+        btnEliminar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnEliminar_MouseLeave(sender As Object, e As EventArgs) Handles btnEliminar.MouseLeave
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_eliminar-3.png"
+        btnEliminar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub tm_MenuMostrar_Tick(sender As Object, e As EventArgs) Handles tm_MenuMostrar.Tick
+        If controlMenu < 180 Then
+            pnl_herramientas.Location = New System.Drawing.Point(pnl_herramientas.Location.X - 10, pnl_herramientas.Location.Y)
+            controlMenu += 10
+        Else
+            Me.tm_MenuMostrar.Enabled = False
+        End If
+    End Sub
+
+    Private Sub tm_MenuOcultar_Tick(sender As Object, e As EventArgs) Handles tm_MenuOcultar.Tick
+        If controlMenu > 0 Then
+            pnl_herramientas.Location = New System.Drawing.Point(pnl_herramientas.Location.X + 10, pnl_herramientas.Location.Y)
+            controlMenu -= 10
+        Else
+            Me.tm_MenuMostrar.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnModificar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnModificar.MouseMove
+        tm_MenuOcultar.Enabled = False
+        tm_MenuMostrar.Enabled = True
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_editar-3_.png"
+        btnModificar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnModificar_MouseLeave(sender As Object, e As EventArgs) Handles btnModificar.MouseLeave
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_editar-3.png"
+        btnModificar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnLimpiar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnLimpiar.MouseMove
+        tm_MenuOcultar.Enabled = False
+        tm_MenuMostrar.Enabled = True
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_limpiar-3_.png"
+        btnLimpiar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnLimpiar_MouseLeave(sender As Object, e As EventArgs) Handles btnLimpiar.MouseLeave
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_limpiar-3.png"
+        btnLimpiar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
+    End Sub
+
+    Private Sub Panel2_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel2.MouseMove
+        tm_MenuOcultar.Enabled = True
+        tm_MenuMostrar.Enabled = False
+    End Sub
+
+    Private Sub tipoAlmacenamiento_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
+        tm_MenuOcultar.Enabled = True
+        tm_MenuMostrar.Enabled = False
     End Sub
 End Class

@@ -401,7 +401,7 @@ Public Class Report
     End Sub
 
 
-    Public Sub CrearAutorizacion(Imagen As Bitmap, Firma As Bitmap, Footer As Bitmap)
+    Public Sub CrearAutorizacion(Imagen As Bitmap, Firma As Bitmap, Footer As Bitmap, Autorizar As AutorizacionVO)
         crearDirectorio()
         ruta = rutaDirectorio & "\\Autorizacion.pdf"
         'If (Not verificarDocumento("Prueba")) Then
@@ -438,7 +438,7 @@ Public Class Report
 
         'FECHA
         tabla = New PdfPTable(New Single() {100.0F})
-        cell = New PdfPCell(New Phrase("San José de Cúcuta, 16 de junio del 2023", fuenteTexto))
+        cell = New PdfPCell(New Phrase("San José de Cúcuta, " & Autorizar.Fecha1, fuenteTexto))
         cell.HorizontalAlignment = Element.ALIGN_LEFT
         cell.Border = 0
         tabla.AddCell(cell)
@@ -456,12 +456,12 @@ Public Class Report
         contenido.HorizontalAlignment = Element.ALIGN_LEFT
         'contenido.Rowspan = 4
         tabla.AddCell(contenido)
-        contenido = New PdfPCell(New Phrase("ZONA FRANCA SANTANDER S.A. BIC", fuente2))
+        contenido = New PdfPCell(New Phrase(Autorizar.Cliente1, fuente2))
         contenido.BorderWidth = 0
         contenido.Padding = 0
         contenido.HorizontalAlignment = Element.ALIGN_LEFT
         tabla.AddCell(contenido)
-        contenido = New PdfPCell(New Phrase("USUARIO OPERADOR", fuente2))
+        contenido = New PdfPCell(New Phrase(Autorizar.UsuOperador1, fuente2))
         contenido.BorderWidth = 0
         contenido.Padding = 0
         contenido.HorizontalAlignment = Element.ALIGN_LEFT
@@ -479,7 +479,7 @@ Public Class Report
 
         'ASUNTO
         tabla = New PdfPTable(New Single() {100.0F})
-        contenido = New PdfPCell(New Phrase("ASUNTO: AUTORIZACIÓN SOBRE VEHÍCULO (PLACA N° 51HSAP)", fuente2))
+        contenido = New PdfPCell(New Phrase("ASUNTO: AUTORIZACIÓN SOBRE VEHÍCULO (PLACA N° " & Autorizar.Placa1 & ")", fuente2))
         contenido.BorderWidth = 0
         contenido.HorizontalAlignment = Element.ALIGN_LEFT
         tabla.AddCell(contenido)
@@ -498,25 +498,25 @@ Public Class Report
         contenido.BorderWidth = 0
         tabla.AddCell(contenido)
 
-        contenido = New PdfPCell(New Phrase("- FMM INGRESO N° 91441991", fuenteTexto))
+        contenido = New PdfPCell(New Phrase("- FMM INGRESO N° " & Autorizar.FormularioIngreso1, fuenteTexto))
         contenido.BorderWidth = 0
         contenido.PaddingLeft = 20
         contenido.HorizontalAlignment = Element.ALIGN_LEFT
         tabla.AddCell(contenido)
 
-        contenido = New PdfPCell(New Phrase("- REMISION INFRO-564", fuenteTexto))
+        contenido = New PdfPCell(New Phrase("- REMISION " & Autorizar.NRemision1, fuenteTexto))
         contenido.BorderWidth = 0
         contenido.PaddingLeft = 20
         contenido.HorizontalAlignment = Element.ALIGN_LEFT
         tabla.AddCell(contenido)
 
-        contenido = New PdfPCell(New Phrase("- PESO DE MERCANCIA: 5580 KG", fuenteTexto))
+        contenido = New PdfPCell(New Phrase("- PESO DE MERCANCIA: " & Autorizar.Peso1 & " KG", fuenteTexto))
         contenido.BorderWidth = 0
         contenido.PaddingLeft = 20
         contenido.HorizontalAlignment = Element.ALIGN_LEFT
         tabla.AddCell(contenido)
 
-        contenido = New PdfPCell(New Phrase("- MERCANCIA: ARTICULOS PLASTICOS PARA EL HOGAR Y JARDIN", fuenteTexto))
+        contenido = New PdfPCell(New Phrase("- MERCANCIA: " & Autorizar.Descripcion1, fuenteTexto))
         contenido.BorderWidth = 0
         contenido.PaddingLeft = 20
         contenido.HorizontalAlignment = Element.ALIGN_LEFT
