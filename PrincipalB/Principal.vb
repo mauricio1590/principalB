@@ -134,6 +134,6 @@ Public Class Principal
     End Sub
 
     Private Sub btnReporte_Click(sender As Object, e As EventArgs) Handles btnReporte.Click
-
+        AbrirFormPanel(New reportes)
     End Sub
 End Class

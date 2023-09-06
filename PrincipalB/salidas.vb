@@ -23,6 +23,20 @@
         lista.Items.Add(lviEncontrado)
     End Sub
 
+    Public Sub alimentarTablaregstro(_idtabla As Integer, _item As String, _desc As String, _cant As String, _bultos As String, lista As ListView)
+        Dim lviEncontrado As New ListViewItem
+        lviEncontrado.Tag = _idtabla
+        lviEncontrado.Text = _item
+        Dim saliente As Integer = 0
+        saliente = fun.CantidadsalienteItem(_idtabla)
+        lviEncontrado.SubItems.Add(_desc)
+        lviEncontrado.SubItems.Add(_cant)
+        lviEncontrado.SubItems.Add(_bultos)
+
+        lviEncontrado.SubItems.Add(0)
+        lista.Items.Add(lviEncontrado)
+    End Sub
+
     Function alimenteItem(idformualrioIngreso As String)
         Dim arlCoincidencias As ArrayList = gestor1.DatosDeConsulta("SELECT i.*,1 FROM item i,remisiones re WHERE re.id=i.idremision AND re.idformularioingreso='" & idformualrioIngreso & "'",, Principal.cadenadeconexion)
         If Not arlCoincidencias.Count = 0 Then
@@ -97,14 +111,12 @@
             Dim desc As String = lstItems.Items(i).SubItems(1).Text
             Dim cantidad As Double = lstItems.Items(i).SubItems(2).Text
             Dim saliente As Double = lstItems.Items(i).SubItems(4).Text
-            If saliente = 0 Then
-                saliente = cantidad
-            End If
+
             'Dim pesoneto As Double = lstItems.Items(i).SubItems(5).Text
             'Dim unitatio As Double = lstItems.Items(i).SubItems(6).Text
             'Dim total As Double = lstItems.Items(i).SubItems(7).Text
             If Not verificarItem(iditem) Then
-                alimentarTabla(iditem, item, desc, cantidad, saliente, lstItemConfirmado)
+                alimentarTablaregstro(iditem, item, desc, cantidad, saliente, lstItemConfirmado)
             Else
                 MessageBox.Show("El item que desea agregar ya existe Elimine primero el registro de la segunda tabla    ", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             End If
@@ -120,6 +132,8 @@
 
     Private Sub btnRegistrar_Click(sender As Object, e As EventArgs) Handles btnRegistrar.Click
         Dim salidaTotal As Boolean = True
+        Dim g As Integer = 0
+        Dim idremision As String = ""
         If txtFormularioSalida.Text = "" Then : MessageBox.Show("Debe Escribir un formulario de salida", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub : End If
         For i As Integer = 0 To lstItemConfirmado.Items.Count - 1
             Dim iditem As Integer = lstItemConfirmado.Items(i).Tag
@@ -131,12 +145,16 @@
             If cantidad > saliente Then
                 salidaTotal = False
             End If
+            If salidaTotal AndAlso g = 0 Then
+                fun.cambiarEstadoRemision("terminado", fun.extraerIdremision(iditem))
+            Else
+                fun.cambiarEstadoRemision("pendiente", fun.extraerIdremision(iditem))
+                g = g + 1
+            End If
             Dim strCadena As String = "INSERT INTO salidas (idformularioingreso,idformulariosalida,iditem,cantidad,fechasalida)values('" & fun.extraerFormularioIngreso(fun.extraerIdremision(iditem)) & "'
                                             ,'" & txtFormularioSalida.Text & "','" & iditem & "','" & saliente & "',current_date)"
             If fun.registreDatos(strCadena) Then
-                If salidaTotal Then
-                    fun.cambiarEstadoRemision("terminado", fun.extraerIdremision(iditem))
-                End If
+
 
 
             Else
@@ -144,7 +162,15 @@
             End If
 
         Next
+
         MessageBox.Show("Registro Correcto   ", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
         btnModificar.Enabled = False
+        limpiar()
+    End Sub
+    Sub limpiar()
+        txtFormularioSalida.Text = ""
+        lstItemConfirmado.Items.Clear()
+        lstItems.Items.Clear()
+
     End Sub
 End Class
