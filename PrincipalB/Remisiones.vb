@@ -864,7 +864,33 @@ Public Class Remisiones
     Private Sub GenerarPdfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPdfToolStripMenuItem.Click
         Dim repor As New Report
         Dim placas As List(Of String) = Split(txtPlacas.Text.ToString, "-").ToList
-        Dim items As List(Of ItemVO) 'LLENAR LISTA DE ITEMS GUARDANDO OBJETOS TIPO ItemVO EN ESTA LISTA
+        Dim items As New List(Of ItemVO) 'LLENAR LISTA DE ITEMS GUARDANDO OBJETOS TIPO ItemVO EN ESTA LISTA
+        Dim cantotal As Integer = 0
+        Dim bultostotal As Integer = 0
+        Dim brutototal As Integer = 0
+        Dim netototal As Integer = 0
+        Dim unitariototal As Integer = 0
+        Dim totalfinal As Integer = 0
+        For i As Integer = 0 To lstItems.Items.Count - 1
+            Dim iditem As Integer = lstItems.Items(i).Tag
+            Dim item As String = lstItems.Items(i).Text
+            Dim desc As String = lstItems.Items(i).SubItems(1).Text
+            Dim cantidad As Double = lstItems.Items(i).SubItems(2).Text
+            Dim bultos As Double = lstItems.Items(i).SubItems(3).Text
+            Dim pesobruto As Double = lstItems.Items(i).SubItems(4).Text
+            Dim pesoneto As Double = lstItems.Items(i).SubItems(5).Text
+            Dim unitatio As Double = lstItems.Items(i).SubItems(6).Text
+            Dim total As Double = lstItems.Items(i).SubItems(7).Text
+            Dim dato As New ItemVO(item, desc, cantidad, bultos, pesobruto, pesoneto, unitatio, total)
+            cantotal = cantotal + cantidad
+            bultostotal = bultostotal + bultos
+            brutototal = brutototal + pesobruto
+            netototal = netototal + pesoneto
+            unitariototal = unitariototal + unitatio
+            totalfinal = totalfinal + total
+            items.Add(dato)
+        Next
+        MsgBox(items.Count)
         Dim lstSubpartida As New List(Of String)
         lstSubpartida.Add(txtSubPartida.Text)
         Dim enradaVO As New EntradaVO(txtCLiente.Text,
@@ -876,12 +902,12 @@ Public Class Remisiones
                                       items,
                                       placas,
                                       lstSubpartida,
-                                      txtCantidad.Text,
-                                      txtBultos.Text,
-                                      txtPesoBruto.Text,
-                                      txtPesoNeto.Text,
-                                      txtUnitario.Text,
-                                      txtTotal.Text,
+                                      cantotal,
+                                       bultostotal,
+                                       brutototal,
+                                      netototal,
+                                     unitariototal,
+                                     totalfinal,
                                       fun.extraerTasa)
         Dim img As Image = Image.FromFile(Principal.logo)
         pdf.crearPDF(img, enradaVO)
@@ -905,6 +931,7 @@ Public Class Remisiones
                 i = i + 1
             End If
         Next
+        Return 1
     End Function
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         If validarCamposremision() Then
