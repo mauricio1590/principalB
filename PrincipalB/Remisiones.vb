@@ -15,6 +15,7 @@ Public Class Remisiones
     Dim intIdRemisionAModificar As Integer = 0
     Dim intIdItemModificado As Integer = 0
     Dim arraItems As New ArrayList
+    Dim rutaImagen As String
 
     Dim pdf As New Report()
 
@@ -1121,5 +1122,29 @@ Public Class Remisiones
                                             "N remisión",
                                             "Peso", "Descripción")
         pdf.CrearAutorizacion(img, firma, footer, Autorizar)
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+
+    End Sub
+
+    Private Sub btnGuardar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnGuardar.MouseMove
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_guardar-3_.png"
+        btnGuardar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnGuardar_MouseLeave(sender As Object, e As EventArgs) Handles btnGuardar.MouseLeave
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_guardar-3.png"
+        btnGuardar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnModificar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnModificar.MouseMove
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_editar-3_.png"
+        btnModificar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnModificar_MouseLeave(sender As Object, e As EventArgs) Handles btnModificar.MouseLeave
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_editar-3.png"
+        btnModificar.Image = Image.FromFile(rutaImagen)
     End Sub
 End Class
