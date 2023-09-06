@@ -27,6 +27,7 @@ Partial Class Remisiones
         Me.OpcionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BuscarPorConsecutivoDeDocumentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerarPdfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenerarAutorizacionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -104,9 +105,15 @@ Partial Class Remisiones
         Me.ColumnHeader16 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.lstProcedencia = New System.Windows.Forms.ListView()
         Me.ColumnHeader17 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.GenerarAutorizacionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -136,6 +143,12 @@ Partial Class Remisiones
         Me.GenerarPdfToolStripMenuItem.Name = "GenerarPdfToolStripMenuItem"
         Me.GenerarPdfToolStripMenuItem.Size = New System.Drawing.Size(281, 22)
         Me.GenerarPdfToolStripMenuItem.Text = "Generar pdf"
+        '
+        'GenerarAutorizacionToolStripMenuItem
+        '
+        Me.GenerarAutorizacionToolStripMenuItem.Name = "GenerarAutorizacionToolStripMenuItem"
+        Me.GenerarAutorizacionToolStripMenuItem.Size = New System.Drawing.Size(281, 22)
+        Me.GenerarAutorizacionToolStripMenuItem.Text = "Generar Autorizacion"
         '
         'btnCerrar
         '
@@ -177,38 +190,44 @@ Partial Class Remisiones
         '
         'txtTipoDocumento
         '
-        Me.txtTipoDocumento.Location = New System.Drawing.Point(138, 77)
+        Me.txtTipoDocumento.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTipoDocumento.Location = New System.Drawing.Point(178, 142)
         Me.txtTipoDocumento.Name = "txtTipoDocumento"
-        Me.txtTipoDocumento.Size = New System.Drawing.Size(241, 20)
+        Me.txtTipoDocumento.Size = New System.Drawing.Size(140, 26)
         Me.txtTipoDocumento.TabIndex = 1
+        Me.txtTipoDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label2.Location = New System.Drawing.Point(21, 77)
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(174, 118)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(108, 17)
+        Me.Label2.Size = New System.Drawing.Size(128, 21)
         Me.Label2.TabIndex = 35
         Me.Label2.Text = "Tipo Documento:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label3.Location = New System.Drawing.Point(412, 77)
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(974, 57)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(90, 17)
+        Me.Label3.Size = New System.Drawing.Size(111, 21)
         Me.Label3.TabIndex = 36
-        Me.Label3.Text = "Consecutivo #"
+        Me.Label3.Text = "Consecutivo #:"
         '
         'txtConsecutivo
         '
+        Me.txtConsecutivo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtConsecutivo.Enabled = False
-        Me.txtConsecutivo.Location = New System.Drawing.Point(521, 77)
+        Me.txtConsecutivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtConsecutivo.Location = New System.Drawing.Point(978, 81)
         Me.txtConsecutivo.Name = "txtConsecutivo"
-        Me.txtConsecutivo.Size = New System.Drawing.Size(74, 20)
+        Me.txtConsecutivo.Size = New System.Drawing.Size(122, 35)
         Me.txtConsecutivo.TabIndex = 2
+        Me.txtConsecutivo.Text = "005"
+        Me.txtConsecutivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lstTipoDocumentos
         '
@@ -217,9 +236,9 @@ Partial Class Remisiones
         Me.lstTipoDocumentos.FullRowSelect = True
         Me.lstTipoDocumentos.GridLines = True
         Me.lstTipoDocumentos.HideSelection = False
-        Me.lstTipoDocumentos.Location = New System.Drawing.Point(138, 99)
+        Me.lstTipoDocumentos.Location = New System.Drawing.Point(178, 167)
         Me.lstTipoDocumentos.Name = "lstTipoDocumentos"
-        Me.lstTipoDocumentos.Size = New System.Drawing.Size(241, 92)
+        Me.lstTipoDocumentos.Size = New System.Drawing.Size(140, 85)
         Me.lstTipoDocumentos.TabIndex = 38
         Me.lstTipoDocumentos.UseCompatibleStateImageBehavior = False
         Me.lstTipoDocumentos.View = System.Windows.Forms.View.Details
@@ -233,53 +252,59 @@ Partial Class Remisiones
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label4.Location = New System.Drawing.Point(632, 77)
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(170, 60)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(150, 17)
+        Me.Label4.Size = New System.Drawing.Size(180, 21)
         Me.Label4.TabIndex = 39
-        Me.Label4.Text = "# Formulario de ingreso"
+        Me.Label4.Text = "# Formulario de ingreso:"
         '
         'txtidformularioIngreso
         '
-        Me.txtidformularioIngreso.Location = New System.Drawing.Point(820, 77)
+        Me.txtidformularioIngreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtidformularioIngreso.Location = New System.Drawing.Point(174, 82)
         Me.txtidformularioIngreso.Name = "txtidformularioIngreso"
-        Me.txtidformularioIngreso.Size = New System.Drawing.Size(306, 20)
+        Me.txtidformularioIngreso.Size = New System.Drawing.Size(241, 26)
         Me.txtidformularioIngreso.TabIndex = 3
+        Me.txtidformularioIngreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label5.Location = New System.Drawing.Point(21, 124)
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(516, 60)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(75, 17)
+        Me.Label5.Size = New System.Drawing.Size(89, 21)
         Me.Label5.TabIndex = 41
         Me.Label5.Text = "Subpartida:"
         '
         'txtSubPartida
         '
-        Me.txtSubPartida.Location = New System.Drawing.Point(138, 124)
+        Me.txtSubPartida.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSubPartida.Location = New System.Drawing.Point(520, 82)
         Me.txtSubPartida.Name = "txtSubPartida"
-        Me.txtSubPartida.Size = New System.Drawing.Size(241, 20)
+        Me.txtSubPartida.Size = New System.Drawing.Size(241, 26)
         Me.txtSubPartida.TabIndex = 4
+        Me.txtSubPartida.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label6.Location = New System.Drawing.Point(412, 124)
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(369, 118)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(50, 17)
+        Me.Label6.Size = New System.Drawing.Size(61, 21)
         Me.Label6.TabIndex = 35
         Me.Label6.Text = "Cliente:"
         '
         'txtCLiente
         '
-        Me.txtCLiente.Location = New System.Drawing.Point(521, 124)
+        Me.txtCLiente.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCLiente.Location = New System.Drawing.Point(373, 142)
         Me.txtCLiente.Name = "txtCLiente"
-        Me.txtCLiente.Size = New System.Drawing.Size(236, 20)
+        Me.txtCLiente.Size = New System.Drawing.Size(388, 26)
         Me.txtCLiente.TabIndex = 5
+        Me.txtCLiente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lstNombres
         '
@@ -288,9 +313,9 @@ Partial Class Remisiones
         Me.lstNombres.FullRowSelect = True
         Me.lstNombres.GridLines = True
         Me.lstNombres.HideSelection = False
-        Me.lstNombres.Location = New System.Drawing.Point(521, 150)
+        Me.lstNombres.Location = New System.Drawing.Point(373, 167)
         Me.lstNombres.Name = "lstNombres"
-        Me.lstNombres.Size = New System.Drawing.Size(427, 92)
+        Me.lstNombres.Size = New System.Drawing.Size(388, 85)
         Me.lstNombres.TabIndex = 43
         Me.lstNombres.UseCompatibleStateImageBehavior = False
         Me.lstNombres.View = System.Windows.Forms.View.Details
@@ -299,7 +324,7 @@ Partial Class Remisiones
         'ColumnHeader2
         '
         Me.ColumnHeader2.Text = "NIT"
-        Me.ColumnHeader2.Width = 127
+        Me.ColumnHeader2.Width = 100
         '
         'ColumnHeader3
         '
@@ -309,45 +334,48 @@ Partial Class Remisiones
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label7.Location = New System.Drawing.Point(21, 174)
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(23, 188)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(108, 17)
+        Me.Label7.Size = New System.Drawing.Size(129, 21)
         Me.Label7.TabIndex = 44
-        Me.Label7.Text = "Descripcion Item:"
+        Me.Label7.Text = "Descripción Item:"
         '
         'txtDescItem
         '
-        Me.txtDescItem.Location = New System.Drawing.Point(138, 174)
+        Me.txtDescItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDescItem.Location = New System.Drawing.Point(27, 212)
         Me.txtDescItem.Name = "txtDescItem"
-        Me.txtDescItem.Size = New System.Drawing.Size(617, 20)
+        Me.txtDescItem.Size = New System.Drawing.Size(734, 26)
         Me.txtDescItem.TabIndex = 6
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label8.Location = New System.Drawing.Point(764, 174)
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(793, 118)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(36, 17)
+        Me.Label8.Size = New System.Drawing.Size(44, 21)
         Me.Label8.TabIndex = 46
         Me.Label8.Text = "Item:"
         '
         'txtItem
         '
-        Me.txtItem.Location = New System.Drawing.Point(820, 174)
+        Me.txtItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtItem.Location = New System.Drawing.Point(794, 142)
         Me.txtItem.MaxLength = 25
         Me.txtItem.Name = "txtItem"
-        Me.txtItem.Size = New System.Drawing.Size(306, 20)
+        Me.txtItem.Size = New System.Drawing.Size(306, 26)
         Me.txtItem.TabIndex = 7
+        Me.txtItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label9.Location = New System.Drawing.Point(21, 346)
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(793, 188)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(94, 17)
+        Me.Label9.Size = New System.Drawing.Size(110, 21)
         Me.Label9.TabIndex = 47
         Me.Label9.Text = "Tipo Embalaje:"
         '
@@ -358,9 +386,9 @@ Partial Class Remisiones
         Me.lstEmbalajes.FullRowSelect = True
         Me.lstEmbalajes.GridLines = True
         Me.lstEmbalajes.HideSelection = False
-        Me.lstEmbalajes.Location = New System.Drawing.Point(138, 369)
+        Me.lstEmbalajes.Location = New System.Drawing.Point(793, 232)
         Me.lstEmbalajes.Name = "lstEmbalajes"
-        Me.lstEmbalajes.Size = New System.Drawing.Size(241, 92)
+        Me.lstEmbalajes.Size = New System.Drawing.Size(307, 73)
         Me.lstEmbalajes.TabIndex = 48
         Me.lstEmbalajes.UseCompatibleStateImageBehavior = False
         Me.lstEmbalajes.View = System.Windows.Forms.View.Details
@@ -373,118 +401,126 @@ Partial Class Remisiones
         '
         'txtEmbalaje
         '
-        Me.txtEmbalaje.Location = New System.Drawing.Point(138, 346)
+        Me.txtEmbalaje.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEmbalaje.Location = New System.Drawing.Point(793, 209)
         Me.txtEmbalaje.Name = "txtEmbalaje"
-        Me.txtEmbalaje.Size = New System.Drawing.Size(241, 20)
+        Me.txtEmbalaje.Size = New System.Drawing.Size(307, 26)
         Me.txtEmbalaje.TabIndex = 14
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label10.Location = New System.Drawing.Point(21, 212)
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(25, 257)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(63, 17)
+        Me.Label10.Size = New System.Drawing.Size(75, 21)
         Me.Label10.TabIndex = 50
         Me.Label10.Text = "Cantidad:"
         '
         'txtCantidad
         '
-        Me.txtCantidad.Location = New System.Drawing.Point(138, 212)
+        Me.txtCantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCantidad.Location = New System.Drawing.Point(29, 281)
         Me.txtCantidad.Name = "txtCantidad"
-        Me.txtCantidad.Size = New System.Drawing.Size(74, 20)
+        Me.txtCantidad.Size = New System.Drawing.Size(74, 26)
         Me.txtCantidad.TabIndex = 8
         '
         'txtBultos
         '
-        Me.txtBultos.Location = New System.Drawing.Point(285, 212)
+        Me.txtBultos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBultos.Location = New System.Drawing.Point(138, 281)
         Me.txtBultos.Name = "txtBultos"
-        Me.txtBultos.Size = New System.Drawing.Size(74, 20)
+        Me.txtBultos.Size = New System.Drawing.Size(74, 26)
         Me.txtBultos.TabIndex = 9
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label11.Location = New System.Drawing.Point(233, 212)
+        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(134, 257)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(46, 17)
+        Me.Label11.Size = New System.Drawing.Size(56, 21)
         Me.Label11.TabIndex = 52
         Me.Label11.Text = "Bultos:"
         '
         'txtPesoBruto
         '
-        Me.txtPesoBruto.Location = New System.Drawing.Point(468, 212)
+        Me.txtPesoBruto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPesoBruto.Location = New System.Drawing.Point(249, 281)
         Me.txtPesoBruto.Name = "txtPesoBruto"
-        Me.txtPesoBruto.Size = New System.Drawing.Size(74, 20)
+        Me.txtPesoBruto.Size = New System.Drawing.Size(80, 26)
         Me.txtPesoBruto.TabIndex = 10
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label12.Location = New System.Drawing.Point(388, 212)
+        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(245, 257)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(74, 17)
+        Me.Label12.Size = New System.Drawing.Size(87, 21)
         Me.Label12.TabIndex = 54
         Me.Label12.Text = "Peso Bruto:"
         '
         'txtPesoNeto
         '
-        Me.txtPesoNeto.Location = New System.Drawing.Point(651, 212)
+        Me.txtPesoNeto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPesoNeto.Location = New System.Drawing.Point(373, 280)
         Me.txtPesoNeto.Name = "txtPesoNeto"
-        Me.txtPesoNeto.Size = New System.Drawing.Size(74, 20)
+        Me.txtPesoNeto.Size = New System.Drawing.Size(80, 26)
         Me.txtPesoNeto.TabIndex = 11
         '
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label13.Location = New System.Drawing.Point(572, 212)
+        Me.Label13.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(374, 258)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(73, 17)
+        Me.Label13.Size = New System.Drawing.Size(83, 21)
         Me.Label13.TabIndex = 56
-        Me.Label13.Text = "peso Neto:"
+        Me.Label13.Text = "Peso Neto:"
         '
         'txtTotal
         '
-        Me.txtTotal.Location = New System.Drawing.Point(849, 212)
+        Me.txtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTotal.Location = New System.Drawing.Point(496, 279)
         Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(74, 20)
+        Me.txtTotal.Size = New System.Drawing.Size(105, 26)
         Me.txtTotal.TabIndex = 12
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label14.Location = New System.Drawing.Point(765, 212)
+        Me.Label14.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(492, 255)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(78, 17)
+        Me.Label14.Size = New System.Drawing.Size(91, 21)
         Me.Label14.TabIndex = 60
         Me.Label14.Text = "Varlor Total:"
         '
         'txtUnitario
         '
-        Me.txtUnitario.Location = New System.Drawing.Point(1036, 212)
+        Me.txtUnitario.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUnitario.Location = New System.Drawing.Point(639, 280)
         Me.txtUnitario.Name = "txtUnitario"
-        Me.txtUnitario.Size = New System.Drawing.Size(74, 20)
+        Me.txtUnitario.Size = New System.Drawing.Size(105, 26)
         Me.txtUnitario.TabIndex = 13
         '
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label15.Location = New System.Drawing.Point(939, 212)
+        Me.Label15.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(635, 256)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(91, 17)
+        Me.Label15.Size = New System.Drawing.Size(109, 21)
         Me.Label15.TabIndex = 58
         Me.Label15.Text = "Valor Unitario:"
         '
         'txtPaisOrigen
         '
-        Me.txtPaisOrigen.Location = New System.Drawing.Point(508, 346)
+        Me.txtPaisOrigen.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPaisOrigen.Location = New System.Drawing.Point(27, 438)
         Me.txtPaisOrigen.Name = "txtPaisOrigen"
-        Me.txtPaisOrigen.Size = New System.Drawing.Size(241, 20)
+        Me.txtPaisOrigen.Size = New System.Drawing.Size(194, 26)
         Me.txtPaisOrigen.TabIndex = 15
         '
         'lstOrigen
@@ -494,9 +530,9 @@ Partial Class Remisiones
         Me.lstOrigen.FullRowSelect = True
         Me.lstOrigen.GridLines = True
         Me.lstOrigen.HideSelection = False
-        Me.lstOrigen.Location = New System.Drawing.Point(508, 372)
+        Me.lstOrigen.Location = New System.Drawing.Point(27, 463)
         Me.lstOrigen.Name = "lstOrigen"
-        Me.lstOrigen.Size = New System.Drawing.Size(241, 92)
+        Me.lstOrigen.Size = New System.Drawing.Size(194, 85)
         Me.lstOrigen.TabIndex = 63
         Me.lstOrigen.UseCompatibleStateImageBehavior = False
         Me.lstOrigen.View = System.Windows.Forms.View.Details
@@ -510,18 +546,19 @@ Partial Class Remisiones
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label16.Location = New System.Drawing.Point(391, 346)
+        Me.Label16.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(23, 414)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(78, 17)
+        Me.Label16.Size = New System.Drawing.Size(92, 21)
         Me.Label16.TabIndex = 62
         Me.Label16.Text = "Pais Origen:"
         '
         'txtPaisCompra
         '
-        Me.txtPaisCompra.Location = New System.Drawing.Point(871, 343)
+        Me.txtPaisCompra.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPaisCompra.Location = New System.Drawing.Point(236, 438)
         Me.txtPaisCompra.Name = "txtPaisCompra"
-        Me.txtPaisCompra.Size = New System.Drawing.Size(236, 20)
+        Me.txtPaisCompra.Size = New System.Drawing.Size(194, 26)
         Me.txtPaisCompra.TabIndex = 16
         '
         'lstPaisCompra
@@ -531,9 +568,9 @@ Partial Class Remisiones
         Me.lstPaisCompra.FullRowSelect = True
         Me.lstPaisCompra.GridLines = True
         Me.lstPaisCompra.HideSelection = False
-        Me.lstPaisCompra.Location = New System.Drawing.Point(871, 369)
+        Me.lstPaisCompra.Location = New System.Drawing.Point(236, 463)
         Me.lstPaisCompra.Name = "lstPaisCompra"
-        Me.lstPaisCompra.Size = New System.Drawing.Size(274, 92)
+        Me.lstPaisCompra.Size = New System.Drawing.Size(194, 85)
         Me.lstPaisCompra.TabIndex = 66
         Me.lstPaisCompra.UseCompatibleStateImageBehavior = False
         Me.lstPaisCompra.View = System.Windows.Forms.View.Details
@@ -547,18 +584,19 @@ Partial Class Remisiones
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label17.Location = New System.Drawing.Point(762, 346)
+        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(232, 413)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(85, 17)
+        Me.Label17.Size = New System.Drawing.Size(100, 21)
         Me.Label17.TabIndex = 65
         Me.Label17.Text = "Pais Compra:"
         '
         'txtDestino
         '
-        Me.txtDestino.Location = New System.Drawing.Point(138, 407)
+        Me.txtDestino.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDestino.Location = New System.Drawing.Point(448, 437)
         Me.txtDestino.Name = "txtDestino"
-        Me.txtDestino.Size = New System.Drawing.Size(241, 20)
+        Me.txtDestino.Size = New System.Drawing.Size(194, 26)
         Me.txtDestino.TabIndex = 17
         '
         'lstDestino
@@ -568,9 +606,9 @@ Partial Class Remisiones
         Me.lstDestino.FullRowSelect = True
         Me.lstDestino.GridLines = True
         Me.lstDestino.HideSelection = False
-        Me.lstDestino.Location = New System.Drawing.Point(138, 424)
+        Me.lstDestino.Location = New System.Drawing.Point(448, 462)
         Me.lstDestino.Name = "lstDestino"
-        Me.lstDestino.Size = New System.Drawing.Size(241, 92)
+        Me.lstDestino.Size = New System.Drawing.Size(194, 86)
         Me.lstDestino.TabIndex = 69
         Me.lstDestino.UseCompatibleStateImageBehavior = False
         Me.lstDestino.View = System.Windows.Forms.View.Details
@@ -584,38 +622,39 @@ Partial Class Remisiones
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label18.Location = New System.Drawing.Point(21, 409)
+        Me.Label18.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(444, 415)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(82, 17)
+        Me.Label18.Size = New System.Drawing.Size(97, 21)
         Me.Label18.TabIndex = 68
         Me.Label18.Text = "Pais Destino:"
         '
         'txtProcedencia
         '
-        Me.txtProcedencia.Location = New System.Drawing.Point(508, 410)
+        Me.txtProcedencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtProcedencia.Location = New System.Drawing.Point(661, 437)
         Me.txtProcedencia.MaxLength = 500
         Me.txtProcedencia.Name = "txtProcedencia"
-        Me.txtProcedencia.Size = New System.Drawing.Size(241, 20)
+        Me.txtProcedencia.Size = New System.Drawing.Size(194, 26)
         Me.txtProcedencia.TabIndex = 18
         '
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label19.Location = New System.Drawing.Point(391, 410)
+        Me.Label19.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(657, 413)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(109, 17)
+        Me.Label19.Size = New System.Drawing.Size(128, 21)
         Me.Label19.TabIndex = 72
         Me.Label19.Text = "Pais Procedencia:"
         '
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label20.Location = New System.Drawing.Point(762, 407)
+        Me.Label20.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(793, 256)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(44, 17)
+        Me.Label20.Size = New System.Drawing.Size(53, 21)
         Me.Label20.TabIndex = 73
         Me.Label20.Text = "Fecha:"
         '
@@ -623,37 +662,41 @@ Partial Class Remisiones
         '
         Me.dtFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtFecha.Location = New System.Drawing.Point(871, 405)
+        Me.dtFecha.Location = New System.Drawing.Point(794, 277)
         Me.dtFecha.Margin = New System.Windows.Forms.Padding(4)
         Me.dtFecha.Name = "dtFecha"
-        Me.dtFecha.Size = New System.Drawing.Size(136, 22)
+        Me.dtFecha.Size = New System.Drawing.Size(109, 22)
         Me.dtFecha.TabIndex = 19
         '
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label21.Location = New System.Drawing.Point(36, 559)
+        Me.Label21.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.ForeColor = System.Drawing.Color.White
+        Me.Label21.Location = New System.Drawing.Point(4, 3)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(51, 17)
+        Me.Label21.Size = New System.Drawing.Size(84, 30)
         Me.Label21.TabIndex = 75
         Me.Label21.Text = "Estado:"
         '
         'lblEstado
         '
         Me.lblEstado.AutoSize = True
-        Me.lblEstado.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.lblEstado.Location = New System.Drawing.Point(153, 560)
+        Me.lblEstado.BackColor = System.Drawing.Color.Transparent
+        Me.lblEstado.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEstado.ForeColor = System.Drawing.Color.White
+        Me.lblEstado.Location = New System.Drawing.Point(89, 3)
         Me.lblEstado.Name = "lblEstado"
-        Me.lblEstado.Size = New System.Drawing.Size(65, 17)
+        Me.lblEstado.Size = New System.Drawing.Size(111, 30)
         Me.lblEstado.TabIndex = 76
         Me.lblEstado.Text = "Pendiente"
         '
         'txtAlmacenamiento
         '
-        Me.txtAlmacenamiento.Location = New System.Drawing.Point(521, 496)
+        Me.txtAlmacenamiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAlmacenamiento.Location = New System.Drawing.Point(876, 437)
         Me.txtAlmacenamiento.Name = "txtAlmacenamiento"
-        Me.txtAlmacenamiento.Size = New System.Drawing.Size(264, 20)
+        Me.txtAlmacenamiento.Size = New System.Drawing.Size(224, 26)
         Me.txtAlmacenamiento.TabIndex = 20
         '
         'lstAlmacenamiento
@@ -663,9 +706,9 @@ Partial Class Remisiones
         Me.lstAlmacenamiento.FullRowSelect = True
         Me.lstAlmacenamiento.GridLines = True
         Me.lstAlmacenamiento.HideSelection = False
-        Me.lstAlmacenamiento.Location = New System.Drawing.Point(521, 516)
+        Me.lstAlmacenamiento.Location = New System.Drawing.Point(876, 462)
         Me.lstAlmacenamiento.Name = "lstAlmacenamiento"
-        Me.lstAlmacenamiento.Size = New System.Drawing.Size(264, 92)
+        Me.lstAlmacenamiento.Size = New System.Drawing.Size(224, 86)
         Me.lstAlmacenamiento.TabIndex = 78
         Me.lstAlmacenamiento.UseCompatibleStateImageBehavior = False
         Me.lstAlmacenamiento.View = System.Windows.Forms.View.Details
@@ -679,66 +722,75 @@ Partial Class Remisiones
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label23.Location = New System.Drawing.Point(395, 499)
+        Me.Label23.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label23.Location = New System.Drawing.Point(872, 415)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(107, 17)
+        Me.Label23.Size = New System.Drawing.Size(130, 21)
         Me.Label23.TabIndex = 77
         Me.Label23.Text = "Almacenamiento:"
         '
         'Label24
         '
         Me.Label24.AutoSize = True
-        Me.Label24.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label24.Location = New System.Drawing.Point(802, 499)
+        Me.Label24.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.Location = New System.Drawing.Point(923, 255)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(47, 17)
+        Me.Label24.Size = New System.Drawing.Size(56, 21)
         Me.Label24.TabIndex = 80
         Me.Label24.Text = "Placas:"
         '
         'txtPlacas
         '
-        Me.txtPlacas.Location = New System.Drawing.Point(871, 499)
+        Me.txtPlacas.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPlacas.Location = New System.Drawing.Point(927, 277)
         Me.txtPlacas.Multiline = True
         Me.txtPlacas.Name = "txtPlacas"
-        Me.txtPlacas.Size = New System.Drawing.Size(274, 79)
+        Me.txtPlacas.Size = New System.Drawing.Size(173, 130)
         Me.txtPlacas.TabIndex = 21
         '
         'btnGuardar
         '
-        Me.btnGuardar.Location = New System.Drawing.Point(24, 658)
+        Me.btnGuardar.FlatAppearance.BorderSize = 0
+        Me.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGuardar.Image = CType(resources.GetObject("btnGuardar.Image"), System.Drawing.Image)
+        Me.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnGuardar.Location = New System.Drawing.Point(598, 481)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(64, 20)
+        Me.btnGuardar.Size = New System.Drawing.Size(248, 56)
         Me.btnGuardar.TabIndex = 81
-        Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = True
         '
         'btnModificar
         '
-        Me.btnModificar.Location = New System.Drawing.Point(138, 658)
+        Me.btnModificar.FlatAppearance.BorderSize = 0
+        Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnModificar.Image = CType(resources.GetObject("btnModificar.Image"), System.Drawing.Image)
+        Me.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnModificar.Location = New System.Drawing.Point(861, 481)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(64, 20)
+        Me.btnModificar.Size = New System.Drawing.Size(248, 56)
         Me.btnModificar.TabIndex = 82
-        Me.btnModificar.Text = "Modificar"
         Me.btnModificar.UseVisualStyleBackColor = True
         '
         'lblTasa
         '
         Me.lblTasa.AutoSize = True
-        Me.lblTasa.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.lblTasa.Location = New System.Drawing.Point(541, 608)
+        Me.lblTasa.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTasa.ForeColor = System.Drawing.Color.White
+        Me.lblTasa.Location = New System.Drawing.Point(995, 3)
         Me.lblTasa.Name = "lblTasa"
-        Me.lblTasa.Size = New System.Drawing.Size(15, 17)
+        Me.lblTasa.Size = New System.Drawing.Size(109, 30)
         Me.lblTasa.TabIndex = 84
-        Me.lblTasa.Text = "0"
+        Me.lblTasa.Text = "$5.000,00"
         '
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label25.Location = New System.Drawing.Point(412, 608)
+        Me.Label25.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.ForeColor = System.Drawing.Color.White
+        Me.Label25.Location = New System.Drawing.Point(825, 3)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(105, 17)
+        Me.Label25.Size = New System.Drawing.Size(171, 30)
         Me.Label25.TabIndex = 83
         Me.Label25.Text = "Tasa de Cambio:"
         '
@@ -749,9 +801,9 @@ Partial Class Remisiones
         Me.lstItems.FullRowSelect = True
         Me.lstItems.GridLines = True
         Me.lstItems.HideSelection = False
-        Me.lstItems.Location = New System.Drawing.Point(24, 248)
+        Me.lstItems.Location = New System.Drawing.Point(27, 314)
         Me.lstItems.Name = "lstItems"
-        Me.lstItems.Size = New System.Drawing.Size(1094, 80)
+        Me.lstItems.Size = New System.Drawing.Size(876, 93)
         Me.lstItems.TabIndex = 85
         Me.lstItems.UseCompatibleStateImageBehavior = False
         Me.lstItems.View = System.Windows.Forms.View.Details
@@ -759,41 +811,42 @@ Partial Class Remisiones
         'ColumnHeader9
         '
         Me.ColumnHeader9.Text = "Item"
-        Me.ColumnHeader9.Width = 221
+        Me.ColumnHeader9.Width = 196
         '
         'ColumnHeader10
         '
         Me.ColumnHeader10.Text = "Descripcion"
-        Me.ColumnHeader10.Width = 413
+        Me.ColumnHeader10.Width = 308
         '
         'ColumnHeader11
         '
         Me.ColumnHeader11.Text = "Cant"
-        Me.ColumnHeader11.Width = 61
+        Me.ColumnHeader11.Width = 55
         '
         'ColumnHeader12
         '
         Me.ColumnHeader12.Text = "Bultos"
-        Me.ColumnHeader12.Width = 92
+        Me.ColumnHeader12.Width = 57
         '
         'ColumnHeader13
         '
         Me.ColumnHeader13.Text = "Pb"
-        Me.ColumnHeader13.Width = 85
+        Me.ColumnHeader13.Width = 52
         '
         'ColumnHeader14
         '
         Me.ColumnHeader14.Text = "Pn"
-        Me.ColumnHeader14.Width = 69
+        Me.ColumnHeader14.Width = 50
         '
         'ColumnHeader15
         '
         Me.ColumnHeader15.Text = "V Unitario"
-        Me.ColumnHeader15.Width = 86
+        Me.ColumnHeader15.Width = 71
         '
         'ColumnHeader16
         '
         Me.ColumnHeader16.Text = "V total"
+        Me.ColumnHeader16.Width = 82
         '
         'lstProcedencia
         '
@@ -802,9 +855,9 @@ Partial Class Remisiones
         Me.lstProcedencia.FullRowSelect = True
         Me.lstProcedencia.GridLines = True
         Me.lstProcedencia.HideSelection = False
-        Me.lstProcedencia.Location = New System.Drawing.Point(508, 436)
+        Me.lstProcedencia.Location = New System.Drawing.Point(661, 462)
         Me.lstProcedencia.Name = "lstProcedencia"
-        Me.lstProcedencia.Size = New System.Drawing.Size(241, 92)
+        Me.lstProcedencia.Size = New System.Drawing.Size(194, 86)
         Me.lstProcedencia.TabIndex = 86
         Me.lstProcedencia.UseCompatibleStateImageBehavior = False
         Me.lstProcedencia.View = System.Windows.Forms.View.Details
@@ -815,76 +868,110 @@ Partial Class Remisiones
         Me.ColumnHeader17.Text = "Pais"
         Me.ColumnHeader17.Width = 252
         '
-        'GenerarAutorizacionToolStripMenuItem
+        'Panel2
         '
-        Me.GenerarAutorizacionToolStripMenuItem.Name = "GenerarAutorizacionToolStripMenuItem"
-        Me.GenerarAutorizacionToolStripMenuItem.Size = New System.Drawing.Size(281, 22)
-        Me.GenerarAutorizacionToolStripMenuItem.Text = "Generar Autorizacion"
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.Panel4)
+        Me.Panel2.Controls.Add(Me.Panel3)
+        Me.Panel2.Controls.Add(Me.lstProcedencia)
+        Me.Panel2.Controls.Add(Me.lstEmbalajes)
+        Me.Panel2.Controls.Add(Me.btnModificar)
+        Me.Panel2.Controls.Add(Me.btnGuardar)
+        Me.Panel2.Controls.Add(Me.PictureBox1)
+        Me.Panel2.Controls.Add(Me.txtTipoDocumento)
+        Me.Panel2.Controls.Add(Me.txtPlacas)
+        Me.Panel2.Controls.Add(Me.Label24)
+        Me.Panel2.Controls.Add(Me.lstItems)
+        Me.Panel2.Controls.Add(Me.lstNombres)
+        Me.Panel2.Controls.Add(Me.txtAlmacenamiento)
+        Me.Panel2.Controls.Add(Me.lstAlmacenamiento)
+        Me.Panel2.Controls.Add(Me.lstTipoDocumentos)
+        Me.Panel2.Controls.Add(Me.Label23)
+        Me.Panel2.Controls.Add(Me.Label2)
+        Me.Panel2.Controls.Add(Me.Label6)
+        Me.Panel2.Controls.Add(Me.txtCLiente)
+        Me.Panel2.Controls.Add(Me.Label3)
+        Me.Panel2.Controls.Add(Me.dtFecha)
+        Me.Panel2.Controls.Add(Me.Label20)
+        Me.Panel2.Controls.Add(Me.txtConsecutivo)
+        Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Controls.Add(Me.txtidformularioIngreso)
+        Me.Panel2.Controls.Add(Me.txtDescItem)
+        Me.Panel2.Controls.Add(Me.txtProcedencia)
+        Me.Panel2.Controls.Add(Me.Label5)
+        Me.Panel2.Controls.Add(Me.Label19)
+        Me.Panel2.Controls.Add(Me.txtSubPartida)
+        Me.Panel2.Controls.Add(Me.lstDestino)
+        Me.Panel2.Controls.Add(Me.Label7)
+        Me.Panel2.Controls.Add(Me.Label18)
+        Me.Panel2.Controls.Add(Me.Label8)
+        Me.Panel2.Controls.Add(Me.txtItem)
+        Me.Panel2.Controls.Add(Me.txtTotal)
+        Me.Panel2.Controls.Add(Me.txtDestino)
+        Me.Panel2.Controls.Add(Me.txtPaisCompra)
+        Me.Panel2.Controls.Add(Me.Label10)
+        Me.Panel2.Controls.Add(Me.lstPaisCompra)
+        Me.Panel2.Controls.Add(Me.txtCantidad)
+        Me.Panel2.Controls.Add(Me.Label17)
+        Me.Panel2.Controls.Add(Me.Label11)
+        Me.Panel2.Controls.Add(Me.txtPaisOrigen)
+        Me.Panel2.Controls.Add(Me.txtBultos)
+        Me.Panel2.Controls.Add(Me.lstOrigen)
+        Me.Panel2.Controls.Add(Me.Label12)
+        Me.Panel2.Controls.Add(Me.Label16)
+        Me.Panel2.Controls.Add(Me.txtPesoBruto)
+        Me.Panel2.Controls.Add(Me.txtEmbalaje)
+        Me.Panel2.Controls.Add(Me.Label13)
+        Me.Panel2.Controls.Add(Me.Label9)
+        Me.Panel2.Controls.Add(Me.txtPesoNeto)
+        Me.Panel2.Controls.Add(Me.Label15)
+        Me.Panel2.Controls.Add(Me.txtUnitario)
+        Me.Panel2.Controls.Add(Me.Label14)
+        Me.Panel2.Location = New System.Drawing.Point(9, 64)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(1129, 591)
+        Me.Panel2.TabIndex = 87
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
+        Me.Panel3.Location = New System.Drawing.Point(-1, -1)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1129, 39)
+        Me.Panel3.TabIndex = 48
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(27, 62)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(100, 100)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox1.TabIndex = 47
+        Me.PictureBox1.TabStop = False
+        '
+        'Panel4
+        '
+        Me.Panel4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
+        Me.Panel4.Controls.Add(Me.lblEstado)
+        Me.Panel4.Controls.Add(Me.lblTasa)
+        Me.Panel4.Controls.Add(Me.Label21)
+        Me.Panel4.Controls.Add(Me.Label25)
+        Me.Panel4.Location = New System.Drawing.Point(0, 554)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(1129, 35)
+        Me.Panel4.TabIndex = 87
         '
         'Remisiones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1170, 750)
-        Me.Controls.Add(Me.lstEmbalajes)
-        Me.Controls.Add(Me.lstProcedencia)
-        Me.Controls.Add(Me.lstItems)
-        Me.Controls.Add(Me.lblTasa)
-        Me.Controls.Add(Me.Label25)
-        Me.Controls.Add(Me.btnModificar)
-        Me.Controls.Add(Me.btnGuardar)
-        Me.Controls.Add(Me.txtPlacas)
-        Me.Controls.Add(Me.Label24)
-        Me.Controls.Add(Me.txtAlmacenamiento)
-        Me.Controls.Add(Me.lstAlmacenamiento)
-        Me.Controls.Add(Me.Label23)
-        Me.Controls.Add(Me.lblEstado)
-        Me.Controls.Add(Me.Label21)
-        Me.Controls.Add(Me.dtFecha)
-        Me.Controls.Add(Me.Label20)
-        Me.Controls.Add(Me.txtProcedencia)
-        Me.Controls.Add(Me.Label19)
-        Me.Controls.Add(Me.lstDestino)
-        Me.Controls.Add(Me.Label18)
-        Me.Controls.Add(Me.txtPaisCompra)
-        Me.Controls.Add(Me.lstPaisCompra)
-        Me.Controls.Add(Me.Label17)
-        Me.Controls.Add(Me.txtPaisOrigen)
-        Me.Controls.Add(Me.lstOrigen)
-        Me.Controls.Add(Me.Label16)
-        Me.Controls.Add(Me.txtTotal)
-        Me.Controls.Add(Me.Label14)
-        Me.Controls.Add(Me.txtUnitario)
-        Me.Controls.Add(Me.Label15)
-        Me.Controls.Add(Me.txtPesoNeto)
-        Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.txtPesoBruto)
-        Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.txtBultos)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.txtCantidad)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.txtEmbalaje)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.txtItem)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.txtDescItem)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.txtSubPartida)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.txtidformularioIngreso)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.txtConsecutivo)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.txtCLiente)
-        Me.Controls.Add(Me.txtTipoDocumento)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.Label2)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(1170, 696)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.lstTipoDocumentos)
-        Me.Controls.Add(Me.lstNombres)
-        Me.Controls.Add(Me.txtDestino)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Remisiones"
@@ -893,6 +980,11 @@ Partial Class Remisiones
         Me.MenuStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -980,4 +1072,8 @@ Partial Class Remisiones
     Friend WithEvents lstProcedencia As ListView
     Friend WithEvents ColumnHeader17 As ColumnHeader
     Friend WithEvents GenerarAutorizacionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Panel4 As Panel
 End Class
