@@ -10,7 +10,7 @@ Public Class Principal
     Public intIdUsuario As Integer = 0
     Public servidor As String = "localhost"
     Public usuario As String = "root"
-    Public password As String = "90271516"
+    Public password As String = "bandband"
     Public database As String = "frontier"
     Public cadenadeconexion As String = "Server=" & servidor & ";Uid=root;Pwd=" & password & ";Database=" & database & ""
 
@@ -134,6 +134,6 @@ Public Class Principal
     End Sub
 
     Private Sub btnReporte_Click(sender As Object, e As EventArgs) Handles btnReporte.Click
-
+        AbrirFormPanel(New reportes)
     End Sub
 End Class
