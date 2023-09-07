@@ -44,11 +44,11 @@ Partial Class salidas
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader14 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnRegistrar = New System.Windows.Forms.Button()
-        Me.ColumnHeader14 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -233,6 +233,11 @@ Partial Class salidas
         Me.ColumnHeader3.Text = "Cant"
         Me.ColumnHeader3.Width = 61
         '
+        'ColumnHeader14
+        '
+        Me.ColumnHeader14.Text = "Cantidad Saliente"
+        Me.ColumnHeader14.Width = 134
+        '
         'Label3
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Top
@@ -272,11 +277,6 @@ Partial Class salidas
         Me.btnRegistrar.TabIndex = 99
         Me.btnRegistrar.Text = "Registrar"
         Me.btnRegistrar.UseVisualStyleBackColor = True
-        '
-        'ColumnHeader14
-        '
-        Me.ColumnHeader14.Text = "Cantidad Saliente"
-        Me.ColumnHeader14.Width = 134
         '
         'salidas
         '
