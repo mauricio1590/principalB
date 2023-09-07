@@ -10,19 +10,7 @@ Public Class reportes
     End Sub
 
     Private Sub txtReporte_TextChanged(sender As Object, e As EventArgs) Handles txtReporte.TextChanged
-        If txtReporte.Text = "" Then : Exit Sub : End If
-        lstReporte.Visible = True
-        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no FROM reporte WHERE no LIKE '%" & txtReporte.Text & "%' ORDER BY no LIMIT 30", , Principal.cadenadeconexion)
-        If Not arlCoincidencias.Count = 0 Then lstReporte.Visible = True
-        lstReporte.Items.Clear()
-        lstReporte.BeginUpdate()
-        For Each Encontrado As ArrayList In arlCoincidencias
-            Dim lviEncontrado As New ListViewItem
-            lviEncontrado.Tag = Encontrado(0)
-            lviEncontrado.Text = Encontrado(1)
-            lstReporte.Items.Add(lviEncontrado)
-        Next
-        lstReporte.EndUpdate()
+        buscarDatos()
     End Sub
 
     Private Sub txtReporte_KeyDown(sender As Object, e As KeyEventArgs) Handles txtReporte.KeyDown
@@ -50,7 +38,7 @@ Public Class reportes
 
         Dim fecha1 As Date = fdesde.Value.Date
         Dim fecha2 As Date = fhasta.Value.Date
-
+        lstReporte.Visible = False
         If Not lstReporte.SelectedItems.Count = 0 Then
             fun.buscarDatos(lstDatos, lstReporte.SelectedItems(0).Tag, Format(fecha1, "yyyy-MM-dd"), Format(fecha2, "yyyy-MM-dd"), txtTotales, "pendiente")
         Else : MessageBox.Show("Seleecione un reporte", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : txtReporte.Focus()
@@ -59,12 +47,7 @@ Public Class reportes
 
     Private Sub txtReporte_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtReporte.KeyPress
         If Asc(e.KeyChar) = 13 Then
-            If lstReporte.SelectedItems.Count = 0 Then Exit Sub
-
-            idReporte = lstReporte.SelectedItems(0).Tag
-            txtReporte.Text = lstReporte.SelectedItems(0).Text
-
-            buscarDatos()
+                     buscarDatos()
 
         End If
     End Sub
@@ -85,6 +68,25 @@ Public Class reportes
 
     Private Sub reportes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ponerFecha()
+        lstReporte.Visible = True
+        Dim strConsulta As String = ""
+        Select Case Principal.intidNivelUsuario
+            Case 3
+                strConsulta = "SELECT id,no FROM reporte  WHERE tipo=2 ORDER BY ORDEN ASC"
+            Case 5
+                strConsulta = "SELECT id,no FROM reporte ORDER BY ORDEN ASC"
+        End Select
+        Dim arlCoincidencias = gestor1.DatosDeConsulta(strConsulta, , Principal.cadenadeconexion)
+        If Not arlCoincidencias.Count = 0 Then lstReporte.Visible = True
+        lstReporte.Items.Clear()
+        lstReporte.BeginUpdate()
+        For Each Encontrado As ArrayList In arlCoincidencias
+            Dim lviEncontrado As New ListViewItem
+            lviEncontrado.Tag = Encontrado(0)
+            lviEncontrado.Text = Encontrado(1)
+            lstReporte.Items.Add(lviEncontrado)
+        Next
+        lstReporte.EndUpdate()
     End Sub
     Public Sub GuardeEnArchivo(strTexto As String, Archivo As String, Muestre As Boolean)
         Using sw As New StreamWriter(Archivo, False, Encoding.Default)
@@ -142,5 +144,9 @@ Public Class reportes
         SaveFileDialog1.Filter = "Archivos CSV de Excel (*.csv|*.csv"
         SaveFileDialog1.ShowDialog()
         GuardeEnArchivo(ListViewACsv(lstDatos, True), SaveFileDialog1.FileName, True)
+    End Sub
+
+    Private Sub lstDatos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstDatos.SelectedIndexChanged
+
     End Sub
 End Class

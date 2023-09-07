@@ -376,22 +376,22 @@ Public Class Funciones
         Select Case idreporte
             Case 1   '' INFORME DE REMISIONES 
                 Consulta = "SELECT re.id,CONCAT(do.ab,'-',re.consecutivodocumento,'(',it.item,')') AS proceso,cl.no AS Cliente,CONCAT(re.idformularioingreso,'-',em.no,' N.',it.cantidad) AS 'Formulario Ingreso',
-                            IFNULL(sal.idformulariosalida,'Sin salidas') as 'Formulario Salida',
-                            re.fechaingreso AS 'Fecha Ingreso',re.estado,re.fechasalida AS 'Fecha Salida',
-                            ifnull(CASE (it.cantidad-sal.cantidad) 
-                            WHEN 0 THEN (it.cantidad-sal.cantidad) 
-                            ELSE  CONCAT('SALDO',' ',em.no,' ',(it.cantidad-sal.cantidad))
+                            re.fechaingreso AS 'Fecha Ingreso',
+                            IFNULL((SELECT GROUP_CONCAT( sal.idformulariosalida ,'-', sal.cantidad,'-',sal.fechasalida) AS 'idformulariosalida'
+                            from salidas sal where sal.idformularioingreso=re.idformularioingreso),'Sin SALIDAS') AS 'Formulario Salida',
+                            re.estado,re.fechasalida AS 'Fecha Salida',re.placas,
+                           IFNULL(CASE (it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)) 
+                            WHEN 0 THEN (it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)) 
+                            ELSE  CONCAT('SALDO',' ',em.no,' ',(it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)))
                             END,it.cantidad)
-                            AS 'Saldo de Bultos',re.placas
+                            AS 'Saldo de Bultos'
                             FROM cliente cl,remisiones re,embalaje em,
-                            (SELECT ite.id,GROUP_CONCAT(ite.item) AS item ,sum(ite.cantidad) AS cantidad
+                            (SELECT ite.idremision,ite.id,GROUP_CONCAT(ite.item) AS item ,sum(ite.cantidad) AS cantidad
                             FROM remisiones rem,item ite
-                            WHERE rem.id=ite.idremision ) AS it,documento AS do,
-                            (SELECT  sal.idformularioingreso ,GROUP_CONCAT( sal.idformulariosalida ,'-', sal.cantidad,'-',sal.fechasalida) AS 'idformulariosalida',sum(sal.cantidad) cantidad
-                            from salidas sal) AS sal
+                            WHERE rem.id=ite.idremision  GROUP by ite.idremision ) AS it,documento AS do
                             WHERE cl.id=re.idcliente
                             AND re.idembalaje=em.id
-                            AND re.id=it.id
+                            AND re.id=it.idremision
                             AND re.iddocumento=do.id
                             AND re.idembalaje=em.id
                             AND re.fechaingreso >= STR_TO_DATE('" & fdesde & "','%d/%m/%Y') AND re.fechaingreso <=  STR_TO_DATE('" & fhasta & "','%d/%m/%Y') 
@@ -399,7 +399,7 @@ Public Class Funciones
 
                 FilasEtiquetas = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
                 ColumnasEsNumero = {True, False, False, False, False, False, False, False, False, False}
-                ColumnasJustificaciones = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1}
+                ColumnasJustificaciones = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
                 ColumnasAmplitudes = {80, 200, 200, 200, 200, 80, 80, 80, 80, 80}
                 Dim arlDatos1 As ArrayList = gestor1.DatosDeConsulta(Consulta, True, Principal.cadenadeconexion)
                 Dim douSaldoEx As Double = 0
