@@ -44,13 +44,15 @@ Partial Class salidas
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader14 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnRegistrar = New System.Windows.Forms.Button()
-        Me.ColumnHeader14 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -98,9 +100,9 @@ Partial Class salidas
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.Label1.Location = New System.Drawing.Point(505, 6)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(140, 17)
+        Me.Label1.Size = New System.Drawing.Size(130, 17)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Entrada de Mercancia"
+        Me.Label1.Text = "Salida de Mercancia"
         '
         'Panel1
         '
@@ -120,9 +122,9 @@ Partial Class salidas
         Me.lstItems.FullRowSelect = True
         Me.lstItems.GridLines = True
         Me.lstItems.HideSelection = False
-        Me.lstItems.Location = New System.Drawing.Point(41, 155)
+        Me.lstItems.Location = New System.Drawing.Point(61, 144)
         Me.lstItems.Name = "lstItems"
-        Me.lstItems.Size = New System.Drawing.Size(1108, 137)
+        Me.lstItems.Size = New System.Drawing.Size(979, 137)
         Me.lstItems.TabIndex = 86
         Me.lstItems.UseCompatibleStateImageBehavior = False
         Me.lstItems.View = System.Windows.Forms.View.Details
@@ -157,21 +159,25 @@ Partial Class salidas
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label2.Location = New System.Drawing.Point(497, 125)
+        Me.Label2.Location = New System.Drawing.Point(480, 103)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(148, 17)
+        Me.Label2.Size = New System.Drawing.Size(181, 21)
         Me.Label2.TabIndex = 14
         Me.Label2.Text = "Items en esta remision"
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(40, 87)
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.Location = New System.Drawing.Point(61, 59)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(0)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.Size = New System.Drawing.Size(252, 65)
         Me.Button1.TabIndex = 87
-        Me.Button1.Text = "Nueva"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'lblRemisiones
@@ -179,28 +185,28 @@ Partial Class salidas
         Me.lblRemisiones.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.lblRemisiones.AutoSize = True
         Me.lblRemisiones.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblRemisiones.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.lblRemisiones.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRemisiones.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lblRemisiones.Location = New System.Drawing.Point(306, 89)
+        Me.lblRemisiones.Location = New System.Drawing.Point(347, 59)
         Me.lblRemisiones.Name = "lblRemisiones"
-        Me.lblRemisiones.Size = New System.Drawing.Size(148, 17)
+        Me.lblRemisiones.Size = New System.Drawing.Size(181, 21)
         Me.lblRemisiones.TabIndex = 88
         Me.lblRemisiones.Text = "Items en esta remision"
         '
         'txtFormularioSalida
         '
-        Me.txtFormularioSalida.Location = New System.Drawing.Point(797, 90)
+        Me.txtFormularioSalida.Location = New System.Drawing.Point(800, 59)
         Me.txtFormularioSalida.Name = "txtFormularioSalida"
-        Me.txtFormularioSalida.Size = New System.Drawing.Size(306, 20)
+        Me.txtFormularioSalida.Size = New System.Drawing.Size(306, 26)
         Me.txtFormularioSalida.TabIndex = 93
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Label4.Location = New System.Drawing.Point(641, 90)
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(624, 59)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(144, 17)
+        Me.Label4.Size = New System.Drawing.Size(170, 21)
         Me.Label4.TabIndex = 94
         Me.Label4.Text = "# Formulario de Salida:"
         '
@@ -211,9 +217,9 @@ Partial Class salidas
         Me.lstItemConfirmado.FullRowSelect = True
         Me.lstItemConfirmado.GridLines = True
         Me.lstItemConfirmado.HideSelection = False
-        Me.lstItemConfirmado.Location = New System.Drawing.Point(40, 388)
+        Me.lstItemConfirmado.Location = New System.Drawing.Point(72, 437)
         Me.lstItemConfirmado.Name = "lstItemConfirmado"
-        Me.lstItemConfirmado.Size = New System.Drawing.Size(1108, 137)
+        Me.lstItemConfirmado.Size = New System.Drawing.Size(981, 137)
         Me.lstItemConfirmado.TabIndex = 95
         Me.lstItemConfirmado.UseCompatibleStateImageBehavior = False
         Me.lstItemConfirmado.View = System.Windows.Forms.View.Details
@@ -233,67 +239,79 @@ Partial Class salidas
         Me.ColumnHeader3.Text = "Cant"
         Me.ColumnHeader3.Width = 61
         '
+        'ColumnHeader14
+        '
+        Me.ColumnHeader14.Text = "Cantidad Saliente"
+        Me.ColumnHeader14.Width = 134
+        '
         'Label3
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label3.Location = New System.Drawing.Point(497, 356)
+        Me.Label3.Location = New System.Drawing.Point(480, 395)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(123, 17)
+        Me.Label3.Size = New System.Drawing.Size(153, 21)
         Me.Label3.TabIndex = 96
         Me.Label3.Text = "Cantidad en Salida"
         '
         'btnAceptar
         '
-        Me.btnAceptar.Location = New System.Drawing.Point(41, 330)
+        Me.btnAceptar.Location = New System.Drawing.Point(67, 301)
         Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
+        Me.btnAceptar.Size = New System.Drawing.Size(93, 35)
         Me.btnAceptar.TabIndex = 97
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = True
         '
         'btnModificar
         '
-        Me.btnModificar.Location = New System.Drawing.Point(144, 330)
+        Me.btnModificar.Location = New System.Drawing.Point(170, 301)
         Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(75, 23)
+        Me.btnModificar.Size = New System.Drawing.Size(83, 35)
         Me.btnModificar.TabIndex = 98
         Me.btnModificar.Text = "Editar"
         Me.btnModificar.UseVisualStyleBackColor = True
         '
         'btnRegistrar
         '
-        Me.btnRegistrar.Location = New System.Drawing.Point(41, 569)
+        Me.btnRegistrar.Location = New System.Drawing.Point(965, 595)
         Me.btnRegistrar.Name = "btnRegistrar"
         Me.btnRegistrar.Size = New System.Drawing.Size(75, 23)
         Me.btnRegistrar.TabIndex = 99
         Me.btnRegistrar.Text = "Registrar"
         Me.btnRegistrar.UseVisualStyleBackColor = True
         '
-        'ColumnHeader14
+        'Panel2
         '
-        Me.ColumnHeader14.Text = "Cantidad Saliente"
-        Me.ColumnHeader14.Width = 134
+        Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.Button1)
+        Me.Panel2.Controls.Add(Me.btnRegistrar)
+        Me.Panel2.Controls.Add(Me.lstItems)
+        Me.Panel2.Controls.Add(Me.btnModificar)
+        Me.Panel2.Controls.Add(Me.Label2)
+        Me.Panel2.Controls.Add(Me.btnAceptar)
+        Me.Panel2.Controls.Add(Me.Label3)
+        Me.Panel2.Controls.Add(Me.lblRemisiones)
+        Me.Panel2.Controls.Add(Me.lstItemConfirmado)
+        Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Controls.Add(Me.txtFormularioSalida)
+        Me.Panel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Panel2.Location = New System.Drawing.Point(12, 72)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(1146, 666)
+        Me.Panel2.TabIndex = 100
         '
         'salidas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1170, 750)
-        Me.Controls.Add(Me.btnRegistrar)
-        Me.Controls.Add(Me.btnModificar)
-        Me.Controls.Add(Me.btnAceptar)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.lstItemConfirmado)
-        Me.Controls.Add(Me.txtFormularioSalida)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.lblRemisiones)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.lstItems)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -304,6 +322,8 @@ Partial Class salidas
         Me.MenuStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -335,4 +355,5 @@ Partial Class salidas
     Friend WithEvents btnModificar As Button
     Friend WithEvents btnRegistrar As Button
     Friend WithEvents ColumnHeader14 As ColumnHeader
+    Friend WithEvents Panel2 As Panel
 End Class
