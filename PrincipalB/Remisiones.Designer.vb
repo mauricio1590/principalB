@@ -106,14 +106,14 @@ Partial Class Remisiones
         Me.lstProcedencia = New System.Windows.Forms.ListView()
         Me.ColumnHeader17 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -194,7 +194,7 @@ Partial Class Remisiones
         Me.txtTipoDocumento.Location = New System.Drawing.Point(178, 142)
         Me.txtTipoDocumento.Name = "txtTipoDocumento"
         Me.txtTipoDocumento.Size = New System.Drawing.Size(140, 26)
-        Me.txtTipoDocumento.TabIndex = 1
+        Me.txtTipoDocumento.TabIndex = 3
         Me.txtTipoDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label2
@@ -265,7 +265,7 @@ Partial Class Remisiones
         Me.txtidformularioIngreso.Location = New System.Drawing.Point(174, 82)
         Me.txtidformularioIngreso.Name = "txtidformularioIngreso"
         Me.txtidformularioIngreso.Size = New System.Drawing.Size(241, 26)
-        Me.txtidformularioIngreso.TabIndex = 3
+        Me.txtidformularioIngreso.TabIndex = 1
         Me.txtidformularioIngreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label5
@@ -284,7 +284,7 @@ Partial Class Remisiones
         Me.txtSubPartida.Location = New System.Drawing.Point(520, 82)
         Me.txtSubPartida.Name = "txtSubPartida"
         Me.txtSubPartida.Size = New System.Drawing.Size(241, 26)
-        Me.txtSubPartida.TabIndex = 4
+        Me.txtSubPartida.TabIndex = 2
         Me.txtSubPartida.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label6
@@ -303,7 +303,7 @@ Partial Class Remisiones
         Me.txtCLiente.Location = New System.Drawing.Point(373, 142)
         Me.txtCLiente.Name = "txtCLiente"
         Me.txtCLiente.Size = New System.Drawing.Size(388, 26)
-        Me.txtCLiente.TabIndex = 5
+        Me.txtCLiente.TabIndex = 4
         Me.txtCLiente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lstNombres
@@ -347,7 +347,7 @@ Partial Class Remisiones
         Me.txtDescItem.Location = New System.Drawing.Point(27, 212)
         Me.txtDescItem.Name = "txtDescItem"
         Me.txtDescItem.Size = New System.Drawing.Size(734, 26)
-        Me.txtDescItem.TabIndex = 6
+        Me.txtDescItem.TabIndex = 5
         '
         'Label8
         '
@@ -366,7 +366,7 @@ Partial Class Remisiones
         Me.txtItem.MaxLength = 25
         Me.txtItem.Name = "txtItem"
         Me.txtItem.Size = New System.Drawing.Size(306, 26)
-        Me.txtItem.TabIndex = 7
+        Me.txtItem.TabIndex = 6
         Me.txtItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label9
@@ -521,7 +521,7 @@ Partial Class Remisiones
         Me.txtPaisOrigen.Location = New System.Drawing.Point(27, 438)
         Me.txtPaisOrigen.Name = "txtPaisOrigen"
         Me.txtPaisOrigen.Size = New System.Drawing.Size(194, 26)
-        Me.txtPaisOrigen.TabIndex = 15
+        Me.txtPaisOrigen.TabIndex = 16
         '
         'lstOrigen
         '
@@ -559,7 +559,7 @@ Partial Class Remisiones
         Me.txtPaisCompra.Location = New System.Drawing.Point(236, 438)
         Me.txtPaisCompra.Name = "txtPaisCompra"
         Me.txtPaisCompra.Size = New System.Drawing.Size(194, 26)
-        Me.txtPaisCompra.TabIndex = 16
+        Me.txtPaisCompra.TabIndex = 17
         '
         'lstPaisCompra
         '
@@ -597,7 +597,7 @@ Partial Class Remisiones
         Me.txtDestino.Location = New System.Drawing.Point(448, 437)
         Me.txtDestino.Name = "txtDestino"
         Me.txtDestino.Size = New System.Drawing.Size(194, 26)
-        Me.txtDestino.TabIndex = 17
+        Me.txtDestino.TabIndex = 18
         '
         'lstDestino
         '
@@ -636,7 +636,7 @@ Partial Class Remisiones
         Me.txtProcedencia.MaxLength = 500
         Me.txtProcedencia.Name = "txtProcedencia"
         Me.txtProcedencia.Size = New System.Drawing.Size(194, 26)
-        Me.txtProcedencia.TabIndex = 18
+        Me.txtProcedencia.TabIndex = 19
         '
         'Label19
         '
@@ -746,7 +746,7 @@ Partial Class Remisiones
         Me.txtPlacas.Multiline = True
         Me.txtPlacas.Name = "txtPlacas"
         Me.txtPlacas.Size = New System.Drawing.Size(173, 130)
-        Me.txtPlacas.TabIndex = 21
+        Me.txtPlacas.TabIndex = 15
         '
         'btnGuardar
         '
@@ -932,6 +932,19 @@ Partial Class Remisiones
         Me.Panel2.Size = New System.Drawing.Size(1129, 591)
         Me.Panel2.TabIndex = 87
         '
+        'Panel4
+        '
+        Me.Panel4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
+        Me.Panel4.Controls.Add(Me.lblEstado)
+        Me.Panel4.Controls.Add(Me.lblTasa)
+        Me.Panel4.Controls.Add(Me.Label21)
+        Me.Panel4.Controls.Add(Me.Label25)
+        Me.Panel4.Location = New System.Drawing.Point(0, 554)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(1129, 35)
+        Me.Panel4.TabIndex = 87
+        '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
@@ -949,19 +962,6 @@ Partial Class Remisiones
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox1.TabIndex = 47
         Me.PictureBox1.TabStop = False
-        '
-        'Panel4
-        '
-        Me.Panel4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
-        Me.Panel4.Controls.Add(Me.lblEstado)
-        Me.Panel4.Controls.Add(Me.lblTasa)
-        Me.Panel4.Controls.Add(Me.Label21)
-        Me.Panel4.Controls.Add(Me.Label25)
-        Me.Panel4.Location = New System.Drawing.Point(0, 554)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1129, 35)
-        Me.Panel4.TabIndex = 87
         '
         'Remisiones
         '
@@ -982,9 +982,9 @@ Partial Class Remisiones
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
