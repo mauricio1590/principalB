@@ -8,11 +8,26 @@ Public Class Principal
     Public logo As String = ""
     Dim strUnidad As String = "D"
     Public intIdUsuario As Integer = 0
+    Public intidNivelUsuario As Integer = 5
     Public servidor As String = "localhost"
     Public usuario As String = "root"
     Public password As String = "90271516"
     Public database As String = "frontier"
     Public cadenadeconexion As String = "Server=" & servidor & ";Uid=root;Pwd=" & password & ";Database=" & database & ""
+
+    'colores botonees
+    Public botonlow1 As Integer = 46
+    Public botonlow2 As Integer = 59
+    Public botonlow3 As Integer = 104
+    Public botonup1 As Integer = 128
+    Public botonup2 As Integer = 128
+    Public botonup3 As Integer = 128
+    Public barra1 As Integer = 30
+    Public barra2 As Integer = 37
+    Public barra3 As Integer = 73
+    Public cpanel1 As Integer = 44
+    Public cpanel2 As Integer = 59
+    Public cpanel3 As Integer = 107
 
 
 
@@ -29,13 +44,17 @@ Public Class Principal
         fun.ponerFoto(logo, picLogo2)
         Me.Location = Screen.PrimaryScreen.WorkingArea.Location
         Me.Size = Screen.PrimaryScreen.WorkingArea.Size
+        '  colorPanel(panelMenu)
     End Sub
 
 
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()
     End Sub
-
+    Function colorPanel(barra As Panel)
+        barra.BackColor = System.Drawing.Color.FromArgb(cpanel1, cpanel2, cpanel3)
+        Return True
+    End Function
     Private Sub btnMaximizar_Click(sender As Object, e As EventArgs) Handles btnMaximizar.Click
         btnMaximizar.Visible = False
         btnRestaurar.Visible = True
@@ -86,23 +105,85 @@ Public Class Principal
 
     End Sub
 
-    Private Sub AbrirFormPanel(ByRef Formhijo As Object)
-        If Me.PanelContenedor.Controls.Count > 0 Then Me.PanelContenedor.Controls.RemoveAt(0)
-        Dim fh As Form = TryCast(Formhijo, Form)
-        fh.TopLevel = False
-        fh.FormBorderStyle = FormBorderStyle.None
-        fh.Dock = DockStyle.Fill
-        Me.PanelContenedor.Controls.Add(fh)
-        Me.PanelContenedor.Tag = fh
-        fh.Show()
+    'Private Sub AbrirFormPanel(ByRef Formhijo As Object)
+    '    If Me.PanelContenedor.Controls.Count > 0 Then Me.PanelContenedor.Controls.RemoveAt(0)
+    '    Dim fh As Form = TryCast(Formhijo, Form)
+    '    fh.TopLevel = False
+    '    fh.FormBorderStyle = FormBorderStyle.None
+    '    fh.Dock = DockStyle.Fill
+    '    Me.PanelContenedor.Controls.Add(fh)
+    '    Me.PanelContenedor.Tag = fh
+    '    fh.Show()
+    'End Sub
+    Private Sub AbrirFormPanel(Of Miform As {Form, New})()
+        Dim Formulario As Form
+        Formulario = PanelContenedor.Controls.OfType(Of Miform)().FirstOrDefault() 'Busca el formulario en la coleccion
+        'Si form no fue econtrado/ no existe
+        If Formulario Is Nothing Then
+            Formulario = New Miform()
+            Formulario.TopLevel = False
+            Formulario.FormBorderStyle = FormBorderStyle.None
+            Formulario.Dock = DockStyle.Fill
+            PanelContenedor.Controls.Add(Formulario)
+            PanelContenedor.Tag = Formulario
+            AddHandler Formulario.FormClosed, AddressOf Me.cerrarFormulario
+            Formulario.Show()
+            Formulario.BringToFront()
+        Else
+            Formulario.BringToFront()
+        End If
+
     End Sub
 
+    Private Sub cerrarFormulario(ByVal sender As Object, ByVal a As FormClosedEventArgs)
+
+
+        'If (Application.OpenForms("Clientes") Is Nothing) Then
+        '    btnCliente.BackColor = System.Drawing.Color.FromArgb(botonlow1, botonlow2, botonlow3)
+        'End If
+        'If (Application.OpenForms("Tasadecambio") Is Nothing) Then
+        '    btnTasaCambio.BackColor = System.Drawing.Color.FromArgb(botonlow1, botonlow2, botonlow3)
+        'End If
+        'If (Application.OpenForms("Remisiones") Is Nothing) Then
+        '    btnEntrada.BackColor = System.Drawing.Color.FromArgb(botonlow1, botonlow2, botonlow3)
+        'End If
+        'If (Application.OpenForms("salidas") Is Nothing) Then
+        '    btnSalida.BackColor = System.Drawing.Color.FromArgb(botonlow1, botonlow2, botonlow3)
+        'End If
+        'If (Application.OpenForms("reportes") Is Nothing) Then
+        '    btnReporte.BackColor = System.Drawing.Color.FromArgb(botonlow1, botonlow2, botonlow3)
+        'End If
+
+
+    End Sub
+    Public Sub AbrirFormularios(Of Miform As {Form, New})()
+        Dim Formulario As Form
+        Formulario = PanelContenedor.Controls.OfType(Of Miform)().FirstOrDefault() 'Busca el formulario en la coleccion
+        'Si form no fue econtrado/ no existe
+        If Formulario Is Nothing Then
+            Formulario = New Miform()
+            Formulario.TopLevel = False
+            Formulario.FormBorderStyle = FormBorderStyle.None
+            Formulario.Dock = DockStyle.Fill
+            PanelContenedor.Controls.Add(Formulario)
+            PanelContenedor.Tag = Formulario
+            AddHandler Formulario.FormClosed, AddressOf Me.cerrarFormulario
+            Formulario.Show()
+            Formulario.BringToFront()
+        Else
+            Formulario.BringToFront()
+        End If
+
+
+    End Sub
+
+
     Private Sub btnCliente_Click(sender As Object, e As EventArgs) Handles btnCliente.Click
-        AbrirFormPanel(New Clientes)
+        AbrirFormPanel(Of Clientes)()
     End Sub
 
     Private Sub btnTasaCambio_Click(sender As Object, e As EventArgs) Handles btnTasaCambio.Click
-        AbrirFormPanel(New Tasadecambio)
+        AbrirFormPanel(Of Tasadecambio)()
     End Sub
 
     Private Sub TipoDeDocumentoToolStripMenuItem_Click(sender As Object, e As EventArgs)
@@ -110,19 +191,19 @@ Public Class Principal
     End Sub
 
     Private Sub TipoDocumentoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoDocumentoToolStripMenuItem.Click
-        AbrirFormPanel(New tipoDocumento)
+        AbrirFormPanel(Of tipoDocumento)()
     End Sub
 
     Private Sub TipoEmbalajeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoEmbalajeToolStripMenuItem.Click
-        AbrirFormPanel(New TipoEmbalaje)
+        AbrirFormPanel(Of TipoEmbalaje)()
     End Sub
 
     Private Sub TipoAlmacenamientoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoAlmacenamientoToolStripMenuItem.Click
-        AbrirFormPanel(New tipoAlmacenamiento)
+        AbrirFormPanel(Of tipoAlmacenamiento)()
     End Sub
 
     Private Sub btnEntrada_Click(sender As Object, e As EventArgs) Handles btnEntrada.Click
-        AbrirFormPanel(New Remisiones)
+        AbrirFormPanel(Of Remisiones)()
     End Sub
 
     Private Sub PanelContenedor_Paint(sender As Object, e As PaintEventArgs) Handles PanelContenedor.Paint
@@ -130,11 +211,11 @@ Public Class Principal
     End Sub
 
     Private Sub btnSalida_Click(sender As Object, e As EventArgs) Handles btnSalida.Click
-        AbrirFormPanel(New salidas)
+        AbrirFormPanel(Of salidas)()
     End Sub
 
     Private Sub btnReporte_Click(sender As Object, e As EventArgs) Handles btnReporte.Click
-        AbrirFormPanel(New reportes)
+        AbrirFormPanel(Of reportes)()
     End Sub
 
     Private Sub OpcionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpcionesToolStripMenuItem.Click

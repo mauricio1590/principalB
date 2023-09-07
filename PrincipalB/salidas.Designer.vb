@@ -49,7 +49,10 @@ Partial Class salidas
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnRegistrar = New System.Windows.Forms.Button()
+<<<<<<< HEAD
         Me.Panel2 = New System.Windows.Forms.Panel()
+=======
+>>>>>>> main
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -284,6 +287,7 @@ Partial Class salidas
         Me.btnRegistrar.Text = "Registrar"
         Me.btnRegistrar.UseVisualStyleBackColor = True
         '
+<<<<<<< HEAD
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
@@ -305,6 +309,8 @@ Partial Class salidas
         Me.Panel2.Size = New System.Drawing.Size(1146, 666)
         Me.Panel2.TabIndex = 100
         '
+=======
+>>>>>>> main
         'salidas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
