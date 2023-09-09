@@ -95,6 +95,12 @@
     </Compile>
     <Compile Include="EntradaVO.vb" />
     <Compile Include="ItemVO.vb" />
+    <Compile Include="login.Designer.vb">
+      <DependentUpon>login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="login.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Metodos.vb" />
     <Compile Include="Principal.vb">
       <SubType>Form</SubType>
@@ -167,6 +173,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Clientes.resx">
       <DependentUpon>Clientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.vb</DependentUpon>

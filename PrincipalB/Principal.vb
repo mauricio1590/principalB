@@ -9,6 +9,8 @@ Public Class Principal
     Dim strUnidad As String = "D"
     Public intIdUsuario As Integer = 0
     Public intidNivelUsuario As Integer = 5
+    Public strUsuario As String = ""
+    Public validado As Boolean = False
     Public servidor As String = "localhost"
     Public usuario As String = "root"
     Public password As String = "bandband"
@@ -45,6 +47,7 @@ Public Class Principal
         Me.Location = Screen.PrimaryScreen.WorkingArea.Location
         Me.Size = Screen.PrimaryScreen.WorkingArea.Size
         '  colorPanel(panelMenu)
+        timerLog.Start()
     End Sub
 
 
@@ -216,5 +219,14 @@ Public Class Principal
 
     Private Sub btnReporte_Click(sender As Object, e As EventArgs) Handles btnReporte.Click
         AbrirFormPanel(Of reportes)()
+    End Sub
+
+    Private Sub timerLog_Tick(sender As Object, e As EventArgs) Handles timerLog.Tick
+        timerLog.Stop()
+        Dim log As New login
+        log.ShowDialog()
+        If Not validado Then
+            Application.Exit()
+        End If
     End Sub
 End Class
