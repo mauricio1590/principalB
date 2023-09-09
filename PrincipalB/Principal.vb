@@ -9,6 +9,8 @@ Public Class Principal
     Dim strUnidad As String = "D"
     Public intIdUsuario As Integer = 0
     Public intidNivelUsuario As Integer = 5
+    Public strUsuario As String = ""
+    Public validado As Boolean = False
     Public servidor As String = "localhost"
     Public usuario As String = "root"
     Public password As String = "90271516"
@@ -45,6 +47,7 @@ Public Class Principal
         Me.Location = Screen.PrimaryScreen.WorkingArea.Location
         Me.Size = Screen.PrimaryScreen.WorkingArea.Size
         '  colorPanel(panelMenu)
+        timerLog.Start()
     End Sub
 
 
@@ -218,7 +221,17 @@ Public Class Principal
         AbrirFormPanel(Of reportes)()
     End Sub
 
+<<<<<<< HEAD
     Private Sub OpcionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpcionesToolStripMenuItem.Click
 
+=======
+    Private Sub timerLog_Tick(sender As Object, e As EventArgs) Handles timerLog.Tick
+        timerLog.Stop()
+        Dim log As New login
+        log.ShowDialog()
+        If Not validado Then
+            Application.Exit()
+        End If
+>>>>>>> a5619739e51f5b16fa2379fce50f2c92fa7ba855
     End Sub
 End Class

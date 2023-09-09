@@ -26,38 +26,39 @@ Partial Class Principal
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Principal))
         Me.tmMostrarMenu = New System.Windows.Forms.Timer(Me.components)
         Me.tmOcultarMenu = New System.Windows.Forms.Timer(Me.components)
-        Me.btnMenu = New System.Windows.Forms.PictureBox()
-        Me.btnCliente = New System.Windows.Forms.Button()
-        Me.btnTasaCambio = New System.Windows.Forms.Button()
-        Me.btnEntrada = New System.Windows.Forms.Button()
-        Me.btnSalida = New System.Windows.Forms.Button()
-        Me.btnReporte = New System.Windows.Forms.Button()
-        Me.picLogo = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.panelMenu = New System.Windows.Forms.Panel()
-        Me.picLogo2 = New System.Windows.Forms.PictureBox()
         Me.panelCabecera = New System.Windows.Forms.Panel()
-        Me.btnRestaurar = New System.Windows.Forms.Button()
-        Me.btnMinimizar = New System.Windows.Forms.Button()
-        Me.btnMaximizar = New System.Windows.Forms.Button()
-        Me.btnCerrar = New System.Windows.Forms.Button()
         Me.PanelContenedor = New System.Windows.Forms.Panel()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OpcionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoDocumentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoEmbalajeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoAlmacenamientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.picLogo2 = New System.Windows.Forms.PictureBox()
+        Me.picLogo = New System.Windows.Forms.PictureBox()
+        Me.btnReporte = New System.Windows.Forms.Button()
+        Me.btnSalida = New System.Windows.Forms.Button()
+        Me.btnEntrada = New System.Windows.Forms.Button()
+        Me.btnTasaCambio = New System.Windows.Forms.Button()
+        Me.btnCliente = New System.Windows.Forms.Button()
+        Me.btnMenu = New System.Windows.Forms.PictureBox()
+        Me.btnRestaurar = New System.Windows.Forms.Button()
+        Me.btnMinimizar = New System.Windows.Forms.Button()
+        Me.btnMaximizar = New System.Windows.Forms.Button()
+        Me.btnCerrar = New System.Windows.Forms.Button()
+        Me.timerLog = New System.Windows.Forms.Timer(Me.components)
         Me.panelMenu.SuspendLayout()
-        CType(Me.picLogo2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelCabecera.SuspendLayout()
         Me.PanelContenedor.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        CType(Me.picLogo2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tmMostrarMenu
@@ -67,116 +68,6 @@ Partial Class Principal
         'tmOcultarMenu
         '
         Me.tmOcultarMenu.Interval = 15
-        '
-        'btnMenu
-        '
-        Me.btnMenu.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnMenu.Image = CType(resources.GetObject("btnMenu.Image"), System.Drawing.Image)
-        Me.btnMenu.Location = New System.Drawing.Point(178, 0)
-        Me.btnMenu.Name = "btnMenu"
-        Me.btnMenu.Size = New System.Drawing.Size(42, 32)
-        Me.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.btnMenu.TabIndex = 0
-        Me.btnMenu.TabStop = False
-        '
-        'btnCliente
-        '
-        Me.btnCliente.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCliente.FlatAppearance.BorderSize = 0
-        Me.btnCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCliente.Font = New System.Drawing.Font("Georgia", 9.0!)
-        Me.btnCliente.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnCliente.Image = CType(resources.GetObject("btnCliente.Image"), System.Drawing.Image)
-        Me.btnCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCliente.Location = New System.Drawing.Point(0, 177)
-        Me.btnCliente.Name = "btnCliente"
-        Me.btnCliente.Size = New System.Drawing.Size(220, 50)
-        Me.btnCliente.TabIndex = 0
-        Me.btnCliente.Text = "Clientes"
-        Me.btnCliente.UseVisualStyleBackColor = True
-        '
-        'btnTasaCambio
-        '
-        Me.btnTasaCambio.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnTasaCambio.FlatAppearance.BorderSize = 0
-        Me.btnTasaCambio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnTasaCambio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnTasaCambio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnTasaCambio.Font = New System.Drawing.Font("Georgia", 9.0!)
-        Me.btnTasaCambio.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnTasaCambio.Image = CType(resources.GetObject("btnTasaCambio.Image"), System.Drawing.Image)
-        Me.btnTasaCambio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnTasaCambio.Location = New System.Drawing.Point(0, 237)
-        Me.btnTasaCambio.Name = "btnTasaCambio"
-        Me.btnTasaCambio.Size = New System.Drawing.Size(220, 50)
-        Me.btnTasaCambio.TabIndex = 0
-        Me.btnTasaCambio.Text = "Tasa de Cambio"
-        Me.btnTasaCambio.UseVisualStyleBackColor = True
-        '
-        'btnEntrada
-        '
-        Me.btnEntrada.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnEntrada.FlatAppearance.BorderSize = 0
-        Me.btnEntrada.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnEntrada.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnEntrada.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEntrada.Font = New System.Drawing.Font("Georgia", 9.0!)
-        Me.btnEntrada.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnEntrada.Image = CType(resources.GetObject("btnEntrada.Image"), System.Drawing.Image)
-        Me.btnEntrada.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEntrada.Location = New System.Drawing.Point(0, 297)
-        Me.btnEntrada.Name = "btnEntrada"
-        Me.btnEntrada.Size = New System.Drawing.Size(220, 50)
-        Me.btnEntrada.TabIndex = 0
-        Me.btnEntrada.Text = "Entradas"
-        Me.btnEntrada.UseVisualStyleBackColor = True
-        '
-        'btnSalida
-        '
-        Me.btnSalida.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSalida.FlatAppearance.BorderSize = 0
-        Me.btnSalida.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnSalida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnSalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSalida.Font = New System.Drawing.Font("Georgia", 9.0!)
-        Me.btnSalida.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnSalida.Image = CType(resources.GetObject("btnSalida.Image"), System.Drawing.Image)
-        Me.btnSalida.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSalida.Location = New System.Drawing.Point(0, 357)
-        Me.btnSalida.Name = "btnSalida"
-        Me.btnSalida.Size = New System.Drawing.Size(220, 50)
-        Me.btnSalida.TabIndex = 0
-        Me.btnSalida.Text = "Salidas"
-        Me.btnSalida.UseVisualStyleBackColor = True
-        '
-        'btnReporte
-        '
-        Me.btnReporte.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnReporte.FlatAppearance.BorderSize = 0
-        Me.btnReporte.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnReporte.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnReporte.Font = New System.Drawing.Font("Georgia", 9.0!)
-        Me.btnReporte.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnReporte.Image = CType(resources.GetObject("btnReporte.Image"), System.Drawing.Image)
-        Me.btnReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnReporte.Location = New System.Drawing.Point(0, 417)
-        Me.btnReporte.Name = "btnReporte"
-        Me.btnReporte.Size = New System.Drawing.Size(220, 50)
-        Me.btnReporte.TabIndex = 0
-        Me.btnReporte.Text = "Reportes"
-        Me.btnReporte.UseVisualStyleBackColor = True
-        '
-        'picLogo
-        '
-        Me.picLogo.Location = New System.Drawing.Point(-8, 52)
-        Me.picLogo.Name = "picLogo"
-        Me.picLogo.Size = New System.Drawing.Size(220, 60)
-        Me.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picLogo.TabIndex = 1
-        Me.picLogo.TabStop = False
         '
         'Panel1
         '
@@ -239,16 +130,6 @@ Partial Class Principal
         Me.panelMenu.Size = New System.Drawing.Size(220, 706)
         Me.panelMenu.TabIndex = 1
         '
-        'picLogo2
-        '
-        Me.picLogo2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.picLogo2.Location = New System.Drawing.Point(167, 142)
-        Me.picLogo2.Name = "picLogo2"
-        Me.picLogo2.Size = New System.Drawing.Size(882, 396)
-        Me.picLogo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picLogo2.TabIndex = 2
-        Me.picLogo2.TabStop = False
-        '
         'panelCabecera
         '
         Me.panelCabecera.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
@@ -262,6 +143,169 @@ Partial Class Principal
         Me.panelCabecera.Name = "panelCabecera"
         Me.panelCabecera.Size = New System.Drawing.Size(1386, 40)
         Me.panelCabecera.TabIndex = 0
+        '
+        'PanelContenedor
+        '
+        Me.PanelContenedor.Controls.Add(Me.picLogo2)
+        Me.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelContenedor.Location = New System.Drawing.Point(220, 64)
+        Me.PanelContenedor.Name = "PanelContenedor"
+        Me.PanelContenedor.Size = New System.Drawing.Size(1166, 706)
+        Me.PanelContenedor.TabIndex = 2
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpcionesToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(1386, 24)
+        Me.MenuStrip1.TabIndex = 3
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'OpcionesToolStripMenuItem
+        '
+        Me.OpcionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TipoDocumentoToolStripMenuItem, Me.TipoEmbalajeToolStripMenuItem, Me.TipoAlmacenamientoToolStripMenuItem})
+        Me.OpcionesToolStripMenuItem.Name = "OpcionesToolStripMenuItem"
+        Me.OpcionesToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
+        Me.OpcionesToolStripMenuItem.Text = "Opciones"
+        '
+        'TipoDocumentoToolStripMenuItem
+        '
+        Me.TipoDocumentoToolStripMenuItem.Name = "TipoDocumentoToolStripMenuItem"
+        Me.TipoDocumentoToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.TipoDocumentoToolStripMenuItem.Text = "Tipo Documento"
+        '
+        'TipoEmbalajeToolStripMenuItem
+        '
+        Me.TipoEmbalajeToolStripMenuItem.Name = "TipoEmbalajeToolStripMenuItem"
+        Me.TipoEmbalajeToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.TipoEmbalajeToolStripMenuItem.Text = "Tipo Embalaje"
+        '
+        'TipoAlmacenamientoToolStripMenuItem
+        '
+        Me.TipoAlmacenamientoToolStripMenuItem.Name = "TipoAlmacenamientoToolStripMenuItem"
+        Me.TipoAlmacenamientoToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.TipoAlmacenamientoToolStripMenuItem.Text = "Tipo Almacenamiento"
+        '
+        'picLogo2
+        '
+        Me.picLogo2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.picLogo2.Location = New System.Drawing.Point(167, 142)
+        Me.picLogo2.Name = "picLogo2"
+        Me.picLogo2.Size = New System.Drawing.Size(882, 396)
+        Me.picLogo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picLogo2.TabIndex = 2
+        Me.picLogo2.TabStop = False
+        '
+        'picLogo
+        '
+        Me.picLogo.Location = New System.Drawing.Point(-8, 52)
+        Me.picLogo.Name = "picLogo"
+        Me.picLogo.Size = New System.Drawing.Size(220, 60)
+        Me.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picLogo.TabIndex = 1
+        Me.picLogo.TabStop = False
+        '
+        'btnReporte
+        '
+        Me.btnReporte.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnReporte.FlatAppearance.BorderSize = 0
+        Me.btnReporte.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnReporte.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnReporte.Font = New System.Drawing.Font("Georgia", 9.0!)
+        Me.btnReporte.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnReporte.Image = CType(resources.GetObject("btnReporte.Image"), System.Drawing.Image)
+        Me.btnReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnReporte.Location = New System.Drawing.Point(0, 417)
+        Me.btnReporte.Name = "btnReporte"
+        Me.btnReporte.Size = New System.Drawing.Size(220, 50)
+        Me.btnReporte.TabIndex = 0
+        Me.btnReporte.Text = "Reportes"
+        Me.btnReporte.UseVisualStyleBackColor = True
+        '
+        'btnSalida
+        '
+        Me.btnSalida.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSalida.FlatAppearance.BorderSize = 0
+        Me.btnSalida.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnSalida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnSalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSalida.Font = New System.Drawing.Font("Georgia", 9.0!)
+        Me.btnSalida.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnSalida.Image = CType(resources.GetObject("btnSalida.Image"), System.Drawing.Image)
+        Me.btnSalida.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSalida.Location = New System.Drawing.Point(0, 357)
+        Me.btnSalida.Name = "btnSalida"
+        Me.btnSalida.Size = New System.Drawing.Size(220, 50)
+        Me.btnSalida.TabIndex = 0
+        Me.btnSalida.Text = "Salidas"
+        Me.btnSalida.UseVisualStyleBackColor = True
+        '
+        'btnEntrada
+        '
+        Me.btnEntrada.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEntrada.FlatAppearance.BorderSize = 0
+        Me.btnEntrada.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnEntrada.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnEntrada.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEntrada.Font = New System.Drawing.Font("Georgia", 9.0!)
+        Me.btnEntrada.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnEntrada.Image = CType(resources.GetObject("btnEntrada.Image"), System.Drawing.Image)
+        Me.btnEntrada.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEntrada.Location = New System.Drawing.Point(0, 297)
+        Me.btnEntrada.Name = "btnEntrada"
+        Me.btnEntrada.Size = New System.Drawing.Size(220, 50)
+        Me.btnEntrada.TabIndex = 0
+        Me.btnEntrada.Text = "Entradas"
+        Me.btnEntrada.UseVisualStyleBackColor = True
+        '
+        'btnTasaCambio
+        '
+        Me.btnTasaCambio.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnTasaCambio.FlatAppearance.BorderSize = 0
+        Me.btnTasaCambio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnTasaCambio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnTasaCambio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnTasaCambio.Font = New System.Drawing.Font("Georgia", 9.0!)
+        Me.btnTasaCambio.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnTasaCambio.Image = CType(resources.GetObject("btnTasaCambio.Image"), System.Drawing.Image)
+        Me.btnTasaCambio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnTasaCambio.Location = New System.Drawing.Point(0, 237)
+        Me.btnTasaCambio.Name = "btnTasaCambio"
+        Me.btnTasaCambio.Size = New System.Drawing.Size(220, 50)
+        Me.btnTasaCambio.TabIndex = 0
+        Me.btnTasaCambio.Text = "Tasa de Cambio"
+        Me.btnTasaCambio.UseVisualStyleBackColor = True
+        '
+        'btnCliente
+        '
+        Me.btnCliente.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCliente.FlatAppearance.BorderSize = 0
+        Me.btnCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCliente.Font = New System.Drawing.Font("Georgia", 9.0!)
+        Me.btnCliente.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnCliente.Image = CType(resources.GetObject("btnCliente.Image"), System.Drawing.Image)
+        Me.btnCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnCliente.Location = New System.Drawing.Point(0, 177)
+        Me.btnCliente.Name = "btnCliente"
+        Me.btnCliente.Size = New System.Drawing.Size(220, 50)
+        Me.btnCliente.TabIndex = 0
+        Me.btnCliente.Text = "Clientes"
+        Me.btnCliente.UseVisualStyleBackColor = True
+        '
+        'btnMenu
+        '
+        Me.btnMenu.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnMenu.Image = CType(resources.GetObject("btnMenu.Image"), System.Drawing.Image)
+        Me.btnMenu.Location = New System.Drawing.Point(178, 0)
+        Me.btnMenu.Name = "btnMenu"
+        Me.btnMenu.Size = New System.Drawing.Size(42, 32)
+        Me.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.btnMenu.TabIndex = 0
+        Me.btnMenu.TabStop = False
         '
         'btnRestaurar
         '
@@ -324,48 +368,9 @@ Partial Class Principal
         Me.btnCerrar.TabIndex = 0
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
-        'PanelContenedor
+        'timerLog
         '
-        Me.PanelContenedor.Controls.Add(Me.picLogo2)
-        Me.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelContenedor.Location = New System.Drawing.Point(220, 64)
-        Me.PanelContenedor.Name = "PanelContenedor"
-        Me.PanelContenedor.Size = New System.Drawing.Size(1166, 706)
-        Me.PanelContenedor.TabIndex = 2
-        '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpcionesToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1386, 24)
-        Me.MenuStrip1.TabIndex = 3
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'OpcionesToolStripMenuItem
-        '
-        Me.OpcionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TipoDocumentoToolStripMenuItem, Me.TipoEmbalajeToolStripMenuItem, Me.TipoAlmacenamientoToolStripMenuItem})
-        Me.OpcionesToolStripMenuItem.Name = "OpcionesToolStripMenuItem"
-        Me.OpcionesToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
-        Me.OpcionesToolStripMenuItem.Text = "Opciones"
-        '
-        'TipoDocumentoToolStripMenuItem
-        '
-        Me.TipoDocumentoToolStripMenuItem.Name = "TipoDocumentoToolStripMenuItem"
-        Me.TipoDocumentoToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
-        Me.TipoDocumentoToolStripMenuItem.Text = "Tipo Documento"
-        '
-        'TipoEmbalajeToolStripMenuItem
-        '
-        Me.TipoEmbalajeToolStripMenuItem.Name = "TipoEmbalajeToolStripMenuItem"
-        Me.TipoEmbalajeToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
-        Me.TipoEmbalajeToolStripMenuItem.Text = "Tipo Embalaje"
-        '
-        'TipoAlmacenamientoToolStripMenuItem
-        '
-        Me.TipoAlmacenamientoToolStripMenuItem.Name = "TipoAlmacenamientoToolStripMenuItem"
-        Me.TipoAlmacenamientoToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
-        Me.TipoAlmacenamientoToolStripMenuItem.Text = "Tipo Almacenamiento"
+        Me.timerLog.Interval = 500
         '
         'Principal
         '
@@ -380,14 +385,14 @@ Partial Class Principal
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Principal"
         Me.Text = "Form1"
-        CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelMenu.ResumeLayout(False)
-        CType(Me.picLogo2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelCabecera.ResumeLayout(False)
         Me.PanelContenedor.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        CType(Me.picLogo2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picLogo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -419,4 +424,5 @@ Partial Class Principal
     Friend WithEvents TipoDocumentoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TipoEmbalajeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TipoAlmacenamientoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents timerLog As Timer
 End Class

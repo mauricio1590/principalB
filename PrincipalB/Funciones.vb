@@ -179,7 +179,7 @@ Public Class Funciones
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
+        Return True
     End Function
     Public Sub mostrarEmbalaje(lstTarifas As ListView)
 
@@ -505,6 +505,26 @@ Public Class Funciones
             If Mid(strValor, ii, 1) = "," Then Mid(strValor, ii, 1) = "."
         Next
         Return Val(strValor)
+    End Function
+
+    Public Function validarContraseña(texto As String, Optional nivel As Integer = 1) As Boolean
+        Dim boosaber As Boolean = False
+        Dim arlCoincidencias As ArrayList
+
+        If nivel = 1 Then
+            arlCoincidencias = gestor1.DatosDeConsulta("SELECT usuario,nivel,id FROM usuarios WHERE  contraseña= '" & texto & "' ", , Principal.cadenadeconexion)
+        Else
+            arlCoincidencias = gestor1.DatosDeConsulta("SELECT usuario,nivel,id FROM usuarios WHERE nivel='" & nivel & "' AND contraseña= '" & texto & "' ", , Principal.cadenadeconexion)
+        End If
+
+        If Not arlCoincidencias.Count = 0 Then
+
+            Principal.intidNivelUsuario = arlCoincidencias(0)(1)
+            Principal.strUsuario = arlCoincidencias(0)(0)
+            Principal.intIdUsuario = arlCoincidencias(0)(2)
+            boosaber = True
+        End If
+        Return boosaber
     End Function
 
 End Class
