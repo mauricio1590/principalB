@@ -1,6 +1,7 @@
 ﻿Public Class salidas
     Dim fun As New Funciones
     Dim gestor1 As New Soltec.Gestor
+    Dim rutaImagen As String
     Private Sub salidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         btnModificar.Enabled = False
     End Sub
@@ -174,12 +175,47 @@
 
     End Sub
 
-<<<<<<< HEAD
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-=======
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()
->>>>>>> main
+    End Sub
+
+    Private Sub Button1_MouseMove(sender As Object, e As MouseEventArgs) Handles Button1.MouseMove
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_nuevo-4_.png"
+        Button1.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub Button1_MouseLeave(sender As Object, e As EventArgs) Handles Button1.MouseLeave
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_nuevo-4.png"
+        Button1.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnAceptar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnAceptar.MouseMove
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_aceptar-4_.png"
+        btnAceptar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnAceptar_MouseLeave(sender As Object, e As EventArgs) Handles btnAceptar.MouseLeave
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_aceptar-4.png"
+        btnAceptar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnModificar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnModificar.MouseMove
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_editar-3_.png"
+        btnModificar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnModificar_MouseLeave(sender As Object, e As EventArgs) Handles btnModificar.MouseLeave
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_editar-3.png"
+        btnModificar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnRegistrar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnRegistrar.MouseMove
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_guardar-3_.png"
+        btnRegistrar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnRegistrar_MouseLeave(sender As Object, e As EventArgs) Handles btnRegistrar.MouseLeave
+        rutaImagen = "D:\FRONTIER\Imagenes\btn_guardar-3.png"
+        btnRegistrar.Image = Image.FromFile(rutaImagen)
     End Sub
 End Class

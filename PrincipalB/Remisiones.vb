@@ -1147,4 +1147,8 @@ Public Class Remisiones
         rutaImagen = "D:\FRONTIER\Imagenes\btn_editar-3.png"
         btnModificar.Image = Image.FromFile(rutaImagen)
     End Sub
+
+    Private Sub btnModificar_Layout(sender As Object, e As LayoutEventArgs) Handles btnModificar.Layout
+
+    End Sub
 End Class
