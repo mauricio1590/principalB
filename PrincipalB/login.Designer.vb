@@ -28,19 +28,24 @@ Partial Class login
         Me.btnCerrar = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtContra = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.chkRecordar = New System.Windows.Forms.CheckBox()
         Me.btnIngresar = New System.Windows.Forms.Button()
         Me.lblLines = New System.Windows.Forms.Label()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.pnTitulo.SuspendLayout()
         CType(Me.btnMinimizar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pnTitulo
         '
         Me.pnTitulo.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
+        Me.pnTitulo.Controls.Add(Me.Label2)
         Me.pnTitulo.Controls.Add(Me.btnMinimizar)
         Me.pnTitulo.Controls.Add(Me.btnCerrar)
         Me.pnTitulo.Dock = System.Windows.Forms.DockStyle.Top
@@ -75,54 +80,49 @@ Partial Class login
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 469)
+        Me.Panel1.Location = New System.Drawing.Point(0, 467)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(322, 15)
+        Me.Panel1.Size = New System.Drawing.Size(322, 17)
         Me.Panel1.TabIndex = 2
         '
         'txtContra
         '
-        Me.txtContra.BackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(150, Byte), Integer))
-        Me.txtContra.Font = New System.Drawing.Font("Century", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtContra.Location = New System.Drawing.Point(41, 186)
+        Me.txtContra.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
+        Me.txtContra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtContra.Font = New System.Drawing.Font("Century", 18.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContra.ForeColor = System.Drawing.Color.White
+        Me.txtContra.Location = New System.Drawing.Point(67, 213)
         Me.txtContra.Name = "txtContra"
-        Me.txtContra.Size = New System.Drawing.Size(211, 27)
+        Me.txtContra.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtContra.Size = New System.Drawing.Size(210, 38)
         Me.txtContra.TabIndex = 3
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Century", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.Control
-        Me.Label1.Location = New System.Drawing.Point(37, 152)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(99, 20)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Contraseña:"
+        Me.txtContra.Text = "1234"
+        Me.txtContra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtContra.UseSystemPasswordChar = True
         '
         'chkRecordar
         '
         Me.chkRecordar.AutoSize = True
-        Me.chkRecordar.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkRecordar.ForeColor = System.Drawing.SystemColors.Control
-        Me.chkRecordar.Location = New System.Drawing.Point(41, 232)
+        Me.chkRecordar.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkRecordar.ForeColor = System.Drawing.Color.Black
+        Me.chkRecordar.Location = New System.Drawing.Point(32, 266)
         Me.chkRecordar.Name = "chkRecordar"
-        Me.chkRecordar.Size = New System.Drawing.Size(117, 20)
+        Me.chkRecordar.Size = New System.Drawing.Size(147, 22)
         Me.chkRecordar.TabIndex = 5
         Me.chkRecordar.Text = "Recordar usuario"
         Me.chkRecordar.UseVisualStyleBackColor = True
         '
         'btnIngresar
         '
-        Me.btnIngresar.BackColor = System.Drawing.Color.SteelBlue
+        Me.btnIngresar.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(203, Byte), Integer))
         Me.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnIngresar.FlatAppearance.BorderSize = 0
         Me.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnIngresar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnIngresar.ForeColor = System.Drawing.Color.White
-        Me.btnIngresar.Location = New System.Drawing.Point(41, 273)
+        Me.btnIngresar.Location = New System.Drawing.Point(47, 345)
         Me.btnIngresar.Name = "btnIngresar"
-        Me.btnIngresar.Size = New System.Drawing.Size(211, 41)
+        Me.btnIngresar.Size = New System.Drawing.Size(216, 41)
         Me.btnIngresar.TabIndex = 6
         Me.btnIngresar.Text = "Ingresar"
         Me.btnIngresar.UseVisualStyleBackColor = False
@@ -131,36 +131,68 @@ Partial Class login
         '
         Me.lblLines.AutoSize = True
         Me.lblLines.ForeColor = System.Drawing.Color.Silver
-        Me.lblLines.Location = New System.Drawing.Point(54, 412)
+        Me.lblLines.Location = New System.Drawing.Point(33, 420)
         Me.lblLines.Name = "lblLines"
-        Me.lblLines.Size = New System.Drawing.Size(223, 13)
+        Me.lblLines.Size = New System.Drawing.Size(247, 13)
         Me.lblLines.TabIndex = 8
-        Me.lblLines.Text = "____________________________________"
+        Me.lblLines.Text = "________________________________________"
         '
-        'LinkLabel1
+        'PictureBox1
         '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.BackColor = System.Drawing.Color.RoyalBlue
-        Me.LinkLabel1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LinkLabel1.ForeColor = System.Drawing.Color.White
-        Me.LinkLabel1.Location = New System.Drawing.Point(98, 440)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(114, 13)
-        Me.LinkLabel1.TabIndex = 7
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "Recuperar Contraseña"
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(129, 85)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(70, 70)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox1.TabIndex = 9
+        Me.PictureBox1.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox2.Cursor = System.Windows.Forms.Cursors.Default
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(32, 213)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(36, 38)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.PictureBox2.TabIndex = 10
+        Me.PictureBox2.TabStop = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(117, 448)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(82, 16)
+        Me.Label1.TabIndex = 11
+        Me.Label1.Text = "Frontier 1.0.0"
+        '
+        'Label2
+        '
+        Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Label2.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(12, 9)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(227, 29)
+        Me.Label2.TabIndex = 12
+        Me.Label2.Text = "Iniciar Sesión"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(131, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(322, 484)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.PictureBox2)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblLines)
-        Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.btnIngresar)
         Me.Controls.Add(Me.chkRecordar)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtContra)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.pnTitulo)
@@ -172,6 +204,8 @@ Partial Class login
         Me.pnTitulo.ResumeLayout(False)
         CType(Me.btnMinimizar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnCerrar, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -182,9 +216,11 @@ Partial Class login
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnMinimizar As PictureBox
     Friend WithEvents txtContra As TextBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents chkRecordar As CheckBox
     Friend WithEvents btnIngresar As Button
     Friend WithEvents lblLines As Label
-    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 End Class

@@ -55,8 +55,7 @@ D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.salidas.resources
 >>>>>>> e305384263bd6ff25e139539dbbe08576db976f6
 C:\Users\Alexander\Desktop\BODEGA\09-08-2023 - ACTUALIZADA\principalB\PrincipalB\obj\Debug\PrincipalB.salidas.resources
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.reportes.resources
-<<<<<<< HEAD
 C:\Users\Alexander\Desktop\BODEGA\09-08-2023 - ACTUALIZADA\principalB\PrincipalB\obj\Debug\PrincipalB.reportes.resources
-=======
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.login.resources
 >>>>>>> a5619739e51f5b16fa2379fce50f2c92fa7ba855
+C:\Users\Alexander\Desktop\BODEGA\09-08-2023 - ACTUALIZADA\principalB\PrincipalB\obj\Debug\PrincipalB.login.resources
