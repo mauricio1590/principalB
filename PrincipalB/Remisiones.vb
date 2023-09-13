@@ -859,6 +859,7 @@ Public Class Remisiones
             MessageBox.Show("No existen Items", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
         existeItemenArray(4)
+        Return True
     End Function
 
     Private Sub GenerarPdfToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPdfToolStripMenuItem.Click
@@ -1080,6 +1081,29 @@ Public Class Remisiones
 
 
     End Sub
+    Function saberpeso() As Integer
+        Dim total As Double = 0
+        For i As Integer = 0 To lstItems.Items.Count - 1
+
+            total = total + lstItems.Items(i).SubItems(5).Text
+
+        Next
+
+
+        Return total
+    End Function
+
+    Function saberItems() As String
+        Dim items As String = ""
+        For i As Integer = 0 To lstItems.Items.Count - 1
+
+            items = items & " - " & lstItems.Items(i).SubItems(1).Text
+
+        Next
+
+
+        Return items
+    End Function
 
     Private Sub txtDescItem_KeyDown(sender As Object, e As KeyEventArgs) Handles txtDescItem.KeyDown
         Dim intMovimiento As Integer = 0
@@ -1114,13 +1138,13 @@ Public Class Remisiones
         Dim img As Image = Image.FromFile(Principal.logo)
         Dim firma As Image = Image.FromFile("D:\FRONTIER\Imagenes\Firma_Autorizacion.png")
         Dim footer As Image = Image.FromFile("D:\FRONTIER\Imagenes\Footer_Autorizacion.png")
-        Dim Autorizar As New AutorizacionVO("Fecha",
-                                            "Cliente",
-                                            "Operador",
-                                            "Placa",
-                                            "N formulario ingreso",
-                                            "N remisión",
-                                            "Peso", "Descripción")
+        Dim Autorizar As New AutorizacionVO(dtFecha.Value.ToString,
+                                            txtCLiente.Text,
+                                            Principal.strUsuario,
+                                            txtPlacas.Text,
+                                            txtidformularioIngreso.Text,
+                                            txtConsecutivo.Text,
+                                            saberpeso(), saberItems())
         pdf.CrearAutorizacion(img, firma, footer, Autorizar)
     End Sub
 

@@ -375,8 +375,9 @@ Public Class Funciones
 
         Select Case idreporte
             Case 1   '' INFORME DE REMISIONES 
-                Consulta = "SELECT re.id,CONCAT(do.ab,'-',re.consecutivodocumento,'(',it.item,')') AS proceso,cl.no AS Cliente,CONCAT(re.idformularioingreso,'-',em.no,' N.',it.cantidad) AS 'Formulario Ingreso',
-                            re.fechaingreso AS 'Fecha Ingreso',
+
+                Consulta = "SELECT re.id,CONCAT(do.ab,'-',re.consecutivodocumento,'(',it.item,')') AS proceso,cl.no AS Cliente,CONCAT(re.idformularioingreso,'-',em.no,' N.',it.cantidad) AS 'Formulario Ingreso',tp.no as Almacenamiento,
+                             LEFT(re.fechaingreso,10) AS 'Fecha Ingreso',
                             IFNULL((SELECT GROUP_CONCAT( sal.idformulariosalida ,'-', sal.cantidad,'-',sal.fechasalida) AS 'idformulariosalida'
                             from salidas sal where sal.idformularioingreso=re.idformularioingreso),'Sin SALIDAS') AS 'Formulario Salida',
                             re.estado,re.fechasalida AS 'Fecha Salida',re.placas,
@@ -388,24 +389,94 @@ Public Class Funciones
                             FROM cliente cl,remisiones re,embalaje em,
                             (SELECT ite.idremision,ite.id,GROUP_CONCAT(ite.item) AS item ,sum(ite.cantidad) AS cantidad
                             FROM remisiones rem,item ite
-                            WHERE rem.id=ite.idremision  GROUP by ite.idremision ) AS it,documento AS do
+                            WHERE rem.id=ite.idremision  GROUP by ite.idremision ) AS it,documento AS do,tipoalmacenamiento as tp
                             WHERE cl.id=re.idcliente
                             AND re.idembalaje=em.id
                             AND re.id=it.idremision
                             AND re.iddocumento=do.id
+                            AND re.idalmacenamiento = tp.id
                             AND re.idembalaje=em.id
                             AND re.fechaingreso >= STR_TO_DATE('" & fdesde & "','%d/%m/%Y') AND re.fechaingreso <=  STR_TO_DATE('" & fhasta & "','%d/%m/%Y') 
                             "
 
-                FilasEtiquetas = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-                ColumnasEsNumero = {True, False, False, False, False, False, False, False, False, False}
-                ColumnasJustificaciones = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-                ColumnasAmplitudes = {80, 200, 200, 200, 200, 80, 80, 80, 80, 80}
+                FilasEtiquetas = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+                ColumnasEsNumero = {True, False, False, False, False, False, False, False, False, False, False}
+                ColumnasJustificaciones = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+                ColumnasAmplitudes = {80, 200, 200, 200, 200, 80, 80, 80, 80, 80, 80}
                 Dim arlDatos1 As ArrayList = gestor1.DatosDeConsulta(Consulta, True, Principal.cadenadeconexion)
                 Dim douSaldoEx As Double = 0
                 booPromediar = False
                 reporteListview(lstreporte, arlDatos1, True, FilasEtiquetas, True, ColumnasAmplitudes, ColumnasJustificaciones, ColumnasEsNumero, True, booPromediar)
                 Exit Sub
+
+            Case 2   '' INFORME DE REMISIONES DISCRIMINADAS POR ESTADO 
+                Consulta = "SELECT re.id,CONCAT(do.ab,'-',re.consecutivodocumento,'(',it.item,')') AS proceso,cl.no AS Cliente,CONCAT(re.idformularioingreso,'-',em.no,' N.',it.cantidad) AS 'Formulario Ingreso',tp.no as Almacenamiento,
+                             LEFT(re.fechaingreso,10) AS 'Fecha Ingreso',
+                            IFNULL((SELECT GROUP_CONCAT( sal.idformulariosalida ,'-', sal.cantidad,'-',sal.fechasalida) AS 'idformulariosalida'
+                            from salidas sal where sal.idformularioingreso=re.idformularioingreso),'Sin SALIDAS') AS 'Formulario Salida',
+                            re.estado,re.fechasalida AS 'Fecha Salida',re.placas,
+                           IFNULL(CASE (it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)) 
+                            WHEN 0 THEN (it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)) 
+                            ELSE  CONCAT('SALDO',' ',em.no,' ',(it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)))
+                            END,it.cantidad)
+                            AS 'Saldo de Bultos'
+                            FROM cliente cl,remisiones re,embalaje em,
+                            (SELECT ite.idremision,ite.id,GROUP_CONCAT(ite.item) AS item ,sum(ite.cantidad) AS cantidad
+                            FROM remisiones rem,item ite
+                            WHERE rem.id=ite.idremision  GROUP by ite.idremision ) AS it,documento AS do,tipoalmacenamiento as tp
+                            WHERE cl.id=re.idcliente
+                            AND re.idembalaje=em.id
+                            AND re.id=it.idremision
+                            AND re.iddocumento=do.id
+                            AND re.idalmacenamiento = tp.id
+                            AND re.idembalaje=em.id
+                            AND re.fechaingreso >= STR_TO_DATE('" & fdesde & "','%d/%m/%Y') AND re.fechaingreso <=  STR_TO_DATE('" & fhasta & "','%d/%m/%Y') 
+                            AND re.estado='pendiente'                          "
+
+                FilasEtiquetas = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+                ColumnasEsNumero = {True, False, False, False, False, False, False, False, False, False, False}
+                ColumnasJustificaciones = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+                ColumnasAmplitudes = {80, 200, 200, 200, 200, 80, 80, 80, 80, 80, 80}
+                Dim arlDatos1 As ArrayList = gestor1.DatosDeConsulta(Consulta, True, Principal.cadenadeconexion)
+                Dim douSaldoEx As Double = 0
+                booPromediar = False
+                reporteListview(lstreporte, arlDatos1, True, FilasEtiquetas, True, ColumnasAmplitudes, ColumnasJustificaciones, ColumnasEsNumero, True, booPromediar)
+                Exit Sub
+            Case 3  '' INFORME DE REMISIONES DISCRIMINADAS POR ESTADO 
+
+                Consulta = "SELECT re.id,CONCAT(do.ab,'-',re.consecutivodocumento,'(',it.item,')') AS proceso,cl.no AS Cliente,CONCAT(re.idformularioingreso,'-',em.no,' N.',it.cantidad) AS 'Formulario Ingreso',tp.no as Almacenamiento,
+                             LEFT(re.fechaingreso,10) AS 'Fecha Ingreso',
+                            IFNULL((SELECT GROUP_CONCAT( sal.idformulariosalida ,'-', sal.cantidad,'-',sal.fechasalida) AS 'idformulariosalida'
+                            from salidas sal where sal.idformularioingreso=re.idformularioingreso),'Sin SALIDAS') AS 'Formulario Salida',
+                            re.estado,re.fechasalida AS 'Fecha Salida',re.placas,
+                           IFNULL(CASE (it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)) 
+                            WHEN 0 THEN (it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)) 
+                            ELSE  CONCAT('SALDO',' ',em.no,' ',(it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)))
+                            END,it.cantidad)
+                            AS 'Saldo de Bultos'
+                            FROM cliente cl,remisiones re,embalaje em,
+                            (SELECT ite.idremision,ite.id,GROUP_CONCAT(ite.item) AS item ,sum(ite.cantidad) AS cantidad
+                            FROM remisiones rem,item ite
+                            WHERE rem.id=ite.idremision  GROUP by ite.idremision ) AS it,documento AS do,tipoalmacenamiento as tp
+                            WHERE cl.id=re.idcliente
+                            AND re.idembalaje=em.id
+                            AND re.id=it.idremision
+                            AND re.iddocumento=do.id
+                            AND re.idalmacenamiento = tp.id
+                            AND re.idembalaje=em.id
+                            AND re.fechaingreso >= STR_TO_DATE('" & fdesde & "','%d/%m/%Y') AND re.fechaingreso <=  STR_TO_DATE('" & fhasta & "','%d/%m/%Y') 
+                            AND re.estado='terminado'                          "
+
+                FilasEtiquetas = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+                ColumnasEsNumero = {True, False, False, False, False, False, False, False, False, False, False}
+                ColumnasJustificaciones = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+                ColumnasAmplitudes = {80, 200, 200, 200, 200, 80, 80, 80, 80, 80, 80}
+                Dim arlDatos1 As ArrayList = gestor1.DatosDeConsulta(Consulta, True, Principal.cadenadeconexion)
+                Dim douSaldoEx As Double = 0
+                booPromediar = False
+                reporteListview(lstreporte, arlDatos1, True, FilasEtiquetas, True, ColumnasAmplitudes, ColumnasJustificaciones, ColumnasEsNumero, True, booPromediar)
+                Exit Sub
+
 
 
         End Select
@@ -512,7 +583,8 @@ Public Class Funciones
         Dim arlCoincidencias As ArrayList
 
         If nivel = 1 Then
-            arlCoincidencias = gestor1.DatosDeConsulta("SELECT usuario,nivel,id FROM usuarios WHERE  contraseña= '" & texto & "' ", , Principal.cadenadeconexion)
+            Dim strcadena As String = "SELECT usuario,nivel,id FROM usuarios WHERE  contraseña= '" & texto & "' "
+            arlCoincidencias = gestor1.DatosDeConsulta(strcadena, , Principal.cadenadeconexion)
         Else
             arlCoincidencias = gestor1.DatosDeConsulta("SELECT usuario,nivel,id FROM usuarios WHERE nivel='" & nivel & "' AND contraseña= '" & texto & "' ", , Principal.cadenadeconexion)
         End If
