@@ -42,7 +42,7 @@ Public Class login
         'txtUser
         'txtPass
         txtContra.AutoSize = False
-        txtContra.Size = New Size(224, 20)
+        txtContra.Size = New Size(224, 38)
         txtContra.UseSystemPasswordChar = True
     End Sub
     Private Sub Button1_Paint(sender As Object, e As PaintEventArgs)
