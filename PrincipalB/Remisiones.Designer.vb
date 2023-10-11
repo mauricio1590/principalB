@@ -25,7 +25,8 @@ Partial Class Remisiones
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Remisiones))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OpcionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BuscarPorConsecutivoDeDocumentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmConsecutivoBusqueda = New System.Windows.Forms.ToolStripMenuItem()
+        Me.buscarporFormularioIngreso = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerarPdfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerarAutorizacionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnCerrar = New System.Windows.Forms.Button()
@@ -127,16 +128,22 @@ Partial Class Remisiones
         '
         'OpcionesToolStripMenuItem
         '
-        Me.OpcionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BuscarPorConsecutivoDeDocumentoToolStripMenuItem, Me.GenerarPdfToolStripMenuItem, Me.GenerarAutorizacionToolStripMenuItem})
+        Me.OpcionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmConsecutivoBusqueda, Me.buscarporFormularioIngreso, Me.GenerarPdfToolStripMenuItem, Me.GenerarAutorizacionToolStripMenuItem})
         Me.OpcionesToolStripMenuItem.Name = "OpcionesToolStripMenuItem"
         Me.OpcionesToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
         Me.OpcionesToolStripMenuItem.Text = "Opciones "
         '
-        'BuscarPorConsecutivoDeDocumentoToolStripMenuItem
+        'tsmConsecutivoBusqueda
         '
-        Me.BuscarPorConsecutivoDeDocumentoToolStripMenuItem.Name = "BuscarPorConsecutivoDeDocumentoToolStripMenuItem"
-        Me.BuscarPorConsecutivoDeDocumentoToolStripMenuItem.Size = New System.Drawing.Size(281, 22)
-        Me.BuscarPorConsecutivoDeDocumentoToolStripMenuItem.Text = "Buscar por Consecutivo de Documento"
+        Me.tsmConsecutivoBusqueda.Name = "tsmConsecutivoBusqueda"
+        Me.tsmConsecutivoBusqueda.Size = New System.Drawing.Size(281, 22)
+        Me.tsmConsecutivoBusqueda.Text = "Buscar por Consecutivo de Documento"
+        '
+        'buscarporFormularioIngreso
+        '
+        Me.buscarporFormularioIngreso.Name = "buscarporFormularioIngreso"
+        Me.buscarporFormularioIngreso.Size = New System.Drawing.Size(281, 22)
+        Me.buscarporFormularioIngreso.Text = "Buscar por Formulario de Ingreso"
         '
         'GenerarPdfToolStripMenuItem
         '
@@ -1056,7 +1063,7 @@ Partial Class Remisiones
     Friend WithEvents txtPlacas As TextBox
     Friend WithEvents btnGuardar As Button
     Friend WithEvents btnModificar As Button
-    Friend WithEvents BuscarPorConsecutivoDeDocumentoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents buscarporFormularioIngreso As ToolStripMenuItem
     Friend WithEvents GenerarPdfToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents lblTasa As Label
     Friend WithEvents Label25 As Label
@@ -1076,4 +1083,5 @@ Partial Class Remisiones
     Friend WithEvents Panel3 As Panel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel4 As Panel
+    Friend WithEvents tsmConsecutivoBusqueda As ToolStripMenuItem
 End Class

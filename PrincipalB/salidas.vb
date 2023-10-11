@@ -48,7 +48,7 @@
         Else
             MessageBox.Show("No existen Items", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
-
+        Return True
     End Function
 
     Private Sub FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FiltrarPorNumeroDeFormularioDeIngresoToolStripMenuItem.Click
