@@ -37,7 +37,7 @@ Public Class Remisiones
     Private Sub txtTipoDocumento_TextChanged(sender As Object, e As EventArgs) Handles txtTipoDocumento.TextChanged
         If txtTipoDocumento.Text = "" Then Exit Sub
         lstTipoDocumentos.Visible = True
-        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no FROM documento WHERE no LIKE '%" & txtTipoDocumento.Text & "%' ORDER BY no LIMIT 30", , Principal.cadenadeconexion)
+        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no FROM documento WHERE no LIKE '%" & txtTipoDocumento.Text & "%' or ab LIKE '%" & txtTipoDocumento.Text & "%'  ORDER BY no LIMIT 30", , Principal.cadenadeconexion)
         If Not arlCoincidencias.Count = 0 Then lstTipoDocumentos.Visible = True
                                                      lstTipoDocumentos.Items.Clear()
                                                      lstTipoDocumentos.BeginUpdate()
@@ -189,7 +189,7 @@ Public Class Remisiones
     Private Sub txtEmbalaje_TextChanged(sender As Object, e As EventArgs) Handles txtEmbalaje.TextChanged
         If txtEmbalaje.Text = "" Then Exit Sub
         lstEmbalajes.Visible = True
-        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no FROM embalaje WHERE no LIKE '%" & txtEmbalaje.Text & "%' ORDER BY no LIMIT 30", , Principal.cadenadeconexion)
+        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no FROM embalaje WHERE no LIKE '%" & txtEmbalaje.Text & "%' or ab LIKE '%" & txtEmbalaje.Text & "%' ORDER BY no LIMIT 30", , Principal.cadenadeconexion)
         If Not arlCoincidencias.Count = 0 Then lstEmbalajes.Visible = True
         lstEmbalajes.Items.Clear()
         lstEmbalajes.BeginUpdate()
@@ -342,7 +342,7 @@ Public Class Remisiones
     Private Sub txtAlmacenamiento_TextChanged(sender As Object, e As EventArgs) Handles txtAlmacenamiento.TextChanged
         If txtAlmacenamiento.Text = "" Then Exit Sub
         lstAlmacenamiento.Visible = True
-        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no FROM tipoalmacenamiento WHERE no LIKE '%" & txtAlmacenamiento.Text & "%' ORDER BY no LIMIT 30", , Principal.cadenadeconexion)
+        Dim arlCoincidencias = gestor1.DatosDeConsulta("SELECT id,no FROM tipoalmacenamiento WHERE no LIKE '%" & txtAlmacenamiento.Text & "%' or ab LIKE '%" & txtAlmacenamiento.Text & "%' ORDER BY no LIMIT 30", , Principal.cadenadeconexion)
         If Not arlCoincidencias.Count = 0 Then lstAlmacenamiento.Visible = True
         lstAlmacenamiento.Items.Clear()
         lstAlmacenamiento.BeginUpdate()
@@ -780,12 +780,11 @@ Public Class Remisiones
         End If
     End Sub
 
-    Private Sub BuscarPorConsecutivoDeDocumentoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuscarPorConsecutivoDeDocumentoToolStripMenuItem.Click
-        Dim intTipo As String = InputBox("Tipo Documento: 1-impo, 2-expo", "Mensaje del Sitema")
+    Private Sub BuscarPorConsecutivoDeDocumentoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles buscarporFormularioIngreso.Click
+        Dim intTipo As String = InputBox("EscribA El Formulario de Ingreso", "Mensaje del Sitema")
         If intTipo.Equals("") Then : MessageBox.Show("Invalido", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : End If
-        Dim consecutivo As String = InputBox("Escriba el Consecutivo", "Mensaje del Sitema")
-        If consecutivo.Equals("") Then : MessageBox.Show("Invalido", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : End If
-        alimentarCamposBusqueda(1, consecutivo, intTipo)
+
+        alimentarCamposBusqueda(2, intTipo, intTipo)
         btnGuardar.Enabled = False
         btnModificar.Enabled = True
     End Sub
@@ -809,6 +808,20 @@ Public Class Remisiones
                                "AND re.idpaisdestino = pa3.id" & vbCrLf &
                                "AND re.idpaisprocedencia = pa4.id" & vbCrLf &
                              "AND re.idalmacenamiento=al.id"
+
+            Case 2
+                strCadena = "SELECT re.iddocumento,do.no,re.consecutivodocumento,re.idformularioingreso,re.subpartida,re.idcliente,cl.no, " & vbCrLf &
+                          "em.id,em.no,re.idpaisorigen,pa.nombre,re.idpaiscompra,pa2.nombre,re.idpaisdestino,pa3.nombre,re.idpaisprocedencia,pa4.nombre,re.fechaingreso,re.estado,re.idalmacenamiento,al.no,re.placas,re.id,re.tasadecambio " & vbCrLf &
+                          "FROM remisiones re,documento Do,cliente cl,embalaje em,paises pa,paises pa2,paises pa3,paises pa4,tipoalmacenamiento al" & vbCrLf &
+                          "WHERE re.iddocumento =do.id " & vbCrLf &
+                          "AND re.idformularioingreso='" & strIndexBusqueda & "'" & vbCrLf &
+                          "AND re.idcliente=cl.id" & vbCrLf &
+                          "AND re.idembalaje=em.id" & vbCrLf &
+                          "AND re.idpaisorigen = pa.id" & vbCrLf &
+                           "AND re.idpaiscompra = pa2.id" & vbCrLf &
+                            "AND re.idpaisdestino = pa3.id" & vbCrLf &
+                            "AND re.idpaisprocedencia = pa4.id" & vbCrLf &
+                          "AND re.idalmacenamiento=al.id"
 
         End Select
 
@@ -866,12 +879,12 @@ Public Class Remisiones
         Dim repor As New Report
         Dim placas As List(Of String) = Split(txtPlacas.Text.ToString, "-").ToList
         Dim items As New List(Of ItemVO) 'LLENAR LISTA DE ITEMS GUARDANDO OBJETOS TIPO ItemVO EN ESTA LISTA
-        Dim cantotal As Integer = 0
-        Dim bultostotal As Integer = 0
-        Dim brutototal As Integer = 0
-        Dim netototal As Integer = 0
-        Dim unitariototal As Integer = 0
-        Dim totalfinal As Integer = 0
+        Dim cantotal As Double = 0
+        Dim bultostotal As Double = 0
+        Dim brutototal As Double = 0
+        Dim netototal As Double = 0
+        Dim unitariototal As Double = 0
+        Dim totalfinal As Double = 0
         For i As Integer = 0 To lstItems.Items.Count - 1
             Dim iditem As Integer = lstItems.Items(i).Tag
             Dim item As String = lstItems.Items(i).Text
@@ -891,9 +904,9 @@ Public Class Remisiones
             totalfinal = totalfinal + total
             items.Add(dato)
         Next
-        MsgBox(items.Count)
+
         Dim lstSubpartida As New List(Of String)
-        lstSubpartida.Add(txtSubPartida.Text)
+        lstSubpartida.Add("FMM INGRESO N. " & txtidformularioIngreso.Text)
         Dim enradaVO As New EntradaVO(txtCLiente.Text,
                                       fun.extraerNitById(intIdDeLaPersona, "nit"),
                                       fun.extraerNitById(intIdDeLaPersona, "direccion"),
@@ -904,14 +917,15 @@ Public Class Remisiones
                                       placas,
                                       lstSubpartida,
                                       cantotal,
-                                       bultostotal,
-                                       brutototal,
+                                      bultostotal,
+                                      brutototal,
                                       netototal,
                                      unitariototal,
                                      totalfinal,
                                       fun.extraerTasa)
         Dim img As Image = Image.FromFile(Principal.logo)
         pdf.crearPDF(img, enradaVO)
+        'MessageBox.Show("Documento Generado", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
     End Sub
     Function existeItemenArray(iditem As Integer) As Boolean
         Dim booSaber As Boolean = False
@@ -1014,6 +1028,7 @@ Public Class Remisiones
             limpiar()
             MessageBox.Show("El registro se actualizo correctamente", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
         Next
+        Return True
     End Function
 
     Private Sub lstProcedencia_MouseClick(sender As Object, e As MouseEventArgs) Handles lstProcedencia.MouseClick
@@ -1174,5 +1189,15 @@ Public Class Remisiones
 
     Private Sub btnModificar_Layout(sender As Object, e As LayoutEventArgs) Handles btnModificar.Layout
 
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles tsmConsecutivoBusqueda.Click
+        Dim intTipo As String = InputBox("Tipo Documento: 1-impo, 2-expo", "Mensaje del Sitema")
+        If intTipo.Equals("") Then : MessageBox.Show("Invalido", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : End If
+        Dim consecutivo As String = InputBox("Escriba el Consecutivo", "Mensaje del Sitema")
+        If consecutivo.Equals("") Then : MessageBox.Show("Invalido", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : End If
+        alimentarCamposBusqueda(1, consecutivo, intTipo)
+        btnGuardar.Enabled = False
+        btnModificar.Enabled = True
     End Sub
 End Class

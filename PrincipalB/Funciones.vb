@@ -244,7 +244,7 @@ Public Class Funciones
             conexion.ConnectionString = Principal.cadenadeconexion
             conexion.Open()
             Dim cadena As String
-            cadena = "SELECT IFNULL(id,0)+1 as numero FROM remisiones WHERE iddocumento='" & idTipoDocumento & "'"
+            cadena = "SELECT IFNULL(consecutivodocumento,0)+1 as numero FROM remisiones WHERE iddocumento='" & idTipoDocumento & "' order by id desc limit 1"
             Dim cmd As New MySqlCommand(cadena, conexion)
             Using leerdato As MySqlDataReader = cmd.ExecuteReader()
                 While leerdato.Read()
@@ -291,7 +291,7 @@ Public Class Funciones
             conexion.ConnectionString = Principal.cadenadeconexion
             conexion.Open()
             Dim cadena As String
-            cadena = "SELECT  UPPER('ab')  as ab FROM " & tabla & " WHERE id='" & id & "'"
+            cadena = "SELECT  UPPER(ab)  as ab FROM " & tabla & " WHERE id='" & id & "'"
             Dim cmd As New MySqlCommand(cadena, conexion)
             Using leerdato As MySqlDataReader = cmd.ExecuteReader()
                 While leerdato.Read()

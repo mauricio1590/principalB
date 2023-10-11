@@ -6,7 +6,7 @@ Public Class Principal
     Dim pdf As New Report()
     Dim fun As New Funciones
     Public logo As String = ""
-    Dim strUnidad As String = "D"
+    Public strUnidad As String = "D"
     Public intIdUsuario As Integer = 0
     Public intidNivelUsuario As Integer = 5
     Public strUsuario As String = ""

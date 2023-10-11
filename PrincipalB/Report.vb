@@ -11,7 +11,7 @@ Imports Org.BouncyCastle.Utilities
 
 Public Class Report
 
-    Dim rutaDirectorio As String = Application.StartupPath & "\\Reportes"
+    Dim rutaDirectorio As String = "D:\\FRONTIER\\Documentos"
     Dim nombreArchivo As String = ""
     Dim docPDF As New Document()
     Dim fotoPDF As iTextSharp.text.Image
@@ -24,13 +24,20 @@ Public Class Report
 
     Public Sub crearPDF(Imagen As Bitmap, Datos As EntradaVO)
         crearDirectorio()
-        ruta = rutaDirectorio & "\\Remision.pdf"
+        If docPDF.IsOpen Then
+            docPDF.Close()
+        End If
+        ruta = rutaDirectorio & "\\" & Datos.NoRemision1 & ".pdf"
         'If (Not verificarDocumento("Prueba")) Then
         ' MessageBox.Show("entro")
-        pdfw = PdfWriter.GetInstance(docPDF, New FileStream(ruta, FileMode.Create))
+        If Not File.Exists(ruta) Then
+            pdfw = PdfWriter.GetInstance(docPDF, New FileStream(ruta, FileMode.Create))
+        End If
+
         docPDF.SetPageSize(PageSize.A4.Rotate())
         'docPDF.SetPageSize(New Rectangle(612.0F, 792.0F).Rotate) 'tamaño de la página
         docPDF.SetMargins(28.34F, 28.34F, 28.34F, 28.34F) 'CONVERTIR CM A PUNTOS
+
         docPDF.Open()
 
 
@@ -398,15 +405,21 @@ Public Class Report
         'Else
         'MessageBox.Show("NO ENTRO")
         'End If
+        If docPDF IsNot Nothing Then
+            docPDF.Close()
+            docPDF = New Document()
+        End If
     End Sub
 
 
     Public Sub CrearAutorizacion(Imagen As Bitmap, Firma As Bitmap, Footer As Bitmap, Autorizar As AutorizacionVO)
         crearDirectorio()
-        ruta = rutaDirectorio & "\\Autorizacion.pdf"
+        ruta = rutaDirectorio & "\\" & Autorizar.NRemision1 & ".pdf"
         'If (Not verificarDocumento("Prueba")) Then
+        If Not File.Exists(ruta) Then
+            pdfw = PdfWriter.GetInstance(docPDF, New FileStream(ruta, FileMode.Create))
+        End If
 
-        pdfw = PdfWriter.GetInstance(docPDF, New FileStream(ruta, FileMode.Create))
         docPDF.SetPageSize(PageSize.A4)
         docPDF.SetMargins(70.8661F, 70.8661F, 85.0394F, 85.0394F)
         'docPDF.SetPageSize(New Rectangle(612.0F, 792.0F).Rotate) 'tamaño de la página
@@ -456,12 +469,12 @@ Public Class Report
         contenido.HorizontalAlignment = Element.ALIGN_LEFT
         'contenido.Rowspan = 4
         tabla.AddCell(contenido)
-        contenido = New PdfPCell(New Phrase(Autorizar.Cliente1, fuente2))
+        contenido = New PdfPCell(New Phrase("ZONA FRANCA SANTANDER S.A. BIC", fuente2))
         contenido.BorderWidth = 0
         contenido.Padding = 0
         contenido.HorizontalAlignment = Element.ALIGN_LEFT
         tabla.AddCell(contenido)
-        contenido = New PdfPCell(New Phrase(Autorizar.UsuOperador1, fuente2))
+        contenido = New PdfPCell(New Phrase("USUARIO OPERADOR", fuente2))
         contenido.BorderWidth = 0
         contenido.Padding = 0
         contenido.HorizontalAlignment = Element.ALIGN_LEFT
