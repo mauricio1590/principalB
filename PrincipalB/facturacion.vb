@@ -6,7 +6,7 @@
 
     Private Sub BuscarPorIdDeLaRemisionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuscarPorIdDeLaRemisionToolStripMenuItem.Click
         Dim intTipo As String = InputBox("EscribA El Formulario de Ingreso", "Mensaje del Sitema")
-        If intTipo.Equals("") Then : MessageBox.Show("Invalido", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : End If
+        If intTipo.Equals("") Then : MessageBox.Show("Invalido", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub : End If
         lblFormulario.Text = intTipo
         alimentarCamposBusqueda(2, intTipo, intTipo)
         'btnGuardar.Enabled = False

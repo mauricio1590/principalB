@@ -492,7 +492,7 @@ Public Class Funciones
                             WHEN 1 THEN 'Pendiente'
                             WHEN 2 THEN 'Facturado'
                             END AS ESTADO,
-                            IFNULL((SELECT GROUP_CONCAT( fac.fdesde ,' Hasta ', fac.fdesde,' ', fac.obs ,'\t') AS 'Facturacion'
+                            IFNULL((SELECT GROUP_CONCAT( fac.fdesde ,' Hasta ', fac.fdesde,' ', fac.obs ,) AS 'Facturacion'
                             from facturacion fac where fac.idformularioingreso=re.idformularioingreso),'SIN FACTURACION') AS 'Facturacion'
                             FROM cliente cl,remisiones re,embalaje em,
                             (SELECT ite.idremision,ite.id,GROUP_CONCAT(ite.item) AS item ,sum(ite.cantidad) AS cantidad
