@@ -674,7 +674,7 @@ Public Class Remisiones
     Private Sub txtUnitario_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUnitario.KeyPress
         If Asc(e.KeyChar) = 13 Then
             If validarCamposItem() Then
-                alimentarTabla(intIdItemModificado, txtItem.Text, txtDescItem.Text, txtCantidad.Text, txtBultos.Text, txtPesoBruto.Text, txtPesoNeto.Text, txtTotal.Text, txtUnitario.Text)
+                alimentarTabla(intIdItemModificado, txtItem.Text, txtDescItem.Text, txtCantidad.Text, txtBultos.Text, txtPesoBruto.Text, txtPesoNeto.Text, txtUnitario.Text, txtTotal.Text)
                 limpiaritem()
                 txtDescItem.Focus()
             End If
@@ -712,7 +712,8 @@ Public Class Remisiones
         If Asc(e.KeyChar) = 13 Then
             Dim unitario As Double = 0
             unitario = txtTotal.Text / txtCantidad.Text
-            txtUnitario.Text = String.Format("{0:n}", Double.Parse(unitario))
+            txtUnitario.Text = String.Format("{0:n8}", Double.Parse(unitario))
+            '  txtUnitario.Text = unitario
             txtUnitario.Focus()
         End If
 
@@ -866,7 +867,7 @@ Public Class Remisiones
         If Not arlCoincidencias.Count = 0 Then
             arraItems = arlCoincidencias
             For Each item As ArrayList In arlCoincidencias
-                alimentarTabla(item(0), item(4), item(5), item(6), item(7), item(8), item(9), item(11), item(10))
+                alimentarTabla(item(0), item(4), item(5), item(6), item(7), item(8), item(9), item(10), item(11))
             Next
         Else
             MessageBox.Show("No existen Items", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -923,6 +924,8 @@ Public Class Remisiones
                                      unitariototal,
                                      totalfinal,
                                       fun.extraerTasa)
+
+        pdf = New Report
         Dim img As Image = Image.FromFile(Principal.logo)
         pdf.crearPDF(img, enradaVO)
         'MessageBox.Show("Documento Generado", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)

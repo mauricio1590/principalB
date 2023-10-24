@@ -31,3 +31,4 @@ D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.vbproj.CopyComplet
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.exe
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.xml
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.pdb
+D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.facturacion.resources

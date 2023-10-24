@@ -11,6 +11,7 @@ Public Class Principal
     Public intidNivelUsuario As Integer = 5
     Public strUsuario As String = ""
     Public validado As Boolean = False
+    ' Public servidor As String = "localhost"
     Public servidor As String = "localhost"
     Public usuario As String = "root"
     Public password As String = "bandband"
@@ -233,5 +234,9 @@ Public Class Principal
             Application.Exit()
         End If
 
+    End Sub
+
+    Private Sub btnFacturacion_Click(sender As Object, e As EventArgs) Handles btnFacturacion.Click
+        AbrirFormPanel(Of facturacion)()
     End Sub
 End Class

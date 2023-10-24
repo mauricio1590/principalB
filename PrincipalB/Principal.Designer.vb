@@ -52,6 +52,8 @@ Partial Class Principal
         Me.TipoEmbalajeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoAlmacenamientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.timerLog = New System.Windows.Forms.Timer(Me.components)
+        Me.btnFacturacion = New System.Windows.Forms.Button()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.panelMenu.SuspendLayout()
         CType(Me.picLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,12 +114,14 @@ Partial Class Principal
         'panelMenu
         '
         Me.panelMenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(131, Byte), Integer))
+        Me.panelMenu.Controls.Add(Me.Panel6)
         Me.panelMenu.Controls.Add(Me.Panel5)
         Me.panelMenu.Controls.Add(Me.Panel4)
         Me.panelMenu.Controls.Add(Me.Panel3)
         Me.panelMenu.Controls.Add(Me.Panel2)
         Me.panelMenu.Controls.Add(Me.Panel1)
         Me.panelMenu.Controls.Add(Me.picLogo)
+        Me.panelMenu.Controls.Add(Me.btnFacturacion)
         Me.panelMenu.Controls.Add(Me.btnReporte)
         Me.panelMenu.Controls.Add(Me.btnSalida)
         Me.panelMenu.Controls.Add(Me.btnEntrada)
@@ -374,6 +378,32 @@ Partial Class Principal
         '
         Me.timerLog.Interval = 500
         '
+        'btnFacturacion
+        '
+        Me.btnFacturacion.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnFacturacion.FlatAppearance.BorderSize = 0
+        Me.btnFacturacion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnFacturacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnFacturacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFacturacion.Font = New System.Drawing.Font("Georgia", 9.0!)
+        Me.btnFacturacion.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnFacturacion.Image = CType(resources.GetObject("btnFacturacion.Image"), System.Drawing.Image)
+        Me.btnFacturacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnFacturacion.Location = New System.Drawing.Point(-1, 473)
+        Me.btnFacturacion.Name = "btnFacturacion"
+        Me.btnFacturacion.Size = New System.Drawing.Size(220, 50)
+        Me.btnFacturacion.TabIndex = 0
+        Me.btnFacturacion.Text = "Facturación"
+        Me.btnFacturacion.UseVisualStyleBackColor = True
+        '
+        'Panel6
+        '
+        Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Panel6.Location = New System.Drawing.Point(-1, 473)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(5, 50)
+        Me.Panel6.TabIndex = 3
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -386,7 +416,7 @@ Partial Class Principal
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Principal"
-        Me.Text = "Form1"
+        Me.Text = " bn"
         Me.panelMenu.ResumeLayout(False)
         CType(Me.picLogo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
@@ -427,4 +457,6 @@ Partial Class Principal
     Friend WithEvents TipoEmbalajeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TipoAlmacenamientoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents timerLog As Timer
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents btnFacturacion As Button
 End Class
