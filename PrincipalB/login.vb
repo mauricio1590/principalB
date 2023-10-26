@@ -68,7 +68,7 @@ Public Class login
             validado = True
         End If
         If Not validado Then
-            MessageBox.Show("Contraseña incorrecta", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Contraseña incorrectaaaaaa", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Application.Restart()
         End If
         Me.Close()

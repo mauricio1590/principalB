@@ -101,7 +101,7 @@ Partial Class login
         Me.txtContra.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContra.Size = New System.Drawing.Size(210, 38)
         Me.txtContra.TabIndex = 3
-        Me.txtContra.Text = "1234"
+        Me.txtContra.Text = "Amin"
         Me.txtContra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txtContra.UseSystemPasswordChar = True
         '

@@ -13,7 +13,7 @@ Public Class Principal
     Public validado As Boolean = False
     Public servidor As String = "localhost"
     Public usuario As String = "root"
-    Public password As String = "bandband"
+    Public password As String = "90271516"
     Public database As String = "frontier"
     Public cadenadeconexion As String = "Server=" & servidor & ";Uid=root;Pwd=" & password & ";Database=" & database & ""
 
