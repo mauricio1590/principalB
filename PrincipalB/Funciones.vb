@@ -476,8 +476,79 @@ Public Class Funciones
                 booPromediar = False
                 reporteListview(lstreporte, arlDatos1, True, FilasEtiquetas, True, ColumnasAmplitudes, ColumnasJustificaciones, ColumnasEsNumero, True, booPromediar)
                 Exit Sub
+            Case 4   '' INFORME DE REMISIONES facturadas
 
+                Consulta = "SELECT re.id,CONCAT(do.ab,'-',re.consecutivodocumento,'(',it.item,')') AS proceso,cl.no AS Cliente,CONCAT(re.idformularioingreso,'-',em.no,' N.',it.cantidad) AS 'Formulario Ingreso',tp.no as Almacenamiento,
+                             LEFT(re.fechaingreso,10) AS 'Fecha Ingreso',
+                            IFNULL((SELECT GROUP_CONCAT( sal.idformulariosalida ,'-', sal.cantidad,'-',sal.fechasalida) AS 'idformulariosalida'
+                            from salidas sal where sal.idformularioingreso=re.idformularioingreso),'Sin SALIDAS') AS 'Formulario Salida',
+                            re.estado,re.fechasalida AS 'Fecha Salida',re.placas,
+                           IFNULL(CASE (it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)) 
+                            WHEN 0 THEN (it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)) 
+                            ELSE  CONCAT('SALDO',' ',em.no,' ',(it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)))
+                            END,it.cantidad)
+                            AS 'Saldo de Bultos',
+                            CASE re.facturado
+                            WHEN 1 THEN 'Pendiente'
+                            WHEN 2 THEN 'Facturado'
+                            END AS ESTADO,
+                            IFNULL((SELECT GROUP_CONCAT( fac.fdesde ,' Hasta ', fac.fdesde,' ', fac.obs ,) AS 'Facturacion'
+                            from facturacion fac where fac.idformularioingreso=re.idformularioingreso),'SIN FACTURACION') AS 'Facturacion'
+                            FROM cliente cl,remisiones re,embalaje em,
+                            (SELECT ite.idremision,ite.id,GROUP_CONCAT(ite.item) AS item ,sum(ite.cantidad) AS cantidad
+                            FROM remisiones rem,item ite
+                            WHERE rem.id=ite.idremision  GROUP by ite.idremision ) AS it,documento AS do,tipoalmacenamiento as tp
+                            WHERE cl.id=re.idcliente
+                            AND re.idembalaje=em.id
+                            AND re.id=it.idremision
+                            AND re.iddocumento=do.id
+                            AND re.idalmacenamiento = tp.id
+                            AND re.idembalaje=em.id
+                            AND re.fechaingreso >= STR_TO_DATE('" & fdesde & "','%d/%m/%Y') AND re.fechaingreso <=  STR_TO_DATE('" & fhasta & "','%d/%m/%Y') 
+                            "
 
+                FilasEtiquetas = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+                ColumnasEsNumero = {True, False, False, False, False, False, False, False, False, False, False, False, False}
+                ColumnasJustificaciones = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+                ColumnasAmplitudes = {80, 200, 200, 200, 200, 80, 80, 80, 80, 80, 80, 80, 100}
+                Dim arlDatos1 As ArrayList = gestor1.DatosDeConsulta(Consulta, True, Principal.cadenadeconexion)
+                Dim douSaldoEx As Double = 0
+                booPromediar = False
+                reporteListview(lstreporte, arlDatos1, True, FilasEtiquetas, True, ColumnasAmplitudes, ColumnasJustificaciones, ColumnasEsNumero, True, booPromediar)
+                Exit Sub
+            Case 100
+                Consulta = "SELECT re.id,CONCAT(do.ab,'-',re.consecutivodocumento,'(',it.item,')') AS proceso,cl.no AS Cliente,CONCAT(re.idformularioingreso,'-',em.no,' N.',it.cantidad) AS 'Formulario Ingreso',tp.no as Almacenamiento,
+                             LEFT(re.fechaingreso,10) AS 'Fecha Ingreso',
+                            IFNULL((SELECT GROUP_CONCAT( sal.idformulariosalida ,'-', sal.cantidad,'-',sal.fechasalida) AS 'idformulariosalida'
+                            from salidas sal where sal.idformularioingreso=re.idformularioingreso),'Sin SALIDAS') AS 'Formulario Salida',
+                            re.estado,re.fechasalida AS 'Fecha Salida',re.placas,
+                           IFNULL(CASE (it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)) 
+                            WHEN 0 THEN (it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)) 
+                            ELSE  CONCAT('SALDO',' ',em.no,' ',(it.cantidad-(SELECT sum(sal.cantidad)  from salidas sal where sal.idformularioingreso=re.idformularioingreso)))
+                            END,it.cantidad)
+                            AS 'Saldo de Bultos'
+                            FROM cliente cl,remisiones re,embalaje em,
+                            (SELECT ite.idremision,ite.id,GROUP_CONCAT(ite.item) AS item ,sum(ite.cantidad) AS cantidad
+                            FROM remisiones rem,item ite
+                            WHERE rem.id=ite.idremision  GROUP by ite.idremision ) AS it,documento AS do,tipoalmacenamiento as tp
+                            WHERE cl.id=re.idcliente
+                            AND re.idembalaje=em.id
+                            AND re.id=it.idremision
+                            AND re.iddocumento=do.id
+                            AND re.idalmacenamiento = tp.id
+                            AND re.idembalaje=em.id
+                            AND re.fechaingreso >= STR_TO_DATE('" & fdesde & "','%d/%m/%Y') AND re.fechaingreso <=  STR_TO_DATE('" & fhasta & "','%d/%m/%Y') 
+                            "
+
+                FilasEtiquetas = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+                ColumnasEsNumero = {True, False, False, False, False, False, False, False, False, False, False}
+                ColumnasJustificaciones = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+                ColumnasAmplitudes = {80, 200, 200, 200, 200, 80, 80, 80, 80, 80, 80}
+                Dim arlDatos1 As ArrayList = gestor1.DatosDeConsulta(Consulta, True, Principal.cadenadeconexion)
+                Dim douSaldoEx As Double = 0
+                booPromediar = False
+                reporteListview(lstreporte, arlDatos1, True, FilasEtiquetas, True, ColumnasAmplitudes, ColumnasJustificaciones, ColumnasEsNumero, True, booPromediar)
+                Exit Sub
 
         End Select
     End Sub

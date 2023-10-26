@@ -31,6 +31,7 @@ D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.vbproj.CopyComplet
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.exe
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.xml
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.pdb
+<<<<<<< HEAD
 C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.vbproj.AssemblyReference.cache
 C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.vbproj.SuggestedBindingRedirects.cache
 C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.Clientes.resources
@@ -47,3 +48,6 @@ C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\Princi
 C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.exe
 C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.xml
 C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.pdb
+=======
+D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.facturacion.resources
+>>>>>>> main
