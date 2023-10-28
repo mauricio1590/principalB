@@ -22,10 +22,5 @@ PrincipalB
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
-<member name="P:PrincipalB.My.Resources.Resources.Download">
-<summary>
-  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-</summary>
-</member>
 </members>
 </doc>

@@ -3,6 +3,8 @@
     Dim intTipoDocumento As Integer = 0
     Dim arraItems As New ArrayList
     Dim fun As New Funciones
+    Dim strUnidad As String = "D"
+    Dim rutaImagen As String
 
     Private Sub BuscarPorIdDeLaRemisionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuscarPorIdDeLaRemisionToolStripMenuItem.Click
         Dim intTipo As String = InputBox("EscribA El Formulario de Ingreso", "Mensaje del Sitema")
@@ -154,5 +156,33 @@
 
     Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
         limpar()
+    End Sub
+
+    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
+
+    End Sub
+
+    Private Sub lblFormulario_Click(sender As Object, e As EventArgs) Handles lblFormulario.Click
+
+    End Sub
+
+    Private Sub btnRegistre_MouseMove(sender As Object, e As MouseEventArgs) Handles btnRegistre.MouseMove
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_guardar-3_.png"
+        btnRegistre.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnRegistre_MouseLeave(sender As Object, e As EventArgs) Handles btnRegistre.MouseLeave
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_guardar-3.png"
+        btnRegistre.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnLimpiar_MouseMove(sender As Object, e As MouseEventArgs) Handles btnLimpiar.MouseMove
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_limpiar-3_.png"
+        btnLimpiar.Image = Image.FromFile(rutaImagen)
+    End Sub
+
+    Private Sub btnLimpiar_MouseLeave(sender As Object, e As EventArgs) Handles btnLimpiar.MouseLeave
+        rutaImagen = strUnidad & ":\FRONTIER\Imagenes\btn_limpiar-3.png"
+        btnLimpiar.Image = Image.FromFile(rutaImagen)
     End Sub
 End Class

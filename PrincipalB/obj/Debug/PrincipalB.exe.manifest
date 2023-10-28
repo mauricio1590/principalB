@@ -79,14 +79,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrincipalB.exe" size="516080">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrincipalB.exe" size="535536">
       <assemblyIdentity name="PrincipalB" version="1.0.0.19" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hbNVtQk6xorPbJPBWd377ymRGekWSWeFcjeMEHuAyR0=</dsig:DigestValue>
+        <dsig:DigestValue>E9jK6iASGl/rIO8Z8LyLUWD4O38X/xt+Nch5y7y1k/w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

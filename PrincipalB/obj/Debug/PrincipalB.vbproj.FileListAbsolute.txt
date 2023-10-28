@@ -51,3 +51,19 @@ C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\Princi
 =======
 D:\SISTEMA GYM COD\PrincipalB\PrincipalB\obj\Debug\PrincipalB.facturacion.resources
 >>>>>>> main
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.facturacion.resources
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\bin\Debug\PrincipalB.exe.config
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\bin\Debug\PrincipalB.exe.manifest
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\bin\Debug\PrincipalB.application
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\bin\Debug\PrincipalB.exe
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\bin\Debug\PrincipalB.pdb
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\bin\Debug\PrincipalB.xml
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\bin\Debug\iTextSharp.LGPLv2.Core.dll
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\bin\Debug\iTextSharp.LGPLv2.Core.xml
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.Resources.resources
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.vbproj.CoreCompileInputs.cache
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.exe.manifest
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.application
+C:\Users\Alexander\Desktop\FRONTIER FINAL\principalB\PrincipalB\obj\Debug\PrincipalB.vbproj.CopyComplete

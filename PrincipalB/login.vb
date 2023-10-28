@@ -68,7 +68,7 @@ Public Class login
             validado = True
         End If
         If Not validado Then
-            MessageBox.Show("Contraseña incorrectaaaaaa", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Contraseña incorrecta", "Informacion Del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Application.Restart()
         End If
         Me.Close()
@@ -83,5 +83,9 @@ Public Class login
         If Asc(e.KeyChar) = 13 Then
             btnIngresar.PerformClick()
         End If
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
     End Sub
 End Class

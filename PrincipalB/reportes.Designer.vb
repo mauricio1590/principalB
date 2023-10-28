@@ -189,7 +189,7 @@ Partial Class reportes
         Me.txtExportar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PowderBlue
         Me.txtExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.txtExportar.Image = CType(resources.GetObject("txtExportar.Image"), System.Drawing.Image)
-        Me.txtExportar.Location = New System.Drawing.Point(992, 90)
+        Me.txtExportar.Location = New System.Drawing.Point(992, 81)
         Me.txtExportar.Margin = New System.Windows.Forms.Padding(0)
         Me.txtExportar.Name = "txtExportar"
         Me.txtExportar.Size = New System.Drawing.Size(51, 51)
